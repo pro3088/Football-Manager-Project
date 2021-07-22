@@ -49,7 +49,7 @@ func CreatePlayers(pitch):
 	var playerArray = Array()
 	fieldPlayers.resize(TeamNum)
 	#This creates the pitchs for the loading
-	for x in range(fieldPlayers.size()):
+	for _x in range(fieldPlayers.size()):
 		var Player = Player_resource.instance()
 		playerArray.append(Player)
 	

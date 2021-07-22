@@ -2,7 +2,7 @@
 
 [ext_resource path="res://world/priority-shot-area.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Football field v-1.PNG" type="Texture" id=2]
-[ext_resource path="res://world/Pitch.gd" type="Script" id=3]
+[ext_resource path="res://general scripts/Pitch.gd" type="Script" id=3]
 
 [node name="Pitch" type="Node2D"]
 script = ExtResource( 3 )

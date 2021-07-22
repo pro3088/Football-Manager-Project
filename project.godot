@@ -50,10 +50,16 @@ PluginSettings="*res://addons/github-integration/scripts/PluginSettings.gd"
 IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
 UserData="*res://addons/github-integration/scripts/user_data.gd"
 RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
+BTDebugServer="*res://addons/btree/script/bt_debug_server.gd"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/github-integration/plugin.cfg", "res://addons/godot-sqlite/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/btree/plugin.cfg", "res://addons/github-integration/plugin.cfg", "res://addons/godot-sqlite/plugin.cfg" )
+
+[network]
+
+limits/websocket_server/max_in_buffer_kb=4096
+limits/websocket_server/max_out_buffer_kb=4096
 
 [rendering]
 
