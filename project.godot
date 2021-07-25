@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="project-FM"
-run/main_scene="res://world/Pitch.tscn"
+run/main_scene="res://world/Match-scene.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -52,6 +52,11 @@ PluginSettings="*res://addons/github-integration/scripts/PluginSettings.gd"
 IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
 UserData="*res://addons/github-integration/scripts/user_data.gd"
 RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
+
+[display]
+
+window/size/width=926
+window/size/height=428
 
 [editor_plugins]
 

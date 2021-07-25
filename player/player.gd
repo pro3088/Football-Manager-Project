@@ -4,9 +4,17 @@ var velocity = Vector2.ZERO
 
 var OriginalPos
 
-var matchstart:bool = MatchPlay.matchstart
-
 var teampossesion: bool
+
+var running:bool
+var sprint:bool
+
+var sprintRight:bool
+var sprintLeft:bool
+
+var moveBackLeft:bool
+var moveBackRight:bool
+var moveBack:bool
 
 enum playerroles{
 	GK
@@ -63,7 +71,58 @@ func _physics_process(delta):
 	LookAtBall()
 	ReturntoHome(delta)
 	withBall()
+	Detectplayer()
+	teamPossesion()
 	velocity = move_and_slide(velocity)
+
+#..........................................................................
+
+func moveforward():
+	if running:
+		var smallpos:Array = $"Grid-middle-forward/running-forward".get_children()
+		var rand_position = smallpos[randi() % smallpos.size()]
+		return rand_position
+	elif sprint:
+		var smallpos:Array = $"Grid-middle-forward/sprint-forward".get_children()
+		var rand_position = smallpos[randi() % smallpos.size()]
+		return rand_position
+	else:
+		var smallpos:Array = $"Grid-middle-forward/small-move-forward".get_children()
+		var rand_position = smallpos[randi() % smallpos.size()]
+		return rand_position
+
+func moveright():
+	if sprintRight:
+		var smallpos:Array = $"Grid-right/sprint-turn".get_children()
+		var rand_position = smallpos[randi() % smallpos.size()]
+		return rand_position
+	else:
+		var smallpos:Array = $"Grid-right/small-turn".get_children()
+		var rand_position = smallpos[randi() % smallpos.size()]
+		return rand_position
+
+func moveleft():
+	if sprintLeft:
+		var smallpos:Array = $"Grid-left/sprint-turn".get_children()
+		var rand_position = smallpos[randi() % smallpos.size()]
+		return rand_position
+	else:
+		var smallpos:Array = $"Grid-left/small-turn".get_children()
+		var rand_position = smallpos[randi() % smallpos.size()]
+		return rand_position.global_position
+
+func moveback():
+	if moveBackLeft:
+		var position = $"Grid-back/left".global_position
+		return position
+	elif moveBackRight:
+		var position = $"Grid-back/right".global_position
+		return position
+	else:
+		var position = $"Grid-back/middle"
+		return position
+
+#..............................................................................
 
 func cal_move(delta):
 	if self == Team.ClosestToBall:
@@ -100,10 +159,4 @@ func Detectplayer():
 		return true
 	return false
 
-func movegrid():
-	for x in range(10):
-		var Ball_resource = load("res://world/Ball.tscn")
-		var Ball = Ball_resource.instance()
-		Ball.scale = Vector2(0.5,0.5)
-		$Grid.add_child(Ball)
-	pass
+

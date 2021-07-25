@@ -3,12 +3,11 @@
 [ext_resource path="res://world/shot area.tscn" type="PackedScene" id=1]
 [ext_resource path="res://general scripts/priority-shot-area.gd" type="Script" id=2]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 132.557, 179.168 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 102.012, 146.214 )
+extents = Vector2( 78.6676, 90.1828 )
 
 [node name="shot-area-left" type="Node2D"]
 script = ExtResource( 2 )
@@ -19,10 +18,8 @@ script = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="short-range-shot" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, 1 )
 
 [node name="CollisionShape2D" parent="short-range-shot" index="0"]
-position = Vector2( 150.044, 296.814 )
 shape = SubResource( 2 )
 
 [connection signal="body_entered" from="long-range-shot" to="." method="_on_longrangeshot_body_entered"]

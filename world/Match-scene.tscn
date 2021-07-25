@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://world/pitch-scene.tscn" type="PackedScene" id=1]
+[ext_resource path="res://general scripts/Pitch.gd" type="Script" id=2]
+
+[node name="Match" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="pitch-scene" parent="." instance=ExtResource( 1 )]
+position = Vector2( 58, 40 )
+
+[node name="HomeTeam" type="Node2D" parent="."]
+
+[node name="AwayTeam" type="Node2D" parent="."]

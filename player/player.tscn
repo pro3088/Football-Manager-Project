@@ -1,19 +1,19 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Assets/FOOTBALL_PLAYER SPRITE.png" type="Texture" id=1]
+[ext_resource path="res://Assets/player sprite.png" type="Texture" id=1]
 [ext_resource path="res://player/player.gd" type="Script" id=2]
 [ext_resource path="res://player/Ballholder.gd" type="Script" id=3]
-[ext_resource path="res://addons/btree/script/btree.gd" type="Script" id=4]
-[ext_resource path="res://player/AI.gd" type="Script" id=5]
+[ext_resource path="res://player/ai/AI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://player/Detectplayer.gd" type="Script" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
+radius = 7.15517
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 4.20788
+radius = 2.7316
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 100.0
+radius = 60.0
 
 [node name="player" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -23,135 +23,292 @@ speed = 100
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -6, 0 )
+position = Vector2( -5.52806, -0.23597 )
 shape = SubResource( 1 )
 
 [node name="Ballholder" type="Area2D" parent="."]
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ballholder"]
-position = Vector2( 14.6085, -0.37458 )
+position = Vector2( 10.7769, -0.13861 )
 shape = SubResource( 2 )
-
-[node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 16, 0 )
 
 [node name="Detectplayer" type="Area2D" parent="."]
 script = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detectplayer"]
+position = Vector2( 34, 0 )
 shape = SubResource( 3 )
-
-[node name="Grid" type="Node" parent="."]
-
-[node name="AI" type="Node" parent="."]
-script = ExtResource( 5 )
-
-[node name="BTREE" type="Node" parent="AI"]
-script = ExtResource( 4 )
-tree = {
-"connection": [ {
-"from": "root",
-"from_port": 0,
-"to": "sequence",
-"to_port": 0
-}, {
-"from": "sequence",
-"from_port": 0,
-"to": "task",
-"to_port": 0
-} ],
-"nodes": [ {
-"child": [ {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_matchstart",
-"offset": Vector2( 200, -140 ),
-"params": [  ],
-"size": Vector2( 231, 85 ),
-"values": [  ]
-},
-"name": "task",
-"type": 1
-} ],
-"data": {
-"count": 4,
-"offset": Vector2( 20, 0 ),
-"size": Vector2( 100, 121.75 )
-},
-"name": "sequence",
-"type": 2
-} ],
-"data": {
-"offset": Vector2( -120, 0 ),
-"size": Vector2( 62, 60 )
-},
-"name": "root",
-"type": 0
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_matchstart",
-"offset": Vector2( 200, -140 ),
-"params": [  ],
-"size": Vector2( 231, 85 ),
-"values": [  ]
-},
-"name": "task",
-"type": 1
-} ],
-"data": {
-"count": 4,
-"offset": Vector2( 20, 0 ),
-"size": Vector2( 100, 121.75 )
-},
-"name": "sequence",
-"type": 2
-}, {
-"child": [  ],
-"data": {
-"fn": "task_matchstart",
-"offset": Vector2( 200, -140 ),
-"params": [  ],
-"size": Vector2( 231, 85 ),
-"values": [  ]
-},
-"name": "task",
-"type": 1
-} ],
-"root": {
-"child": [ {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_matchstart",
-"offset": Vector2( 200, -140 ),
-"params": [  ],
-"size": Vector2( 231, 85 ),
-"values": [  ]
-},
-"name": "task",
-"type": 1
-} ],
-"data": {
-"count": 4,
-"offset": Vector2( 20, 0 ),
-"size": Vector2( 100, 121.75 )
-},
-"name": "sequence",
-"type": 2
-} ],
-"data": {
-"offset": Vector2( -120, 0 ),
-"size": Vector2( 62, 60 )
-},
-"name": "root",
-"type": 0
+__meta__ = {
+"_edit_lock_": true
 }
-}
-_tree_id = "9280197663728860880"
+
+[node name="Grid-middle-forward" type="Node2D" parent="."]
+visible = false
+
+[node name="small-move-forward" type="Node2D" parent="Grid-middle-forward"]
+
+[node name="Position2D15" type="Position2D" parent="Grid-middle-forward/small-move-forward"]
+position = Vector2( 15, 0 )
+
+[node name="Position2D16" type="Position2D" parent="Grid-middle-forward/small-move-forward"]
+position = Vector2( 15, 5 )
+
+[node name="Position2D17" type="Position2D" parent="Grid-middle-forward/small-move-forward"]
+position = Vector2( 15, -5 )
+
+[node name="Position2D" type="Position2D" parent="Grid-middle-forward/small-move-forward"]
+position = Vector2( 20, 0 )
+
+[node name="Position2D2" type="Position2D" parent="Grid-middle-forward/small-move-forward"]
+position = Vector2( 25, 0 )
+
+[node name="Position2D3" type="Position2D" parent="Grid-middle-forward/small-move-forward"]
+position = Vector2( 20, 5 )
+
+[node name="Position2D4" type="Position2D" parent="Grid-middle-forward/small-move-forward"]
+position = Vector2( 25, 5 )
+
+[node name="Position2D5" type="Position2D" parent="Grid-middle-forward/small-move-forward"]
+position = Vector2( 20, -5 )
+
+[node name="Position2D6" type="Position2D" parent="Grid-middle-forward/small-move-forward"]
+position = Vector2( 25, -5 )
+
+[node name="mid-move-left" type="Node2D" parent="Grid-middle-forward"]
+
+[node name="Position2D" type="Position2D" parent="Grid-middle-forward/mid-move-left"]
+position = Vector2( 20, -10 )
+
+[node name="Position2D2" type="Position2D" parent="Grid-middle-forward/mid-move-left"]
+position = Vector2( 25, -10 )
+
+[node name="Position2D4" type="Position2D" parent="Grid-middle-forward/mid-move-left"]
+position = Vector2( 20, -15 )
+
+[node name="Position2D5" type="Position2D" parent="Grid-middle-forward/mid-move-left"]
+position = Vector2( 25, -15 )
+
+[node name="sprint-forward" type="Node2D" parent="Grid-middle-forward"]
+
+[node name="Position2D3" type="Position2D" parent="Grid-middle-forward/sprint-forward"]
+position = Vector2( 30, 0 )
+
+[node name="Position2D4" type="Position2D" parent="Grid-middle-forward/sprint-forward"]
+position = Vector2( 35, 0 )
+
+[node name="Position2D5" type="Position2D" parent="Grid-middle-forward/sprint-forward"]
+position = Vector2( 40, 0 )
+
+[node name="Position2D6" type="Position2D" parent="Grid-middle-forward/sprint-forward"]
+position = Vector2( 45, 0 )
+
+[node name="Position2D7" type="Position2D" parent="Grid-middle-forward/sprint-forward"]
+position = Vector2( 50, 0 )
+
+[node name="Position2D8" type="Position2D" parent="Grid-middle-forward/sprint-forward"]
+position = Vector2( 30, 5 )
+
+[node name="Position2D9" type="Position2D" parent="Grid-middle-forward/sprint-forward"]
+position = Vector2( 35, 5 )
+
+[node name="Position2D10" type="Position2D" parent="Grid-middle-forward/sprint-forward"]
+position = Vector2( 40, 5 )
+
+[node name="Position2D11" type="Position2D" parent="Grid-middle-forward/sprint-forward"]
+position = Vector2( 45, 5 )
+
+[node name="Position2D12" type="Position2D" parent="Grid-middle-forward/sprint-forward"]
+position = Vector2( 50, 5 )
+
+[node name="Position2D13" type="Position2D" parent="Grid-middle-forward/sprint-forward"]
+position = Vector2( 30, -5 )
+
+[node name="Position2D14" type="Position2D" parent="Grid-middle-forward/sprint-forward"]
+position = Vector2( 35, -5 )
+
+[node name="Position2D15" type="Position2D" parent="Grid-middle-forward/sprint-forward"]
+position = Vector2( 40, -5 )
+
+[node name="Position2D16" type="Position2D" parent="Grid-middle-forward/sprint-forward"]
+position = Vector2( 45, -5 )
+
+[node name="Position2D17" type="Position2D" parent="Grid-middle-forward/sprint-forward"]
+position = Vector2( 50, -5 )
+
+[node name="running-forward" type="Node2D" parent="Grid-middle-forward"]
+
+[node name="Position2D8" type="Position2D" parent="Grid-middle-forward/running-forward"]
+position = Vector2( 55, 0 )
+
+[node name="Position2D9" type="Position2D" parent="Grid-middle-forward/running-forward"]
+position = Vector2( 60, 0 )
+
+[node name="Position2D10" type="Position2D" parent="Grid-middle-forward/running-forward"]
+position = Vector2( 65, 0 )
+
+[node name="Position2D11" type="Position2D" parent="Grid-middle-forward/running-forward"]
+position = Vector2( 70, 0 )
+
+[node name="Position2D15" type="Position2D" parent="Grid-middle-forward/running-forward"]
+position = Vector2( 55, 5 )
+
+[node name="Position2D16" type="Position2D" parent="Grid-middle-forward/running-forward"]
+position = Vector2( 60, 5 )
+
+[node name="Position2D17" type="Position2D" parent="Grid-middle-forward/running-forward"]
+position = Vector2( 65, 5 )
+
+[node name="Position2D18" type="Position2D" parent="Grid-middle-forward/running-forward"]
+position = Vector2( 70, 5 )
+
+[node name="Position2D22" type="Position2D" parent="Grid-middle-forward/running-forward"]
+position = Vector2( 55, -5 )
+
+[node name="Position2D23" type="Position2D" parent="Grid-middle-forward/running-forward"]
+position = Vector2( 60, -5 )
+
+[node name="Position2D24" type="Position2D" parent="Grid-middle-forward/running-forward"]
+position = Vector2( 65, -5 )
+
+[node name="Position2D25" type="Position2D" parent="Grid-middle-forward/running-forward"]
+position = Vector2( 70, -5 )
+
+[node name="small-move-right" type="Node2D" parent="Grid-middle-forward"]
+
+[node name="Position2D" type="Position2D" parent="Grid-middle-forward/small-move-right"]
+position = Vector2( 20, 10 )
+
+[node name="Position2D2" type="Position2D" parent="Grid-middle-forward/small-move-right"]
+position = Vector2( 25, 10 )
+
+[node name="Position2D3" type="Position2D" parent="Grid-middle-forward/small-move-right"]
+position = Vector2( 20, 15 )
+
+[node name="Position2D4" type="Position2D" parent="Grid-middle-forward/small-move-right"]
+position = Vector2( 25, 15 )
+
+[node name="sprint-left" type="Node2D" parent="Grid-middle-forward"]
+
+[node name="Position2D4" type="Position2D" parent="Grid-middle-forward/sprint-left"]
+position = Vector2( 35, -10 )
+
+[node name="Position2D5" type="Position2D" parent="Grid-middle-forward/sprint-left"]
+position = Vector2( 40, -10 )
+
+[node name="Position2D6" type="Position2D" parent="Grid-middle-forward/sprint-left"]
+position = Vector2( 35, -15 )
+
+[node name="Position2D7" type="Position2D" parent="Grid-middle-forward/sprint-left"]
+position = Vector2( 40, -15 )
+
+[node name="Position2D3" type="Position2D" parent="Grid-middle-forward/sprint-left"]
+position = Vector2( 30, -10 )
+
+[node name="Position2D8" type="Position2D" parent="Grid-middle-forward/sprint-left"]
+position = Vector2( 30, -15 )
+
+[node name="sprint-right" type="Node2D" parent="Grid-middle-forward"]
+
+[node name="Position2D3" type="Position2D" parent="Grid-middle-forward/sprint-right"]
+position = Vector2( 30, 10 )
+
+[node name="Position2D4" type="Position2D" parent="Grid-middle-forward/sprint-right"]
+position = Vector2( 35, 10 )
+
+[node name="Position2D5" type="Position2D" parent="Grid-middle-forward/sprint-right"]
+position = Vector2( 40, 10 )
+
+[node name="Position2D6" type="Position2D" parent="Grid-middle-forward/sprint-right"]
+position = Vector2( 30, 15 )
+
+[node name="Position2D7" type="Position2D" parent="Grid-middle-forward/sprint-right"]
+position = Vector2( 35, 15 )
+
+[node name="Position2D8" type="Position2D" parent="Grid-middle-forward/sprint-right"]
+position = Vector2( 40, 15 )
+
+[node name="Grid-left" type="Node2D" parent="."]
+
+[node name="small-turn" type="Node2D" parent="Grid-left"]
+
+[node name="Position2D2" type="Position2D" parent="Grid-left/small-turn"]
+position = Vector2( 0, -10 )
+
+[node name="Position2D3" type="Position2D" parent="Grid-left/small-turn"]
+position = Vector2( 5, -10 )
+
+[node name="Position2D4" type="Position2D" parent="Grid-left/small-turn"]
+position = Vector2( 10, -10 )
+
+[node name="sprint-turn" type="Node2D" parent="Grid-left"]
+
+[node name="Position2D3" type="Position2D" parent="Grid-left/sprint-turn"]
+position = Vector2( 0, -15 )
+
+[node name="Position2D4" type="Position2D" parent="Grid-left/sprint-turn"]
+position = Vector2( 0, -20 )
+
+[node name="Position2D5" type="Position2D" parent="Grid-left/sprint-turn"]
+position = Vector2( 5, -15 )
+
+[node name="Position2D6" type="Position2D" parent="Grid-left/sprint-turn"]
+position = Vector2( 5, -20 )
+
+[node name="Position2D7" type="Position2D" parent="Grid-left/sprint-turn"]
+position = Vector2( 10, -15 )
+
+[node name="Position2D8" type="Position2D" parent="Grid-left/sprint-turn"]
+position = Vector2( 10, -20 )
+
+[node name="Grid-right" type="Node2D" parent="."]
+
+[node name="small-turn" type="Node2D" parent="Grid-right"]
+
+[node name="Position2D2" type="Position2D" parent="Grid-right/small-turn"]
+position = Vector2( 0, 10 )
+
+[node name="Position2D3" type="Position2D" parent="Grid-right/small-turn"]
+position = Vector2( 5, 10 )
+
+[node name="Position2D4" type="Position2D" parent="Grid-right/small-turn"]
+position = Vector2( 10, 10 )
+
+[node name="sprint-turn" type="Node2D" parent="Grid-right"]
+
+[node name="Position2D3" type="Position2D" parent="Grid-right/sprint-turn"]
+position = Vector2( 0, 15 )
+
+[node name="Position2D4" type="Position2D" parent="Grid-right/sprint-turn"]
+position = Vector2( 0, 20 )
+
+[node name="Position2D5" type="Position2D" parent="Grid-right/sprint-turn"]
+position = Vector2( 5, 15 )
+
+[node name="Position2D6" type="Position2D" parent="Grid-right/sprint-turn"]
+position = Vector2( 5, 20 )
+
+[node name="Position2D7" type="Position2D" parent="Grid-right/sprint-turn"]
+position = Vector2( 10, 15 )
+
+[node name="Position2D8" type="Position2D" parent="Grid-right/sprint-turn"]
+position = Vector2( 10, 20 )
+
+[node name="AI" parent="." instance=ExtResource( 4 )]
+
+[node name="Grid-back" type="Node2D" parent="."]
+
+[node name="middle" type="Position2D" parent="Grid-back"]
+position = Vector2( -15, 0 )
+
+[node name="left" type="Position2D" parent="Grid-back"]
+position = Vector2( -15, -5 )
+
+[node name="right" type="Position2D" parent="Grid-back"]
+position = Vector2( -15, 5 )
 
 [connection signal="body_entered" from="Ballholder" to="Ballholder" method="_on_Ballholder_body_entered"]
 [connection signal="body_exited" from="Ballholder" to="Ballholder" method="_on_Ballholder_body_exited"]

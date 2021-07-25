@@ -1,0 +1,134 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/football pitch.png" type="Texture" id=1]
+[ext_resource path="res://world/priority-shot-area.tscn" type="PackedScene" id=2]
+[ext_resource path="res://general scripts/world/pitch-scene.gd" type="Script" id=3]
+
+[node name="pitch-scene" type="Node2D"]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 188.763 ],
+"_edit_vertical_guides_": [ 380.942 ]
+}
+
+[node name="football pitch" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+offset = Vector2( 380.567, 189.181 )
+
+[node name="home-match-pos" type="Node2D" parent="."]
+
+[node name="GK" type="Position2D" parent="home-match-pos"]
+position = Vector2( 72.5637, 188.871 )
+
+[node name="CB" type="Position2D" parent="home-match-pos"]
+position = Vector2( 137.564, 188.871 )
+
+[node name="CDM" type="Position2D" parent="home-match-pos"]
+position = Vector2( 202.564, 188.871 )
+
+[node name="AMF" type="Position2D" parent="home-match-pos"]
+position = Vector2( 299.564, 188.871 )
+
+[node name="CF" type="Position2D" parent="home-match-pos"]
+position = Vector2( 321.564, 188.871 )
+
+[node name="LWF" type="Position2D" parent="home-match-pos"]
+position = Vector2( 350.564, 73.8705 )
+
+[node name="LMF" type="Position2D" parent="home-match-pos"]
+position = Vector2( 250.564, 73.8705 )
+
+[node name="RMF" type="Position2D" parent="home-match-pos"]
+position = Vector2( 250.564, 302.871 )
+
+[node name="LB" type="Position2D" parent="home-match-pos"]
+position = Vector2( 138.564, 73.8705 )
+
+[node name="RB" type="Position2D" parent="home-match-pos"]
+position = Vector2( 138.564, 302.871 )
+
+[node name="RWF" type="Position2D" parent="home-match-pos"]
+position = Vector2( 350.564, 302.871 )
+
+[node name="CMF" type="Position2D" parent="home-match-pos"]
+position = Vector2( 250.564, 188.871 )
+
+[node name="away-match-pos" type="Node2D" parent="."]
+
+[node name="GK" type="Position2D" parent="away-match-pos"]
+position = Vector2( 685.564, 188.871 )
+
+[node name="CB" type="Position2D" parent="away-match-pos"]
+position = Vector2( 621.564, 188.871 )
+
+[node name="CDM" type="Position2D" parent="away-match-pos"]
+position = Vector2( 555.564, 188.871 )
+
+[node name="AMF" type="Position2D" parent="away-match-pos"]
+position = Vector2( 459.564, 188.871 )
+
+[node name="CF" type="Position2D" parent="away-match-pos"]
+position = Vector2( 441.564, 188.871 )
+
+[node name="LWF" type="Position2D" parent="away-match-pos"]
+position = Vector2( 407.564, 73.8705 )
+
+[node name="LMF" type="Position2D" parent="away-match-pos"]
+position = Vector2( 508.564, 73.8705 )
+
+[node name="RMF" type="Position2D" parent="away-match-pos"]
+position = Vector2( 507.564, 302.871 )
+
+[node name="LB" type="Position2D" parent="away-match-pos"]
+position = Vector2( 620.564, 73.8705 )
+
+[node name="RB" type="Position2D" parent="away-match-pos"]
+position = Vector2( 619.564, 302.871 )
+
+[node name="RWF" type="Position2D" parent="away-match-pos"]
+position = Vector2( 406.564, 302.871 )
+
+[node name="CMF" type="Position2D" parent="away-match-pos"]
+position = Vector2( 506.564, 188.871 )
+
+[node name="pitch-positions" type="Node2D" parent="."]
+
+[node name="centre-line" type="Position2D" parent="pitch-positions"]
+position = Vector2( 380.704, 188.525 )
+
+[node name="centre-line2" type="Position2D" parent="pitch-positions"]
+position = Vector2( 71.2813, 49.7353 )
+
+[node name="centre-line4" type="Position2D" parent="pitch-positions"]
+position = Vector2( 71.2813, 324.735 )
+
+[node name="centre-line3" type="Position2D" parent="pitch-positions"]
+position = Vector2( 687.281, 49.7353 )
+
+[node name="centre-line5" type="Position2D" parent="pitch-positions"]
+position = Vector2( 687.281, 324.735 )
+
+[node name="shot-area-left" parent="." instance=ExtResource( 2 )]
+position = Vector2( 3.17838, 2.11893 )
+
+[node name="CollisionShape2D" parent="shot-area-left/long-range-shot" index="0"]
+position = Vector2( 211.141, 186.132 )
+
+[node name="CollisionShape2D" parent="shot-area-left/short-range-shot" index="0"]
+position = Vector2( 123.113, 187.257 )
+
+[node name="shot-area-left2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 3.17838, 2.11893 )
+
+[node name="CollisionShape2D" parent="shot-area-left2/long-range-shot" index="0"]
+position = Vector2( 545.631, 185.549 )
+
+[node name="CollisionShape2D" parent="shot-area-left2/short-range-shot" index="0"]
+position = Vector2( 634.028, 187.292 )
+
+[editable path="shot-area-left"]
+[editable path="shot-area-left/long-range-shot"]
+[editable path="shot-area-left/short-range-shot"]
+[editable path="shot-area-left2"]
+[editable path="shot-area-left2/long-range-shot"]
+[editable path="shot-area-left2/short-range-shot"]

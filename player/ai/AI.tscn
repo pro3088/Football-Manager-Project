@@ -1,0 +1,113 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://player/AI.gd" type="Script" id=1]
+[ext_resource path="res://addons/btree/script/btree.gd" type="Script" id=2]
+
+[node name="AI" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="BTREE" type="Node" parent="."]
+script = ExtResource( 2 )
+tree = {
+"connection": [ {
+"from": "root",
+"from_port": 0,
+"to": "sequence",
+"to_port": 0
+}, {
+"from": "sequence",
+"from_port": 0,
+"to": "task",
+"to_port": 0
+} ],
+"nodes": [ {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( 200, -140 ),
+"params": [  ],
+"size": Vector2( 231, 85 ),
+"values": [  ]
+},
+"name": "task",
+"type": 1
+} ],
+"data": {
+"count": 4,
+"offset": Vector2( 20, 0 ),
+"size": Vector2( 100, 121.75 )
+},
+"name": "sequence",
+"type": 2
+} ],
+"data": {
+"offset": Vector2( -120, 0 ),
+"size": Vector2( 62, 60 )
+},
+"name": "root",
+"type": 0
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( 200, -140 ),
+"params": [  ],
+"size": Vector2( 231, 85 ),
+"values": [  ]
+},
+"name": "task",
+"type": 1
+} ],
+"data": {
+"count": 4,
+"offset": Vector2( 20, 0 ),
+"size": Vector2( 100, 121.75 )
+},
+"name": "sequence",
+"type": 2
+}, {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( 200, -140 ),
+"params": [  ],
+"size": Vector2( 231, 85 ),
+"values": [  ]
+},
+"name": "task",
+"type": 1
+} ],
+"root": {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( 200, -140 ),
+"params": [  ],
+"size": Vector2( 231, 85 ),
+"values": [  ]
+},
+"name": "task",
+"type": 1
+} ],
+"data": {
+"count": 4,
+"offset": Vector2( 20, 0 ),
+"size": Vector2( 100, 121.75 )
+},
+"name": "sequence",
+"type": 2
+} ],
+"data": {
+"offset": Vector2( -120, 0 ),
+"size": Vector2( 62, 60 )
+},
+"name": "root",
+"type": 0
+}
+}
+_tree_id = "898347532215533367"
