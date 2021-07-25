@@ -1,13 +1,29 @@
 extends KinematicBody2D
 
-#onready var BallHolder= $BallHolder
-var ballCarried = false
-
 var velocity = Vector2.ZERO
 
 var OriginalPos
 
-signal Withball
+var matchstart:bool = MatchPlay.matchstart
+
+var teampossesion: bool
+
+enum playerroles{
+	GK
+	CB
+	RB
+	LB
+	CDM
+	CMF
+	RMF
+	LMF
+	AMF
+	SS
+	LWF
+	RWF
+	ST
+}
+
 
 ##................................
 
@@ -16,8 +32,7 @@ export(int) var speed = 200
 export(String) var Position
 export(String)var Name
 export(int) var PlayerAge
-var PlayerStyle
-var PlayerTeamRole
+export(playerroles) var Playerposition 
 export(int) var attackStat
 export(int) var dribbleStat
 export(int) var passStat
@@ -34,6 +49,7 @@ export(int) var form
 
 var team 
 
+
 func _ready():
 	OriginalPos = global_position
 	if Team.team == Team.TeamSide.HomeSide:
@@ -43,10 +59,10 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-	cal_move(delta)
+#	cal_move(delta)
 	LookAtBall()
 	ReturntoHome(delta)
-	Withball()
+	withBall()
 	velocity = move_and_slide(velocity)
 
 func cal_move(delta):
@@ -58,10 +74,10 @@ func cal_move(delta):
 	else:
 		velocity = Vector2.ZERO
 
-func Withball():
+func withBall():
 	if $Ballholder.ball:
-		ballCarried = true
-		emit_signal("Withball")
+		return true
+	return false
 
 func LookAtBall():
 	var ball = Team.ballPos
@@ -73,4 +89,21 @@ func ReturntoHome(delta):
 		velocity = dir * speed * delta
 	pass
 
+func teamPossesion():
+	if Team.team == Team.TeamSide.HomeSide:
+		teampossesion = Team.hometeampossesion
+	elif Team.team == Team.TeamSide.OtherSide:
+		teampossesion = Team.awayteampossesion
 
+func Detectplayer():
+	if $Detectplayer.player:
+		return true
+	return false
+
+func movegrid():
+	for x in range(10):
+		var Ball_resource = load("res://world/Ball.tscn")
+		var Ball = Ball_resource.instance()
+		Ball.scale = Vector2(0.5,0.5)
+		$Grid.add_child(Ball)
+	pass

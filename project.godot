@@ -46,11 +46,12 @@ config/icon="res://icon.png"
 
 Team="*res://general scripts/Team.gd"
 Database="*res://general scripts/Database.gd"
+BTDebugServer="*res://addons/btree/script/bt_debug_server.gd"
+MatchPlay="*res://general scripts/matchPlay.gd"
 PluginSettings="*res://addons/github-integration/scripts/PluginSettings.gd"
 IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
 UserData="*res://addons/github-integration/scripts/user_data.gd"
 RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
-BTDebugServer="*res://addons/btree/script/bt_debug_server.gd"
 
 [editor_plugins]
 

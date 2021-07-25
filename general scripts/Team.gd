@@ -21,6 +21,10 @@ var teamPositionsAway = Array()
 var ClosestToBall
 var ClosestPlayer
 
+var hometeampossesion
+var awayteampossesion
+
+var strayball
 #............................................................................
 
 func _ready():
@@ -30,6 +34,7 @@ func _ready():
 func _process(_delta):
 	GetClosesttoBall()
 	GetClosestPlayer()
+	teamPossession()
 	pass
 
 #...........................................
@@ -89,11 +94,18 @@ func GetClosesttoBall():
 func GetClosestPlayer():
 	ClosestPlayer = HomeTeam[0]
 	for x in HomeTeam:
-			if x.global_position.distance_to(ClosestToBall.global_position) < ClosestPlayer.global_position.distance_to(ClosestToBall.global_position):
-				if x.global_position.distance_to(ClosestToBall.global_position) > 1:
-					ClosestPlayer = x
+		if x.global_position.distance_to(ClosestToBall.global_position) < ClosestPlayer.global_position.distance_to(ClosestToBall.global_position):
+			if x.global_position.distance_to(ClosestToBall.global_position) > 1:
+				ClosestPlayer = x
 
-
+func teamPossession():
+	for player in HomeTeam:
+		if player.withball():
+			hometeampossesion = true
+		else:
+			hometeampossesion = false
+			strayball = true
+	pass
 
 
 
