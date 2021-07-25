@@ -47,7 +47,6 @@ __meta__ = {
 }
 
 [node name="Grid-middle-forward" type="Node2D" parent="."]
-visible = false
 
 [node name="small-move-forward" type="Node2D" parent="Grid-middle-forward"]
 

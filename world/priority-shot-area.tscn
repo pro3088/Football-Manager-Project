@@ -4,10 +4,10 @@
 [ext_resource path="res://general scripts/priority-shot-area.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 132.557, 179.168 )
+extents = Vector2( 32.8466, 109.161 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 78.6676, 90.1828 )
+extents = Vector2( 54.2247, 90.1828 )
 
 [node name="shot-area-left" type="Node2D"]
 script = ExtResource( 2 )

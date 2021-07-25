@@ -37,10 +37,9 @@ enum playerroles{
 
 ##Stats for the player
 export(int) var speed = 200
-export(String) var Position
 export(String)var Name
 export(int) var PlayerAge
-export(playerroles) var Playerposition 
+export(playerroles) var role 
 export(int) var attackStat
 export(int) var dribbleStat
 export(int) var passStat
