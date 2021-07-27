@@ -42,10 +42,10 @@ position = Vector2( 137.564, 188.871 )
 position = Vector2( 202.564, 188.871 )
 
 [node name="AMF" type="Position2D" parent="home-match-pos"]
-position = Vector2( 295.564, 188.871 )
+position = Vector2( 290.564, 188.871 )
 
 [node name="CF" type="Position2D" parent="home-match-pos"]
-position = Vector2( 319.564, 189.578 )
+position = Vector2( 317.564, 189.578 )
 
 [node name="LWF" type="Position2D" parent="home-match-pos"]
 position = Vector2( 350.564, 73.8705 )
@@ -80,7 +80,7 @@ position = Vector2( 621.564, 188.871 )
 position = Vector2( 555.564, 188.871 )
 
 [node name="AMF" type="Position2D" parent="away-match-pos"]
-position = Vector2( 463.564, 188.871 )
+position = Vector2( 471.564, 188.871 )
 
 [node name="CF" type="Position2D" parent="away-match-pos"]
 position = Vector2( 444.564, 188.871 )

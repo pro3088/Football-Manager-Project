@@ -33,6 +33,7 @@ position = Vector2( 10.7769, -0.13861 )
 shape = SubResource( 2 )
 
 [node name="Detectplayer" type="Area2D" parent="."]
+collision_layer = 0
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_lock_": true

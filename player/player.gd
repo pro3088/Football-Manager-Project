@@ -69,7 +69,7 @@ func _ready():
 
 func _physics_process(delta):
 #	cal_move(delta)
-#	LookAtBall()
+	LookAtBall()
 #	ReturntoHome(delta)
 #	withBall()
 #	Detectplayer()

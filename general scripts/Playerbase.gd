@@ -73,78 +73,6 @@ func setAwayPlayers(playerarray):
 		x.country = playerdata["country"]
 		no += 1
 
-func setHomepositions(playerarray):
-	gethomeplayernum(playerarray)
-	for x in playerarray:
-		if x.role == "GK":
-			x.global_position = homePlayerPositions["GK"]
-		if x.role == "CB":
-			if CB ==3:
-				x.global_position = homePlayerPositions["CB"]
-			elif CB == 2:
-				hplayersCBArray[0].global_position = homePlayerPositions["CB"] + Vector2(0,-playerdistance)
-				if hplayersCBArray.size() == 2:
-					hplayersCBArray[1].global_position = homePlayerPositions["CB"] + Vector2(0,playerdistance)
-			elif CB == 1:
-				hplayersCBArray[0].global_position = homePlayerPositions["CB"]
-		if x.role == "RB":
-			x.global_position = homePlayerPositions["RB"]
-		if x.role == "LB":
-			x.global_position = homePlayerPositions["LB"]
-		if x.role == "LMF":
-			x.global_position = homePlayerPositions["LMF"]
-		if x.role == "RMF":
-			x.global_position = homePlayerPositions["RMF"]
-		if x.role == "RWF":
-			x.global_position = homePlayerPositions["RWF"]
-		if x.role == "LWF":
-			x.global_position = homePlayerPositions["LWF"]
-		if x.role == "CDM":
-			if CDM ==3:
-				x.global_position = homePlayerPositions["CDM"]
-			elif CDM == 2:
-				hplayersCDMArray[0].global_position = homePlayerPositions["CDM"] + Vector2(0,-playerdistance)
-				if hplayersCDMArray.size() == 2:
-					hplayersCDMArray[1].global_position = homePlayerPositions["CDM"] + Vector2(0,playerdistance)
-			elif CDM == 1:
-				hplayersCDMArray[0].global_position = homePlayerPositions["CDM"]
-		if x.role == "CMF":
-			if CMF ==3:
-				x.global_position = homePlayerPositions["CMF"]
-			elif CMF == 2:
-				hplayersCMFArray[0].global_position = homePlayerPositions["CMF"] + Vector2(0,-playerdistance)
-				if hplayersCMFArray.size() == 2:
-					hplayersCMFArray[1].global_position = homePlayerPositions["CMF"] + Vector2(0,playerdistance)
-			elif CMF == 1:
-				hplayersCMFArray[0].global_position = homePlayerPositions["CMF"]
-		if x.role == "AMF":
-			if AMF ==3:
-				x.global_position = homePlayerPositions["AMF"]
-			elif AMF == 2:
-				hplayersAMFArray[0].global_position = homePlayerPositions["AMF"] + Vector2(0,-playerdistance)
-				if hplayersAMFArray.size() == 2:
-					hplayersAMFArray[1].global_position = homePlayerPositions["AMF"] + Vector2(0,playerdistance)
-			elif AMF == 1:
-				hplayersAMFArray[0].global_position = homePlayerPositions["AMF"]
-		if x.role == "CF":
-			if CF ==3:
-				x.global_position = homePlayerPositions["CF"]
-			elif CF == 2:
-				hplayersCFArray[0].global_position = homePlayerPositions["CF"] + Vector2(0,-playerdistance)
-				if hplayersCFArray.size() == 2:
-					hplayersCFArray[1].global_position = homePlayerPositions["CF"] + Vector2(0,playerdistance)
-			elif CF == 1:
-				hplayersCFArray[0].global_position = homePlayerPositions["CF"]
-		if x.role == "SS":
-			if SS ==3:
-				x.global_position = homePlayerPositions["CF"] + Vector2(-playerdistance,0)
-			elif SS == 2:
-				hplayersSSArray[0].global_position = homePlayerPositions["CF"] + Vector2(0,-playerdistance)
-				if hplayersSSArray.size() == 2:
-					hplayersSSArray[1].global_position = homePlayerPositions["CF"] + Vector2(0,playerdistance)
-			elif SS == 1:
-				hplayersSSArray[0].global_position = homePlayerPositions["CF"]
-		pass
 
 func setAwaypositions(playerarray):
 	getawayplayernum(playerarray)
@@ -173,7 +101,7 @@ func setAwaypositions(playerarray):
 		if x.role == "LWF":
 			x.global_position = awayPlayerPositions["LWF"]
 		if x.role == "CDM":
-			if awayCDM ==3:
+			if awayCDM == 3:
 				x.global_position = awayPlayerPositions["CDM"]
 			elif awayCDM == 2:
 				aplayersCDMArray[0].global_position = awayPlayerPositions["CDM"] + Vector2(0,-playerdistance)
@@ -218,48 +146,123 @@ func setAwaypositions(playerarray):
 			elif awaySS == 1:
 				aplayersSSArray[0].global_position = awayPlayerPositions["CF"]
 
+
+func setHomepositions(playerarray):
+	gethomeplayernum(playerarray)
+	for x in playerarray:
+		if x.role == "GK":
+			x.global_position = homePlayerPositions["GK"]
+		if x.role == "CB":
+			if CB ==3:
+				x.global_position = homePlayerPositions["CB"]
+			elif CB == 2:
+				hplayersCBArray[0].global_position = homePlayerPositions["CB"] + Vector2(0,-playerdistance)
+				if hplayersCBArray.size() == 2:
+					hplayersCBArray[1].global_position = homePlayerPositions["CB"] + Vector2(0,playerdistance)
+			elif CB == 1:
+				hplayersCBArray[0].global_position = homePlayerPositions["CB"]
+		if x.role == "RB":
+			x.global_position = homePlayerPositions["RB"]
+		if x.role == "LB":
+			x.global_position = homePlayerPositions["LB"]
+		if x.role == "LMF":
+			x.global_position = homePlayerPositions["LMF"]
+		if x.role == "RMF":
+			x.global_position = homePlayerPositions["RMF"]
+		if x.role == "RWF":
+			x.global_position = homePlayerPositions["RWF"]
+		if x.role == "LWF":
+			x.global_position = homePlayerPositions["LWF"]
+		if x.role == "CDM":
+			if CDM == 3:
+				x.global_position = homePlayerPositions["CDM"]
+			elif CDM == 2:
+				hplayersCDMArray[0].global_position = homePlayerPositions["CDM"] + Vector2(0,-playerdistance)
+				if hplayersCDMArray.size() == 2:
+					hplayersCDMArray[1].global_position = homePlayerPositions["CDM"] + Vector2(0,playerdistance)
+			elif CDM == 1:
+				hplayersCDMArray[0].global_position = homePlayerPositions["CDM"]
+				pass
+		if x.role == "CMF":
+			if CMF ==3:
+				x.global_position = homePlayerPositions["CMF"]
+			elif CMF == 2:
+				hplayersCMFArray[0].global_position = homePlayerPositions["CMF"] + Vector2(0,-playerdistance)
+				if hplayersCMFArray.size() == 2:
+					hplayersCMFArray[1].global_position = homePlayerPositions["CMF"] + Vector2(0,playerdistance)
+			elif CMF == 1:
+				hplayersCMFArray[0].global_position = homePlayerPositions["CMF"]
+		if x.role == "AMF":
+			if AMF ==3:
+				x.global_position = homePlayerPositions["AMF"]
+			elif AMF == 2:
+				hplayersAMFArray[0].global_position = homePlayerPositions["AMF"] + Vector2(0,-playerdistance)
+				if hplayersAMFArray.size() == 2:
+					hplayersAMFArray[1].global_position = homePlayerPositions["AMF"] + Vector2(0,playerdistance)
+			elif AMF == 1:
+				hplayersAMFArray[0].global_position = homePlayerPositions["AMF"]
+		if x.role == "CF":
+			if CF ==3:
+				x.global_position = homePlayerPositions["CF"]
+			elif CF == 2:
+				hplayersCFArray[0].global_position = homePlayerPositions["CF"] + Vector2(0,-playerdistance)
+				if hplayersCFArray.size() == 2:
+					hplayersCFArray[1].global_position = homePlayerPositions["CF"] + Vector2(0,playerdistance)
+			elif CF == 1:
+				hplayersCFArray[0].global_position = homePlayerPositions["CF"]
+		if x.role == "SS":
+			if SS ==3:
+				x.global_position = homePlayerPositions["CF"] + Vector2(-playerdistance,0)
+			elif SS == 2:
+				hplayersSSArray[0].global_position = homePlayerPositions["CF"] + Vector2(0,-playerdistance)
+				if hplayersSSArray.size() == 2:
+					hplayersSSArray[1].global_position = homePlayerPositions["CF"] + Vector2(0,playerdistance)
+			elif SS == 1:
+				hplayersSSArray[0].global_position = homePlayerPositions["CF"]
+		pass
+
 func gethomeplayernum(playerarray):
 	for x in playerarray:
 		if x.role == "CB":
 			if CB == 0:
 				CB += 1
 				hplayersCBArray.append(x)
-			elif CB == 1:
+			elif CB == 1  and x != hplayersCBArray[0]:
 				CB += 1
 				hplayersCBArray.append(x)
 		if x.role == "CDM":
 			if CDM == 0:
 				CDM += 1
 				hplayersCDMArray.append(x)
-			elif CDM == 1:
+			elif CDM == 1 and x != hplayersCDMArray[0]:
 				CDM += 1
 				hplayersCDMArray.append(x)
 		if x.role == "CMF":
 			if CMF == 0:
 				CMF += 1
 				hplayersCMFArray.append(x)
-			elif CMF == 1:
+			elif CMF == 1 and x != hplayersCMFArray[0]:
 				CMF += 1
 				hplayersCMFArray.append(x)
 		if x.role == "AMF":
 			if AMF == 0:
 				AMF += 1
 				hplayersAMFArray.append(x)
-			elif AMF == 1:
+			elif AMF == 1 and x != hplayersAMFArray[0]:
 				AMF += 1
 				hplayersAMFArray.append(x)
 		if x.role == "CF":
 			if CF == 0:
 				CF += 1
 				hplayersCFArray.append(x)
-			elif CF == 1:
+			elif CF == 1 and x != hplayersCFArray[0]:
 				CF += 1
 				hplayersCFArray.append(x)
 		if x.role == "SS":
 			if CF == 0:
 				CF += 1
 				hplayersSSArray.append(x)
-			elif CF == 1:
+			elif CF == 1 and x != hplayersSSArray[0]:
 				CF += 1
 				hplayersSSArray.append(x)
 
@@ -267,44 +270,44 @@ func getawayplayernum(playerarray):
 	for x in playerarray:
 		if x.role == "CB":
 			if awayCB == 0:
-				CB += 1
+				awayCB += 1
 				aplayersCBArray.append(x)
-			elif awayCB == 1:
+			elif awayCB == 1 and x != aplayersCBArray[0]:
 				awayCB += 1
 				aplayersCBArray.append(x)
 		if x.role == "CDM":
 			if awayCDM == 0:
 				awayCDM += 1
 				aplayersCDMArray.append(x)
-			elif awayCDM == 1:
+			elif awayCDM == 1 and x != aplayersCDMArray[0]:
 				awayCDM += 1
 				aplayersCDMArray.append(x)
 		if x.role == "CMF":
 			if awayCMF == 0:
 				awayCMF += 1
 				aplayersCMFArray.append(x)
-			elif awayCMF == 1:
+			elif awayCMF == 1 and x != aplayersCMFArray[0]:
 				awayCMF += 1
 				aplayersCMFArray.append(x)
 		if x.role == "AMF":
 			if awayAMF == 0:
 				awayAMF += 1
 				aplayersAMFArray.append(x)
-			elif awayAMF == 1:
+			elif awayAMF == 1 and x != aplayersAMFArray[0]:
 				awayAMF += 1
 				aplayersAMFArray.append(x)
 		if x.role == "CF":
 			if awayCF == 0:
 				awayCF += 1
 				aplayersCFArray.append(x)
-			elif awayCF == 1:
+			elif awayCF == 1 and x != aplayersCFArray[0]:
 				awayCF += 1
 				aplayersCFArray.append(x)
 		if x.role == "SS":
 			if awayCF == 0:
 				awayCF += 1
 				aplayersSSArray.append(x)
-			elif awayCF == 1:
+			elif awayCF == 1 and x != aplayersSSArray[0]:
 				awayCF += 1
 				aplayersSSArray.append(x)
 
