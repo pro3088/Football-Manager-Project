@@ -37,8 +37,9 @@ enum playerroles{
 
 ##Stats for the player
 export(int) var speed = 200
-export(String)var Name
-export(int) var PlayerAge
+export(String) var Name
+export(String) var country
+export(int) var age
 export(playerroles) var role 
 export(int) var attackStat
 export(int) var dribbleStat
@@ -49,7 +50,7 @@ export(int) var defenceStat
 export(int) var shotPower
 export(int) var maxSpeed
 export(int) var minSpeed
-export(int) var Physique
+export(int) var physique
 export(int) var form
 
 ##...............................
@@ -58,6 +59,7 @@ var team
 
 
 func _ready():
+	
 	OriginalPos = global_position
 	if Team.team == Team.TeamSide.HomeSide:
 		$"FOOTBALL_PLAYER SPRITE".modulate = Color(0, 0, 1)
@@ -67,11 +69,11 @@ func _ready():
 
 func _physics_process(delta):
 #	cal_move(delta)
-	LookAtBall()
-	ReturntoHome(delta)
-	withBall()
-	Detectplayer()
-	teamPossesion()
+#	LookAtBall()
+#	ReturntoHome(delta)
+#	withBall()
+#	Detectplayer()
+#	teamPossesion()
 	velocity = move_and_slide(velocity)
 
 #..........................................................................

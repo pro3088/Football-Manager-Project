@@ -48,6 +48,8 @@ Team="*res://general scripts/Team.gd"
 Database="*res://general scripts/Database.gd"
 BTDebugServer="*res://addons/btree/script/bt_debug_server.gd"
 MatchPlay="*res://general scripts/matchPlay.gd"
+Playerbase="*res://general scripts/Playerbase.gd"
+WorldSpace="*res://general scripts/worldSpace.gd"
 PluginSettings="*res://addons/github-integration/scripts/PluginSettings.gd"
 IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
 UserData="*res://addons/github-integration/scripts/user_data.gd"
@@ -61,6 +63,12 @@ window/size/height=428
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/btree/plugin.cfg", "res://addons/github-integration/plugin.cfg", "res://addons/godot-sqlite/plugin.cfg" )
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="world"
+2d_physics/layer_3="ball"
 
 [network]
 

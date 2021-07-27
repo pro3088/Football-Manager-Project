@@ -39,8 +39,8 @@ func _process(_delta):
 
 #...........................................
 
-var HomeTeam
-var OppositionTeam
+var HomeTeam: Array
+var AwayTeam: Array
 
 var ballPos
 
@@ -71,16 +71,19 @@ func CreatePlayers(pitch):
 # this function creates the pitchs for the heam team
 func Home(pitch,playerArray):
 	for x in range(TeamNum):
-		playerArray[x].global_position = teamPositionsHome[x]
 		var append = playerArray[x]
+		Playerbase.setHomePlayers(playerArray)
+		Playerbase.setHomepositions(playerArray)
 		pitch.add_child(append)
 
 # this function creates the pitchs for the opposition team
 func OtherSide(pitch,playerArray):
 	for x in range(TeamNum):
-		playerArray[x].global_position = teamPositionsAway[x]
 		var append = playerArray[x]
+		Playerbase.setAwayPlayers(playerArray)
+		Playerbase.setAwaypositions(playerArray)
 		pitch.add_child(append)
+	
 	
 	pass
 
@@ -106,7 +109,6 @@ func teamPossession():
 			hometeampossesion = false
 			strayball = true
 	pass
-
 
 
 
