@@ -1,3 +1,3 @@
 extends Node
 
-var centerpos: Vector2
+var goalDetected: bool

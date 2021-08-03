@@ -3,6 +3,9 @@ extends Node
 var homePlayerPositions: Dictionary
 var awayPlayerPositions: Dictionary
 
+var homekickoff: bool
+var awaykickoff: bool
+
 var array:Array
 
 var playerdistance = 50
@@ -210,6 +213,7 @@ func setHomepositions(playerarray):
 					hplayersCFArray[1].global_position = homePlayerPositions["CF"] + Vector2(0,playerdistance)
 			elif CF == 1:
 				hplayersCFArray[0].global_position = homePlayerPositions["CF"]
+				
 		if x.role == "SS":
 			if SS ==3:
 				x.global_position = homePlayerPositions["CF"] + Vector2(-playerdistance,0)
@@ -311,7 +315,10 @@ func getawayplayernum(playerarray):
 				awayCF += 1
 				aplayersSSArray.append(x)
 
-
+func setkickoff(playerarray):
+	if WorldSpace.matc
+	pass
+	
 
 
 

@@ -1,7 +1,5 @@
 extends RigidBody2D
 
-signal passball
-
 var player
 
 
@@ -11,15 +9,10 @@ func _process(_delta):
 	
 	pass
 
-func passball():
-	var direction = Team.ClosestPlayer.global_position
-	var self_pos = self.global_position
-	var dir = direction - self_pos 
-	set_sleeping(false) 
-	set_linear_velocity(dir * 30) 
-	emit_signal("passball")
-
-
+func moveball(position,force):
+	if player:
+		var dir = position - self.global_position
+		set_linear_velocity(dir * force) 
 
 func _on_Area2D_area_entered(area):
 	player = area

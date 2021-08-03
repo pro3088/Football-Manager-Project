@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/player sprite.png" type="Texture" id=1]
 [ext_resource path="res://player/player.gd" type="Script" id=2]
 [ext_resource path="res://player/Ballholder.gd" type="Script" id=3]
+[ext_resource path="res://player/detect_sideline.gd" type="Script" id=4]
+[ext_resource path="res://player/ai/AI-forward.tscn" type="PackedScene" id=5]
 [ext_resource path="res://player/Detectplayer.gd" type="Script" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -13,6 +15,9 @@ radius = 2.7316
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 60.0
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 20.6332, 5.37258 )
 
 [node name="player" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -45,6 +50,28 @@ shape = SubResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="detect_right-sideline" type="Area2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_right-sideline"]
+position = Vector2( 32, 13 )
+shape = SubResource( 4 )
+
+[node name="detect_left-sideline" type="Area2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_left-sideline"]
+position = Vector2( 32, -13 )
+shape = SubResource( 4 )
+
+[node name="detect_forward-sideline" type="Area2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_forward-sideline"]
+position = Vector2( 75.9368, -1.22745 )
+rotation = 1.5708
+shape = SubResource( 4 )
 
 [node name="Grid-middle-forward" type="Node2D" parent="."]
 
@@ -307,7 +334,15 @@ position = Vector2( -15, -5 )
 [node name="right" type="Position2D" parent="Grid-back"]
 position = Vector2( -15, 5 )
 
+[node name="AI-forward" parent="." instance=ExtResource( 5 )]
+
 [connection signal="body_entered" from="Ballholder" to="Ballholder" method="_on_Ballholder_body_entered"]
 [connection signal="body_exited" from="Ballholder" to="Ballholder" method="_on_Ballholder_body_exited"]
 [connection signal="body_entered" from="Detectplayer" to="Detectplayer" method="_on_Detectplayer_body_entered"]
 [connection signal="body_exited" from="Detectplayer" to="Detectplayer" method="_on_Detectplayer_body_exited"]
+[connection signal="area_entered" from="detect_right-sideline" to="detect_right-sideline" method="_on_detect_sideline_area_entered"]
+[connection signal="area_exited" from="detect_right-sideline" to="detect_right-sideline" method="_on_detect_sideline_area_exited"]
+[connection signal="area_entered" from="detect_left-sideline" to="detect_left-sideline" method="_on_detect_sideline_area_entered"]
+[connection signal="area_exited" from="detect_left-sideline" to="detect_left-sideline" method="_on_detect_sideline_area_exited"]
+[connection signal="area_entered" from="detect_forward-sideline" to="detect_forward-sideline" method="_on_detect_sideline_area_entered"]
+[connection signal="area_exited" from="detect_forward-sideline" to="detect_forward-sideline" method="_on_detect_sideline_area_exited"]

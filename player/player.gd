@@ -16,6 +16,7 @@ var moveBackLeft:bool
 var moveBackRight:bool
 var moveBack:bool
 
+
 enum playerroles{
 	GK
 	CB
@@ -29,7 +30,7 @@ enum playerroles{
 	SS
 	LWF
 	RWF
-	ST
+	CF
 }
 
 
@@ -57,6 +58,9 @@ export(int) var form
 
 var team 
 
+var leftsideline
+var rightsideline
+var forwardsideline
 
 func _ready():
 	
@@ -134,6 +138,14 @@ func cal_move(delta):
 	else:
 		velocity = Vector2.ZERO
 
+func move(position):
+	if position != null:
+		var dir = position - self.global_position
+		velocity = dir * speed * get_physics_process_delta_time()
+	else:
+		velocity = Vector2.ZERO
+	pass
+
 func withBall():
 	if $Ballholder.ball:
 		return true
@@ -160,4 +172,15 @@ func Detectplayer():
 		return true
 	return false
 
-
+func detectsideline():
+	if $"detect_left-sideline".sideline:
+		leftsideline = true
+	elif $"detect_right-sideline".sideline:
+		rightsideline = true
+	elif $"detect_forward-sideline".sideline:
+		forwardsideline = true
+	else:
+		forwardsideline = false
+		leftsideline = false
+		rightsideline = false
+		pass

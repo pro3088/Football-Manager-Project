@@ -26,7 +26,7 @@ __meta__ = {
 }
 
 [node name="football pitch" type="Sprite" parent="."]
-position = Vector2( 0.396851, 0 )
+position = Vector2( -0.310241, 0 )
 texture = ExtResource( 1 )
 offset = Vector2( 380.567, 189.181 )
 
@@ -227,6 +227,14 @@ script = ExtResource( 5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="goal-kick-area4"]
 position = Vector2( 719.913, 282.546 )
 shape = SubResource( 4 )
+
+[node name="Outfieldpositions" type="Node2D" parent="."]
+
+[node name="Awaykickoffpos" type="Position2D" parent="Outfieldpositions"]
+position = Vector2( 353.553, 177.484 )
+
+[node name="Homekickoffpos" type="Position2D" parent="Outfieldpositions"]
+position = Vector2( 410.553, 177.484 )
 
 [connection signal="body_entered" from="throw-area" to="throw-area" method="_on_throwarea_body_entered"]
 [connection signal="body_exited" from="throw-area" to="throw-area" method="_on_throwarea_body_exited"]

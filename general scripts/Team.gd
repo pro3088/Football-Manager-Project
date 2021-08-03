@@ -21,7 +21,7 @@ var teamPositionsAway = Array()
 var ClosestToBall
 var ClosestPlayer
 
-var hometeampossesion: bool
+var hometeampossesion: bool = true
 var awayteampossesion: bool
 
 var strayball
@@ -34,7 +34,7 @@ func _ready():
 func _process(_delta):
 	GetClosesttoBall()
 	GetClosestPlayer()
-	teamPossession()
+#	teamPossession()
 	pass
 
 #...........................................

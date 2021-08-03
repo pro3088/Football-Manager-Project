@@ -28,6 +28,7 @@ func homepositions():
 	homepositiondictionary["CF"] = $"home-match-pos/CF".global_transform.origin
 	homepositiondictionary["LWF"] = $"home-match-pos/LWF".global_transform.origin
 	homepositiondictionary["RWF"] = $"home-match-pos/RWF".global_transform.origin
+	homepositiondictionary["kickoff"] = $Outfieldpositions/Homekickoffpos.global_transform.origin
 
 func awaypositions():
 	awaypositiondictionary["GK"] = $"away-match-pos/GK".global_transform.origin
@@ -42,3 +43,18 @@ func awaypositions():
 	awaypositiondictionary["CF"] = $"away-match-pos/CF".global_transform.origin
 	awaypositiondictionary["LWF"] = $"away-match-pos/LWF".global_transform.origin
 	awaypositiondictionary["RWF"] = $"away-match-pos/RWF".global_transform.origin
+	awaypositiondictionary["kickoff"] = $Outfieldpositions/Awaykickoffpos.global_transform.origin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
