@@ -7,7 +7,15 @@ var ballscript = load("res://general scripts/world/Ball.gd")
 var forwardplayers = ["CF","LWF","RWF","AMF"]
 
 func task_passBall(task):
-	
+	var rand_position
+	if get_parent().homeside:
+		rand_position = Team.HomeTeam[randi() % Team.HomeTeam.size()]
+	elif get_parent().OtherSide:
+		rand_position = Team.AwayTeam[randi() % Team.AwayTeam.size()]
+	if !MatchPlay.matchstart:
+		WorldSpace.ballposition = rand_position.global_position
+		WorldSpace.ballforce = 1
+		MatchPlay.matchstart = true
 	pass
 
 func task_shootBall(task):
@@ -137,6 +145,13 @@ func task_detectboundleft(task):
 
 func task_detectboundright(task):
 	if playerscript.sidelineright:
+		task.succeed()
+	else:
+		task.failed()
+	pass
+
+func task_startgameplayer(task):
+	if get_parent() == Playerbase.Kickoffplayer:
 		task.succeed()
 	else:
 		task.failed()

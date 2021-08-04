@@ -62,13 +62,20 @@ var leftsideline
 var rightsideline
 var forwardsideline
 
+var player = self
+
+var homeside:bool
+var awayside:bool
+
 func _ready():
 	
 	OriginalPos = global_position
 	if Team.team == Team.TeamSide.HomeSide:
 		$"FOOTBALL_PLAYER SPRITE".modulate = Color(0, 0, 1)
+		homeside = true
 	elif Team.team == Team.TeamSide.OtherSide:
 		$"FOOTBALL_PLAYER SPRITE".modulate = Color(1, 0, 0)
+		awayside = false
 	pass
 
 func _physics_process(delta):

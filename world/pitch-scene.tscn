@@ -231,10 +231,10 @@ shape = SubResource( 4 )
 [node name="Outfieldpositions" type="Node2D" parent="."]
 
 [node name="Awaykickoffpos" type="Position2D" parent="Outfieldpositions"]
-position = Vector2( 353.553, 177.484 )
+position = Vector2( 366.553, 177.484 )
 
 [node name="Homekickoffpos" type="Position2D" parent="Outfieldpositions"]
-position = Vector2( 410.553, 177.484 )
+position = Vector2( 396.179, 177.484 )
 
 [connection signal="body_entered" from="throw-area" to="throw-area" method="_on_throwarea_body_entered"]
 [connection signal="body_exited" from="throw-area" to="throw-area" method="_on_throwarea_body_exited"]

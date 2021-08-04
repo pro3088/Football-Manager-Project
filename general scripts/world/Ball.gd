@@ -4,9 +4,10 @@ var player
 
 
 func _process(_delta):
-#	if player:
-#		passball()
-	
+	var position = WorldSpace.ballposition
+	var force = WorldSpace.ballforce
+	if position != null:
+		moveball(position,force)
 	pass
 
 func moveball(position,force):

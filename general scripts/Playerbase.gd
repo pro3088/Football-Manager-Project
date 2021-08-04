@@ -6,6 +6,8 @@ var awayPlayerPositions: Dictionary
 var homekickoff: bool
 var awaykickoff: bool
 
+var Kickoffplayer
+
 var array:Array
 
 var playerdistance = 50
@@ -316,10 +318,34 @@ func getawayplayernum(playerarray):
 				aplayersSSArray.append(x)
 
 func setkickoff(playerarray):
-	if WorldSpace.matc
+	var limit = 1
+	if !MatchPlay.matchstart and hplayersCFArray.size() > 0:
+		hplayersCFArray[0].global_position = homePlayerPositions["kickoff"]
+		Kickoffplayer = hplayersCFArray[0]
+	elif !MatchPlay.matchstart and hplayersSSArray.size() > 0:
+		hplayersSSArray[0].global_position = homePlayerPositions["kickoff"]
+		Kickoffplayer = hplayersSSArray[0]
+		pass
 	pass
 	
-
+func restartplay(playerarray):
+	if MatchPlay.restarthomeplay and hplayersCFArray.size() > 0:
+		hplayersCFArray[0].global_position = homePlayerPositions["kickoff"]
+		Kickoffplayer = hplayersCFArray[0]
+		MatchPlay.restarthomeplay = false
+	elif MatchPlay.restarthomeplay and hplayersSSArray.size() > 0:
+		hplayersSSArray[0].global_position = homePlayerPositions["kickoff"]
+		Kickoffplayer = hplayersSSArray[0]
+		MatchPlay.restarthomeplay = false
+	if MatchPlay.restartawayplay and aplayersCFArray.size() > 0:
+		aplayersCFArray[0].global_position = awayPlayerPositions["kickoff"]
+		Kickoffplayer = aplayersCFArray[0]
+		MatchPlay.restartawayplay = false
+	elif MatchPlay.restartawayplay and aplayersSSArray.size() > 0:
+		hplayersCFArray[0].global_position = awayPlayerPositions["kickoff"]
+		Kickoffplayer = aplayersSSArray[0]
+		MatchPlay.restartawayplay = false
+	pass
 
 
 

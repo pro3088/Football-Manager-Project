@@ -24,7 +24,6 @@ var ClosestPlayer
 var hometeampossesion: bool = true
 var awayteampossesion: bool
 
-var strayball
 #............................................................................
 
 func _ready():
@@ -74,6 +73,7 @@ func Home(pitch,playerArray):
 		var append = playerArray[x]
 		Playerbase.setHomePlayers(playerArray)
 		Playerbase.setHomepositions(playerArray)
+		Playerbase.setkickoff(playerArray)
 		pitch.add_child(append)
 
 # this function creates the pitchs for the opposition team
@@ -107,7 +107,6 @@ func teamPossession():
 			hometeampossesion = true
 		else:
 			hometeampossesion = false
-			strayball = true
 	pass
 
 
