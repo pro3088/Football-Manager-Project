@@ -11,6 +11,8 @@ func _ready():
 	
 	WorldSpace.centerpos = centerpos
 	
+	
+	
 	Playerbase.homePlayerPositions = homepositiondictionary
 	Playerbase.awayPlayerPositions = awaypositiondictionary
 	pass # Replace with function body.

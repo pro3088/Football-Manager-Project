@@ -21,9 +21,10 @@ var teamPositionsAway = Array()
 var ClosestToBall
 var ClosestPlayer
 
-var hometeampossesion: bool = true
+var hometeampossesion: bool
 var awayteampossesion: bool
 
+var playerwithball
 #............................................................................
 
 func _ready():
@@ -105,8 +106,15 @@ func teamPossession():
 	for player in HomeTeam:
 		if player.withBall():
 			hometeampossesion = true
+			playerwithball = player
 		else:
 			hometeampossesion = false
+	for player in AwayTeam:
+		if player.withBall():
+			awayteampossesion = true
+			playerwithball = player
+		else:
+			awayteampossesion = false
 	pass
 
 

@@ -156,6 +156,8 @@ func move(position):
 func withBall():
 	if $Ballholder.ball:
 		return true
+	elif !$Ballholder.ball:
+		pass
 	return false
 
 func LookAtBall():
@@ -177,6 +179,10 @@ func teamPossesion():
 func Detectplayer():
 	if $Detectplayer.player:
 		return true
+	elif !$Detectplayer.player and Team.playerwithball == self:
+		return true
+		yield(get_tree().create_timer(1), "time_out")
+		return false
 	return false
 
 func detectsideline():

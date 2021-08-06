@@ -50,23 +50,15 @@ func task_returnToHome(task):
 		task.succeed()
 	pass
 
-func task_move(task):
-	pass
-
-func task_provideSupport(task):
-	pass
-
-func task_crossBall(task):
-	pass
 
 func task_withBall(task):
-	if playerscript.withBall():
+	if get_parent().withBall():
 		task.succeed()
 	else:
 		task.failed()
 
 func task_teamPossession(task):
-	if playerscript.teampossesion:
+	if get_parent().teampossesion:
 		task.succeed()
 	else:
 		task.failed()
@@ -92,8 +84,6 @@ func task_detectopponent(task):
 		task.failed()
 	pass
 
-func task_playerChosenToPass(task):
-	pass
 
 func task_forwardplayer(task):
 	for x in forwardplayers:
@@ -102,32 +92,6 @@ func task_forwardplayer(task):
 		else:
 			task.failed()
 
-func task_moveforward(task):
-	pass
-
-func task_moveleft(task):
-	pass
-
-func task_moveright(task):
-	pass
-
-func task_sprintforward(task):
-	pass
-
-func task_sprintleft(task):
-	pass
-
-func task_sprintright(task):
-	pass
-
-func task_runforward(task):
-	pass
-
-func task_runleft(task):
-	pass
-
-func task_runright(task):
-	pass
 
 func task_detectboundforward(task):
 	if playerscript.sidelineforward:
@@ -157,14 +121,5 @@ func task_startgameplayer(task):
 		task.failed()
 	pass
 
-func task_foundpass(task):
-	pass
-
-func task_track_player(task):
-	pass
-
-func task_condition_support_requested(task):
-	pass
-
-func task_closesttogoal(task):
+func task_movetogoal(task):
 	pass

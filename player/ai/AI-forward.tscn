@@ -14,121 +14,14 @@ tree = {
 "from_port": 0,
 "to": "sequence",
 "to_port": 0
-}, {
-"from": "sequence",
-"from_port": 0,
-"to": "task",
-"to_port": 0
-}, {
-"from": "sequence",
-"from_port": 1,
-"to": "task2",
-"to_port": 0
-}, {
-"from": "sequence",
-"from_port": 2,
-"to": "inverter",
-"to_port": 0
-}, {
-"from": "inverter",
-"from_port": 0,
-"to": "task3",
-"to_port": 0
-}, {
-"from": "sequence2",
-"from_port": 0,
-"to": "task4",
-"to_port": 0
-}, {
-"from": "sequence2",
-"from_port": 1,
-"to": "task5",
-"to_port": 0
-}, {
-"from": "sequence",
-"from_port": 4,
-"to": "sequence2",
-"to_port": 0
 } ],
 "nodes": [ {
 "child": [ {
-"child": [ {
 "child": [  ],
 "data": {
-"fn": "task_matchstart",
-"offset": Vector2( -380, 700 ),
-"params": [  ],
-"size": Vector2( 251, 85 ),
-"values": [  ]
-},
-"name": "task",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_forwardplayer",
-"offset": Vector2( -353.059, 822.545 ),
-"params": [  ],
-"size": Vector2( 251, 85 ),
-"values": [  ]
-},
-"name": "task2",
-"type": 1
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_teamPossession",
-"offset": Vector2( -140, 920 ),
-"params": [  ],
-"size": Vector2( 256, 85 ),
-"values": [  ]
-},
-"name": "task3",
-"type": 1
-} ],
-"data": {
-"offset": Vector2( -300, 940 ),
-"size": Vector2( 92, 43 )
-},
-"name": "inverter",
-"type": 14
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_detectopponent",
-"offset": Vector2( -60, 1040 ),
-"params": [  ],
-"size": Vector2( 255, 85 ),
-"values": [  ]
-},
-"name": "task4",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_track_player",
-"offset": Vector2( -80, 1160 ),
-"params": [  ],
-"size": Vector2( 248, 85 ),
-"values": [  ]
-},
-"name": "task5",
-"type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( -340, 1040 ),
-"size": Vector2( 106, 81.75 )
-},
-"name": "sequence2",
-"type": 2
-} ],
-"data": {
-"count": 5,
+"count": 0,
 "offset": Vector2( -540, 820 ),
-"size": Vector2( 100, 141.75 )
+"size": Vector2( 100, 41.75 )
 },
 "name": "sequence",
 "type": 2
@@ -140,271 +33,22 @@ tree = {
 "name": "root",
 "type": 0
 }, {
-"child": [ {
 "child": [  ],
 "data": {
-"fn": "task_matchstart",
-"offset": Vector2( -380, 700 ),
-"params": [  ],
-"size": Vector2( 251, 85 ),
-"values": [  ]
-},
-"name": "task",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_forwardplayer",
-"offset": Vector2( -353.059, 822.545 ),
-"params": [  ],
-"size": Vector2( 251, 85 ),
-"values": [  ]
-},
-"name": "task2",
-"type": 1
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_teamPossession",
-"offset": Vector2( -140, 920 ),
-"params": [  ],
-"size": Vector2( 256, 85 ),
-"values": [  ]
-},
-"name": "task3",
-"type": 1
-} ],
-"data": {
-"offset": Vector2( -300, 940 ),
-"size": Vector2( 92, 43 )
-},
-"name": "inverter",
-"type": 14
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_detectopponent",
-"offset": Vector2( -60, 1040 ),
-"params": [  ],
-"size": Vector2( 255, 85 ),
-"values": [  ]
-},
-"name": "task4",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_track_player",
-"offset": Vector2( -80, 1160 ),
-"params": [  ],
-"size": Vector2( 248, 85 ),
-"values": [  ]
-},
-"name": "task5",
-"type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( -340, 1040 ),
-"size": Vector2( 106, 81.75 )
-},
-"name": "sequence2",
-"type": 2
-} ],
-"data": {
-"count": 5,
+"count": 0,
 "offset": Vector2( -540, 820 ),
-"size": Vector2( 100, 141.75 )
+"size": Vector2( 100, 41.75 )
 },
 "name": "sequence",
 "type": 2
-}, {
-"child": [  ],
-"data": {
-"fn": "task_matchstart",
-"offset": Vector2( -380, 700 ),
-"params": [  ],
-"size": Vector2( 251, 85 ),
-"values": [  ]
-},
-"name": "task",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_forwardplayer",
-"offset": Vector2( -353.059, 822.545 ),
-"params": [  ],
-"size": Vector2( 251, 85 ),
-"values": [  ]
-},
-"name": "task2",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_teamPossession",
-"offset": Vector2( -140, 920 ),
-"params": [  ],
-"size": Vector2( 256, 85 ),
-"values": [  ]
-},
-"name": "task3",
-"type": 1
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_teamPossession",
-"offset": Vector2( -140, 920 ),
-"params": [  ],
-"size": Vector2( 256, 85 ),
-"values": [  ]
-},
-"name": "task3",
-"type": 1
-} ],
-"data": {
-"offset": Vector2( -300, 940 ),
-"size": Vector2( 92, 43 )
-},
-"name": "inverter",
-"type": 14
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_detectopponent",
-"offset": Vector2( -60, 1040 ),
-"params": [  ],
-"size": Vector2( 255, 85 ),
-"values": [  ]
-},
-"name": "task4",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_track_player",
-"offset": Vector2( -80, 1160 ),
-"params": [  ],
-"size": Vector2( 248, 85 ),
-"values": [  ]
-},
-"name": "task5",
-"type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( -340, 1040 ),
-"size": Vector2( 106, 81.75 )
-},
-"name": "sequence2",
-"type": 2
-}, {
-"child": [  ],
-"data": {
-"fn": "task_detectopponent",
-"offset": Vector2( -60, 1040 ),
-"params": [  ],
-"size": Vector2( 255, 85 ),
-"values": [  ]
-},
-"name": "task4",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_track_player",
-"offset": Vector2( -80, 1160 ),
-"params": [  ],
-"size": Vector2( 248, 85 ),
-"values": [  ]
-},
-"name": "task5",
-"type": 1
 } ],
 "root": {
 "child": [ {
-"child": [ {
 "child": [  ],
 "data": {
-"fn": "task_matchstart",
-"offset": Vector2( -380, 700 ),
-"params": [  ],
-"size": Vector2( 251, 85 ),
-"values": [  ]
-},
-"name": "task",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_forwardplayer",
-"offset": Vector2( -353.059, 822.545 ),
-"params": [  ],
-"size": Vector2( 251, 85 ),
-"values": [  ]
-},
-"name": "task2",
-"type": 1
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_teamPossession",
-"offset": Vector2( -140, 920 ),
-"params": [  ],
-"size": Vector2( 256, 85 ),
-"values": [  ]
-},
-"name": "task3",
-"type": 1
-} ],
-"data": {
-"offset": Vector2( -300, 940 ),
-"size": Vector2( 92, 43 )
-},
-"name": "inverter",
-"type": 14
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_detectopponent",
-"offset": Vector2( -60, 1040 ),
-"params": [  ],
-"size": Vector2( 255, 85 ),
-"values": [  ]
-},
-"name": "task4",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_track_player",
-"offset": Vector2( -80, 1160 ),
-"params": [  ],
-"size": Vector2( 248, 85 ),
-"values": [  ]
-},
-"name": "task5",
-"type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( -340, 1040 ),
-"size": Vector2( 106, 81.75 )
-},
-"name": "sequence2",
-"type": 2
-} ],
-"data": {
-"count": 5,
+"count": 0,
 "offset": Vector2( -540, 820 ),
-"size": Vector2( 100, 141.75 )
+"size": Vector2( 100, 41.75 )
 },
 "name": "sequence",
 "type": 2
@@ -671,3 +315,207 @@ tree = {
 }
 }
 _tree_id = "2297892302876157455"
+
+[node name="Attacking-BTREE" type="Node" parent="."]
+script = ExtResource( 2 )
+tree = {
+"connection": [ {
+"from": "root",
+"from_port": 0,
+"to": "paralel",
+"to_port": 0
+}, {
+"from": "paralel",
+"from_port": 0,
+"to": "task",
+"to_port": 0
+}, {
+"from": "paralel",
+"from_port": 1,
+"to": "task3",
+"to_port": 0
+}, {
+"from": "paralel",
+"from_port": 2,
+"to": "task2",
+"to_port": 0
+} ],
+"nodes": [ {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -480, 680 ),
+"params": [  ],
+"size": Vector2( 277, 85 ),
+"values": [  ]
+},
+"name": "task",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_teamPossession",
+"offset": Vector2( -480, 780 ),
+"params": [  ],
+"size": Vector2( 256, 85 ),
+"values": [  ]
+},
+"name": "task3",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_forwardplayer",
+"offset": Vector2( -480, 900 ),
+"params": [  ],
+"size": Vector2( 255, 85 ),
+"values": [  ]
+},
+"name": "task2",
+"type": 1
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -480, 680 ),
+"params": [  ],
+"size": Vector2( 277, 85 ),
+"values": [  ]
+},
+"name": "task",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_teamPossession",
+"offset": Vector2( -480, 780 ),
+"params": [  ],
+"size": Vector2( 256, 85 ),
+"values": [  ]
+},
+"name": "task3",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_forwardplayer",
+"offset": Vector2( -480, 900 ),
+"params": [  ],
+"size": Vector2( 255, 85 ),
+"values": [  ]
+},
+"name": "task2",
+"type": 1
+} ],
+"data": {
+"count": 4,
+"offset": Vector2( -700, 840 ),
+"size": Vector2( 88, 121.75 )
+},
+"name": "paralel",
+"type": 6
+}, {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -480, 680 ),
+"params": [  ],
+"size": Vector2( 277, 85 ),
+"values": [  ]
+},
+"name": "task",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_teamPossession",
+"offset": Vector2( -480, 780 ),
+"params": [  ],
+"size": Vector2( 256, 85 ),
+"values": [  ]
+},
+"name": "task3",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_forwardplayer",
+"offset": Vector2( -480, 900 ),
+"params": [  ],
+"size": Vector2( 255, 85 ),
+"values": [  ]
+},
+"name": "task2",
+"type": 1
+} ],
+"data": {
+"count": 4,
+"offset": Vector2( -700, 840 ),
+"size": Vector2( 88, 121.75 )
+},
+"name": "paralel",
+"type": 6
+} ],
+"data": {
+"offset": Vector2( -800, 820 ),
+"size": Vector2( 62, 60.0198 )
+},
+"name": "root",
+"type": 0
+} ],
+"root": {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -480, 680 ),
+"params": [  ],
+"size": Vector2( 277, 85 ),
+"values": [  ]
+},
+"name": "task",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_teamPossession",
+"offset": Vector2( -480, 780 ),
+"params": [  ],
+"size": Vector2( 256, 85 ),
+"values": [  ]
+},
+"name": "task3",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_forwardplayer",
+"offset": Vector2( -480, 900 ),
+"params": [  ],
+"size": Vector2( 255, 85 ),
+"values": [  ]
+},
+"name": "task2",
+"type": 1
+} ],
+"data": {
+"count": 4,
+"offset": Vector2( -700, 840 ),
+"size": Vector2( 88, 121.75 )
+},
+"name": "paralel",
+"type": 6
+} ],
+"data": {
+"offset": Vector2( -800, 820 ),
+"size": Vector2( 62, 60.0198 )
+},
+"name": "root",
+"type": 0
+}
+}
+_tree_id = "22978923021606536602"

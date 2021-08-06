@@ -236,6 +236,12 @@ position = Vector2( 366.553, 177.484 )
 [node name="Homekickoffpos" type="Position2D" parent="Outfieldpositions"]
 position = Vector2( 396.179, 177.484 )
 
+[node name="Homegoalpost" type="Position2D" parent="Outfieldpositions"]
+position = Vector2( 40.179, 188.484 )
+
+[node name="Awaygoalpost" type="Position2D" parent="Outfieldpositions"]
+position = Vector2( 717.179, 188.484 )
+
 [connection signal="body_entered" from="throw-area" to="throw-area" method="_on_throwarea_body_entered"]
 [connection signal="body_exited" from="throw-area" to="throw-area" method="_on_throwarea_body_exited"]
 [connection signal="body_entered" from="throw-area2" to="throw-area2" method="_on_throwarea_body_entered"]
