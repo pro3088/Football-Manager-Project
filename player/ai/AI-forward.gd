@@ -8,14 +8,16 @@ var forwardplayers = ["CF","LWF","RWF","AMF"]
 
 func task_passBall(task):
 	var rand_position
-	if get_parent().homeside:
-		rand_position = Team.HomeTeam[randi() % Team.HomeTeam.size()]
-	elif get_parent().OtherSide:
-		rand_position = Team.AwayTeam[randi() % Team.AwayTeam.size()]
 	if !MatchPlay.matchstart:
+		if get_parent().homeside:
+			rand_position = Team.HomeTeam[randi() % Team.HomeTeam.size()]
+		elif get_parent().awayside:
+			rand_position = Team.AwayTeam[randi() % Team.AwayTeam.size()]
 		WorldSpace.ballposition = rand_position.global_position
-		WorldSpace.ballforce = 1
+		WorldSpace.ballforce = 50 * get_physics_process_delta_time()
 		MatchPlay.matchstart = true
+	task.succeed()
+	
 	pass
 
 func task_shootBall(task):
@@ -57,12 +59,13 @@ func task_withBall(task):
 	else:
 		task.failed()
 
-func task_teamPossession(task):
-	if get_parent().teampossesion:
-		task.succeed()
-	else:
-		task.failed()
-	pass
+#func task_teamPossession(task):
+#	if get_parent().teampossesion:
+#		print("Team have possession")
+#		task.succeed()
+#	else:
+#		task.failed()
+#	pass
 
 func task_goalAreaDetect(task):
 	if WorldSpace.goalDetected :
@@ -121,5 +124,41 @@ func task_startgameplayer(task):
 		task.failed()
 	pass
 
-func task_movetogoal(task):
+func task_Sprinttogoal(task):
+	
+	if get_parent().homeside:
+		var position:Vector2 = get_parent().global_position - MatchPlay.awaygoal
+		if position.x < -5:
+			#move left
+			print("moving left")
+#			get_parent().sprintLeft = true
+			WorldSpace.setposition(get_parent().moveleft())
+			WorldSpace.setforce(100 * get_physics_process_delta_time())
+			get_parent().cal_move()
+		elif position.y < 5:
+			#move right
+			print("moving right")
+#			get_parent().sprintRight = true
+			WorldSpace.setposition(get_parent().moveright())
+			WorldSpace.setforce(100 * get_physics_process_delta_time())
+			get_parent().cal_move()
+		else:
+			print("moving forward")
+#			get_parent().sprint = true
+			WorldSpace.setposition(get_parent().moveforward())
+			WorldSpace.setforce(100 * get_physics_process_delta_time())
+			get_parent().cal_move()
+	else:
+#		var position:Vector2 = get_parent().global_position - MatchPlay.awaygoal
+#			#move left
+#		WorldSpace.ballposition = get_parent().moveleft()
+#		WorldSpace.ballforce = 50 * get_physics_process_delta_time()
+		pass
+	pass
+
+func task_withball(task):
+	if get_parent().withBall():
+		task.succeed()
+	else:
+		task.failed()
 	pass

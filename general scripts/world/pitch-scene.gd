@@ -9,9 +9,10 @@ func _ready():
 	homepositions()
 	awaypositions()
 	
+	MatchPlay.homegoal = $Outfieldpositions/Homegoalpost.global_position
+	MatchPlay.awaygoal = $Outfieldpositions/Awaygoalpost.global_position
+	
 	WorldSpace.centerpos = centerpos
-	
-	
 	
 	Playerbase.homePlayerPositions = homepositiondictionary
 	Playerbase.awayPlayerPositions = awaypositiondictionary

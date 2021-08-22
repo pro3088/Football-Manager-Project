@@ -107,14 +107,10 @@ func teamPossession():
 		if player.withBall():
 			hometeampossesion = true
 			playerwithball = player
-		else:
-			hometeampossesion = false
 	for player in AwayTeam:
 		if player.withBall():
 			awayteampossesion = true
 			playerwithball = player
-		else:
-			awayteampossesion = false
 	pass
 
 

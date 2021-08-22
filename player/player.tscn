@@ -21,7 +21,6 @@ extents = Vector2( 20.6332, 5.37258 )
 
 [node name="player" type="KinematicBody2D"]
 script = ExtResource( 2 )
-speed = 100
 
 [node name="FOOTBALL_PLAYER SPRITE" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -65,11 +64,27 @@ script = ExtResource( 4 )
 position = Vector2( 32, -13 )
 shape = SubResource( 4 )
 
-[node name="detect_forward-sideline" type="Area2D" parent="."]
+[node name="detect_furthest_forward-sideline" type="Area2D" parent="."]
 script = ExtResource( 4 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_forward-sideline"]
-position = Vector2( 75.9368, -1.22745 )
+[node name="Furthest line" type="CollisionShape2D" parent="detect_furthest_forward-sideline"]
+position = Vector2( 69.9368, -1.22745 )
+rotation = 1.5708
+shape = SubResource( 4 )
+
+[node name="detect_close_forward-sideline" type="Area2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="Close boundary" type="CollisionShape2D" parent="detect_close_forward-sideline"]
+position = Vector2( 28.9368, -0.22745 )
+rotation = 1.5708
+shape = SubResource( 4 )
+
+[node name="detect_back_sideline" type="Area2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="Close boundary" type="CollisionShape2D" parent="detect_back_sideline"]
+position = Vector2( -21.0632, -0.22745 )
 rotation = 1.5708
 shape = SubResource( 4 )
 
@@ -344,5 +359,9 @@ position = Vector2( -15, 5 )
 [connection signal="area_exited" from="detect_right-sideline" to="detect_right-sideline" method="_on_detect_sideline_area_exited"]
 [connection signal="area_entered" from="detect_left-sideline" to="detect_left-sideline" method="_on_detect_sideline_area_entered"]
 [connection signal="area_exited" from="detect_left-sideline" to="detect_left-sideline" method="_on_detect_sideline_area_exited"]
-[connection signal="area_entered" from="detect_forward-sideline" to="detect_forward-sideline" method="_on_detect_sideline_area_entered"]
-[connection signal="area_exited" from="detect_forward-sideline" to="detect_forward-sideline" method="_on_detect_sideline_area_exited"]
+[connection signal="area_entered" from="detect_furthest_forward-sideline" to="detect_furthest_forward-sideline" method="_on_detect_sideline_area_entered"]
+[connection signal="area_exited" from="detect_furthest_forward-sideline" to="detect_furthest_forward-sideline" method="_on_detect_sideline_area_exited"]
+[connection signal="area_entered" from="detect_close_forward-sideline" to="detect_close_forward-sideline" method="_on_detect_sideline_area_entered"]
+[connection signal="area_exited" from="detect_close_forward-sideline" to="detect_close_forward-sideline" method="_on_detect_sideline_area_exited"]
+[connection signal="area_entered" from="detect_back_sideline" to="detect_back_sideline" method="_on_detect_sideline_area_entered"]
+[connection signal="area_exited" from="detect_back_sideline" to="detect_back_sideline" method="_on_detect_sideline_area_exited"]

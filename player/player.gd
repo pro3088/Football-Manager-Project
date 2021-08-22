@@ -37,7 +37,7 @@ enum playerroles{
 ##................................
 
 ##Stats for the player
-export(int) var speed = 200
+export(int) var speed = 100
 export(String) var Name
 export(String) var country
 export(int) var age
@@ -81,6 +81,7 @@ func _ready():
 func _physics_process(delta):
 #	cal_move(delta)
 	LookAtBall()
+	playerteam()
 #	ReturntoHome(delta)
 #	withBall()
 #	Detectplayer()
@@ -93,31 +94,51 @@ func moveforward():
 	if running:
 		var smallpos:Array = $"Grid-middle-forward/running-forward".get_children()
 		var rand_position = smallpos[randi() % smallpos.size()]
-		return rand_position
+		return rand_position.global_position
 	elif sprint:
 		var smallpos:Array = $"Grid-middle-forward/sprint-forward".get_children()
 		var rand_position = smallpos[randi() % smallpos.size()]
-		return rand_position
+		return rand_position.global_position
 	else:
 		var smallpos:Array = $"Grid-middle-forward/small-move-forward".get_children()
 		var rand_position = smallpos[randi() % smallpos.size()]
-		return rand_position
-
-func moveright():
-	if sprintRight:
-		var smallpos:Array = $"Grid-right/sprint-turn".get_children()
-		var rand_position = smallpos[randi() % smallpos.size()]
-		return rand_position
-	else:
-		var smallpos:Array = $"Grid-right/small-turn".get_children()
-		var rand_position = smallpos[randi() % smallpos.size()]
-		return rand_position
+		return rand_position.global_position
 
 func moveleft():
 	if sprintLeft:
+		var smallpos:Array = $"Grid-middle-forward/sprint-left".get_children()
+		var rand_position = smallpos[randi() % smallpos.size()]
+		return rand_position.global_position
+	else:
+		var smallpos:Array = $"Grid-middle-forward/mid-move-left".get_children()
+		var rand_position = smallpos[randi() % smallpos.size()]
+		return rand_position.global_position
+
+func moveright():
+	if sprintRight:
+		var smallpos:Array = $"Grid-middle-forward/sprint-right".get_children()
+		var rand_position = smallpos[randi() % smallpos.size()]
+		return rand_position.global_position
+	else:
+		var smallpos:Array = $"Grid-middle-forward/small-move-right".get_children()
+		var rand_position = smallpos[randi() % smallpos.size()]
+		return rand_position.global_position
+
+func turnright():
+	if sprintRight:
+		var smallpos:Array = $"Grid-right/sprint-turn".get_children()
+		var rand_position = smallpos[randi() % smallpos.size()]
+		return rand_position.global_position
+	else:
+		var smallpos:Array = $"Grid-right/small-turn".get_children()
+		var rand_position = smallpos[randi() % smallpos.size()]
+		return rand_position.global_position
+
+func turnleft():
+	if sprintLeft:
 		var smallpos:Array = $"Grid-left/sprint-turn".get_children()
 		var rand_position = smallpos[randi() % smallpos.size()]
-		return rand_position
+		return rand_position.global_position
 	else:
 		var smallpos:Array = $"Grid-left/small-turn".get_children()
 		var rand_position = smallpos[randi() % smallpos.size()]
@@ -126,22 +147,22 @@ func moveleft():
 func moveback():
 	if moveBackLeft:
 		var position = $"Grid-back/left".global_position
-		return position
+		return position.global_position
 	elif moveBackRight:
 		var position = $"Grid-back/right".global_position
-		return position
+		return position.global_position
 	else:
 		var position = $"Grid-back/middle"
-		return position
+		return position.global_position
 
 #..............................................................................
 
-func cal_move(delta):
+func cal_move():
 	if self == Team.ClosestToBall:
 		var direction = Team.ballPos
 		var self_pos = self.global_position
 		var dir = direction - self_pos 
-		velocity = dir * speed * delta
+		velocity = dir * speed * get_process_delta_time()
 	else:
 		velocity = Vector2.ZERO
 
@@ -156,8 +177,15 @@ func move(position):
 func withBall():
 	if $Ballholder.ball:
 		return true
-	elif !$Ballholder.ball:
-		pass
+	elif !$Ballholder.ball and Team.playerwithball == self:
+		print(self)
+		return true
+		yield(get_tree().create_timer(5), "time_out")
+		if Team.team == Team.TeamSide.HomeSide:
+			Team.hometeampossesion = false
+		elif Team.team == Team.TeamSide.OtherSide:
+			Team.awayteampossesion = false
+		return false
 	return false
 
 func LookAtBall():
@@ -170,19 +198,23 @@ func ReturntoHome(delta):
 		velocity = dir * speed * delta
 	pass
 
-func teamPossesion():
+func playerteam():
 	if Team.team == Team.TeamSide.HomeSide:
-		teampossesion = Team.hometeampossesion
-	elif Team.team == Team.TeamSide.OtherSide:
-		teampossesion = Team.awayteampossesion
+		homeside = true
+		awayside = false
+	elif Team.team == Team.TeamSide.HomeSide:
+		homeside = false
+		awayside = true
+
+#func teamPossesion():
+#	if Team.team == Team.TeamSide.HomeSide:
+#		teampossesion = Team.hometeampossesion
+#	elif Team.team == Team.TeamSide.OtherSide:
+#		teampossesion = Team.awayteampossesion
 
 func Detectplayer():
 	if $Detectplayer.player:
 		return true
-	elif !$Detectplayer.player and Team.playerwithball == self:
-		return true
-		yield(get_tree().create_timer(1), "time_out")
-		return false
 	return false
 
 func detectsideline():
