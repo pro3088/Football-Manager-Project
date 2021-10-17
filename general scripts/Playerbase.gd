@@ -10,6 +10,10 @@ var Kickoffplayer
 
 var array:Array
 
+var playerposition : Vector2 
+
+var playerpath
+
 var playerdistance = 50
 
 var CB: int = 0

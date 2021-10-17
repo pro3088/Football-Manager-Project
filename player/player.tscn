@@ -15,11 +15,14 @@ radius = 2.7316
 [sub_resource type="CircleShape2D" id=3]
 radius = 60.0
 
-[node name="player" type="KinematicBody2D"]
+[node name="player" type="KinematicBody2D" groups=[
+"players",
+]]
 script = ExtResource( 2 )
 
 [node name="FOOTBALL_PLAYER SPRITE" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 25, 16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -5.52806, -0.23597 )

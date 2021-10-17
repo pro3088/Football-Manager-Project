@@ -15,11 +15,6 @@ tree = {
 "to": "sequence",
 "to_port": 0
 }, {
-"from": "selector",
-"from_port": 0,
-"to": "minim_node",
-"to_port": 0
-}, {
 "from": "sequence",
 "from_port": 0,
 "to": "selector",
@@ -49,33 +44,37 @@ tree = {
 "from_port": 0,
 "to": "task3",
 "to_port": 0
+}, {
+"from": "selector",
+"from_port": 0,
+"to": "minim_node",
+"to_port": 0
 } ],
 "nodes": [ {
-"child": [ {
 "child": [ {
 "child": [ {
 "child": [  ],
 "data": {
 "data": {
 "connection": [ {
-"from": "sequence2",
+"from": "sequence3",
+"from_port": 2,
+"to": "task6",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 1,
+"to": "task5",
+"to_port": 0
+}, {
+"from": "sequence3",
 "from_port": 0,
 "to": "inverter",
 "to_port": 0
 }, {
-"from": "sequence2",
-"from_port": 1,
-"to": "task2",
-"to_port": 0
-}, {
-"from": "sequence2",
-"from_port": 2,
-"to": "task3",
-"to_port": 0
-}, {
 "from": "inverter",
 "from_port": 0,
-"to": "task",
+"to": "task2",
 "to_port": 0
 } ],
 "nodes": [ {
@@ -85,7 +84,7 @@ tree = {
 "offset": Vector2( -380, 780 ),
 "size": Vector2( 106, 101.75 )
 },
-"name": "sequence2",
+"name": "sequence3",
 "type": 2
 }, {
 "child": [  ],
@@ -99,20 +98,9 @@ tree = {
 "child": [  ],
 "data": {
 "fn": "task_matchstart",
-"offset": Vector2( -100, 620 ),
+"offset": Vector2( -100, 618.8 ),
 "params": [  ],
 "size": Vector2( 277, 85 ),
-"values": [  ]
-},
-"name": "task",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_startgameplayer",
-"offset": Vector2( -200, 740 ),
-"params": [  ],
-"size": Vector2( 258, 85 ),
 "values": [  ]
 },
 "name": "task2",
@@ -120,13 +108,24 @@ tree = {
 }, {
 "child": [  ],
 "data": {
-"fn": "task_passBall",
-"offset": Vector2( -200, 840 ),
+"fn": "task_startgameplayer",
+"offset": Vector2( -160, 720 ),
 "params": [  ],
 "size": Vector2( 258, 85 ),
 "values": [  ]
 },
-"name": "task3",
+"name": "task5",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_passBall",
+"offset": Vector2( -140, 840 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task6",
 "type": 1
 } ],
 "root": {
@@ -135,12 +134,12 @@ tree = {
 "child": [  ],
 "data": {
 "fn": "task_matchstart",
-"offset": Vector2( -100, 620 ),
+"offset": Vector2( -100, 618.8 ),
 "params": [  ],
 "size": Vector2( 277, 85 ),
 "values": [  ]
 },
-"name": "task",
+"name": "task2",
 "type": 1
 } ],
 "data": {
@@ -153,23 +152,23 @@ tree = {
 "child": [  ],
 "data": {
 "fn": "task_startgameplayer",
-"offset": Vector2( -200, 740 ),
+"offset": Vector2( -160, 720 ),
 "params": [  ],
 "size": Vector2( 258, 85 ),
 "values": [  ]
 },
-"name": "task2",
+"name": "task5",
 "type": 1
 }, {
 "child": [  ],
 "data": {
 "fn": "task_passBall",
-"offset": Vector2( -200, 840 ),
+"offset": Vector2( -140, 840 ),
 "params": [  ],
 "size": Vector2( 258, 85 ),
 "values": [  ]
 },
-"name": "task3",
+"name": "task6",
 "type": 1
 } ],
 "data": {
@@ -177,11 +176,11 @@ tree = {
 "offset": Vector2( -380, 780 ),
 "size": Vector2( 106, 101.75 )
 },
-"name": "sequence2",
+"name": "sequence3",
 "type": 2
 }
 },
-"label": "kickoff",
+"label": "",
 "offset": Vector2( -380, 780 ),
 "size": Vector2( 236, 80 )
 },
@@ -191,7 +190,458 @@ tree = {
 "child": [  ],
 "data": {
 "fn": "task_matchstart",
-"offset": Vector2( -380, 880 ),
+"offset": Vector2( -440, 900 ),
+"params": [  ],
+"size": Vector2( 231, 85 ),
+"values": [  ]
+},
+"name": "task",
+"type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( -540, 800 ),
+"size": Vector2( 93, 81.75 )
+},
+"name": "selector",
+"type": 3
+}, {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_withball",
+"offset": Vector2( -220, 1000 ),
+"params": [  ],
+"size": Vector2( 219, 85 ),
+"values": [  ]
+},
+"name": "task3",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_Sprinttogoal",
+"offset": Vector2( -220, 1120 ),
+"params": [  ],
+"size": Vector2( 237, 85 ),
+"values": [  ]
+},
+"name": "task4",
+"type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( -380, 1040 ),
+"size": Vector2( 106, 81.75 )
+},
+"name": "sequence2",
+"type": 2
+} ],
+"data": {
+"count": 1,
+"offset": Vector2( -540, 1020 ),
+"size": Vector2( 99, 61.75 )
+},
+"name": "selector2",
+"type": 3
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( -700, 840 ),
+"size": Vector2( 100, 81.75 )
+},
+"name": "sequence",
+"type": 2
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"data": {
+"connection": [ {
+"from": "sequence3",
+"from_port": 2,
+"to": "task6",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 1,
+"to": "task5",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 0,
+"to": "inverter",
+"to_port": 0
+}, {
+"from": "inverter",
+"from_port": 0,
+"to": "task2",
+"to_port": 0
+} ],
+"nodes": [ {
+"child": [  ],
+"data": {
+"count": 3,
+"offset": Vector2( -380, 780 ),
+"size": Vector2( 106, 101.75 )
+},
+"name": "sequence3",
+"type": 2
+}, {
+"child": [  ],
+"data": {
+"offset": Vector2( -280, 640 ),
+"size": Vector2( 92, 43 )
+},
+"name": "inverter",
+"type": 14
+}, {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -100, 618.8 ),
+"params": [  ],
+"size": Vector2( 277, 85 ),
+"values": [  ]
+},
+"name": "task2",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_startgameplayer",
+"offset": Vector2( -160, 720 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_passBall",
+"offset": Vector2( -140, 840 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task6",
+"type": 1
+} ],
+"root": {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -100, 618.8 ),
+"params": [  ],
+"size": Vector2( 277, 85 ),
+"values": [  ]
+},
+"name": "task2",
+"type": 1
+} ],
+"data": {
+"offset": Vector2( -280, 640 ),
+"size": Vector2( 92, 43 )
+},
+"name": "inverter",
+"type": 14
+}, {
+"child": [  ],
+"data": {
+"fn": "task_startgameplayer",
+"offset": Vector2( -160, 720 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_passBall",
+"offset": Vector2( -140, 840 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task6",
+"type": 1
+} ],
+"data": {
+"count": 3,
+"offset": Vector2( -380, 780 ),
+"size": Vector2( 106, 101.75 )
+},
+"name": "sequence3",
+"type": 2
+}
+},
+"label": "",
+"offset": Vector2( -380, 780 ),
+"size": Vector2( 236, 80 )
+},
+"name": "minim_node",
+"type": 99
+}, {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -440, 900 ),
+"params": [  ],
+"size": Vector2( 231, 85 ),
+"values": [  ]
+},
+"name": "task",
+"type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( -540, 800 ),
+"size": Vector2( 93, 81.75 )
+},
+"name": "selector",
+"type": 3
+}, {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_withball",
+"offset": Vector2( -220, 1000 ),
+"params": [  ],
+"size": Vector2( 219, 85 ),
+"values": [  ]
+},
+"name": "task3",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_Sprinttogoal",
+"offset": Vector2( -220, 1120 ),
+"params": [  ],
+"size": Vector2( 237, 85 ),
+"values": [  ]
+},
+"name": "task4",
+"type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( -380, 1040 ),
+"size": Vector2( 106, 81.75 )
+},
+"name": "sequence2",
+"type": 2
+} ],
+"data": {
+"count": 1,
+"offset": Vector2( -540, 1020 ),
+"size": Vector2( 99, 61.75 )
+},
+"name": "selector2",
+"type": 3
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_withball",
+"offset": Vector2( -220, 1000 ),
+"params": [  ],
+"size": Vector2( 219, 85 ),
+"values": [  ]
+},
+"name": "task3",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_Sprinttogoal",
+"offset": Vector2( -220, 1120 ),
+"params": [  ],
+"size": Vector2( 237, 85 ),
+"values": [  ]
+},
+"name": "task4",
+"type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( -380, 1040 ),
+"size": Vector2( 106, 81.75 )
+},
+"name": "sequence2",
+"type": 2
+}, {
+"child": [  ],
+"data": {
+"fn": "task_withball",
+"offset": Vector2( -220, 1000 ),
+"params": [  ],
+"size": Vector2( 219, 85 ),
+"values": [  ]
+},
+"name": "task3",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_Sprinttogoal",
+"offset": Vector2( -220, 1120 ),
+"params": [  ],
+"size": Vector2( 237, 85 ),
+"values": [  ]
+},
+"name": "task4",
+"type": 1
+}, {
+"child": [ {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"data": {
+"connection": [ {
+"from": "sequence3",
+"from_port": 2,
+"to": "task6",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 1,
+"to": "task5",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 0,
+"to": "inverter",
+"to_port": 0
+}, {
+"from": "inverter",
+"from_port": 0,
+"to": "task2",
+"to_port": 0
+} ],
+"nodes": [ {
+"child": [  ],
+"data": {
+"count": 3,
+"offset": Vector2( -380, 780 ),
+"size": Vector2( 106, 101.75 )
+},
+"name": "sequence3",
+"type": 2
+}, {
+"child": [  ],
+"data": {
+"offset": Vector2( -280, 640 ),
+"size": Vector2( 92, 43 )
+},
+"name": "inverter",
+"type": 14
+}, {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -100, 618.8 ),
+"params": [  ],
+"size": Vector2( 277, 85 ),
+"values": [  ]
+},
+"name": "task2",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_startgameplayer",
+"offset": Vector2( -160, 720 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_passBall",
+"offset": Vector2( -140, 840 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task6",
+"type": 1
+} ],
+"root": {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -100, 618.8 ),
+"params": [  ],
+"size": Vector2( 277, 85 ),
+"values": [  ]
+},
+"name": "task2",
+"type": 1
+} ],
+"data": {
+"offset": Vector2( -280, 640 ),
+"size": Vector2( 92, 43 )
+},
+"name": "inverter",
+"type": 14
+}, {
+"child": [  ],
+"data": {
+"fn": "task_startgameplayer",
+"offset": Vector2( -160, 720 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_passBall",
+"offset": Vector2( -140, 840 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task6",
+"type": 1
+} ],
+"data": {
+"count": 3,
+"offset": Vector2( -380, 780 ),
+"size": Vector2( 106, 101.75 )
+},
+"name": "sequence3",
+"type": 2
+}
+},
+"label": "",
+"offset": Vector2( -380, 780 ),
+"size": Vector2( 236, 80 )
+},
+"name": "minim_node",
+"type": 99
+}, {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -440, 900 ),
 "params": [  ],
 "size": Vector2( 231, 85 ),
 "values": [  ]
@@ -262,501 +712,10 @@ tree = {
 "name": "root",
 "type": 0
 }, {
-"child": [ {
-"child": [ {
-"child": [  ],
-"data": {
-"data": {
-"connection": [ {
-"from": "sequence2",
-"from_port": 0,
-"to": "inverter",
-"to_port": 0
-}, {
-"from": "sequence2",
-"from_port": 1,
-"to": "task2",
-"to_port": 0
-}, {
-"from": "sequence2",
-"from_port": 2,
-"to": "task3",
-"to_port": 0
-}, {
-"from": "inverter",
-"from_port": 0,
-"to": "task",
-"to_port": 0
-} ],
-"nodes": [ {
-"child": [  ],
-"data": {
-"count": 3,
-"offset": Vector2( -380, 780 ),
-"size": Vector2( 106, 101.75 )
-},
-"name": "sequence2",
-"type": 2
-}, {
-"child": [  ],
-"data": {
-"offset": Vector2( -280, 640 ),
-"size": Vector2( 92, 43 )
-},
-"name": "inverter",
-"type": 14
-}, {
 "child": [  ],
 "data": {
 "fn": "task_matchstart",
-"offset": Vector2( -100, 620 ),
-"params": [  ],
-"size": Vector2( 277, 85 ),
-"values": [  ]
-},
-"name": "task",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_startgameplayer",
-"offset": Vector2( -200, 740 ),
-"params": [  ],
-"size": Vector2( 258, 85 ),
-"values": [  ]
-},
-"name": "task2",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_passBall",
-"offset": Vector2( -200, 840 ),
-"params": [  ],
-"size": Vector2( 258, 85 ),
-"values": [  ]
-},
-"name": "task3",
-"type": 1
-} ],
-"root": {
-"child": [ {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_matchstart",
-"offset": Vector2( -100, 620 ),
-"params": [  ],
-"size": Vector2( 277, 85 ),
-"values": [  ]
-},
-"name": "task",
-"type": 1
-} ],
-"data": {
-"offset": Vector2( -280, 640 ),
-"size": Vector2( 92, 43 )
-},
-"name": "inverter",
-"type": 14
-}, {
-"child": [  ],
-"data": {
-"fn": "task_startgameplayer",
-"offset": Vector2( -200, 740 ),
-"params": [  ],
-"size": Vector2( 258, 85 ),
-"values": [  ]
-},
-"name": "task2",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_passBall",
-"offset": Vector2( -200, 840 ),
-"params": [  ],
-"size": Vector2( 258, 85 ),
-"values": [  ]
-},
-"name": "task3",
-"type": 1
-} ],
-"data": {
-"count": 3,
-"offset": Vector2( -380, 780 ),
-"size": Vector2( 106, 101.75 )
-},
-"name": "sequence2",
-"type": 2
-}
-},
-"label": "kickoff",
-"offset": Vector2( -380, 780 ),
-"size": Vector2( 236, 80 )
-},
-"name": "minim_node",
-"type": 99
-}, {
-"child": [  ],
-"data": {
-"fn": "task_matchstart",
-"offset": Vector2( -380, 880 ),
-"params": [  ],
-"size": Vector2( 231, 85 ),
-"values": [  ]
-},
-"name": "task",
-"type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( -540, 800 ),
-"size": Vector2( 93, 81.75 )
-},
-"name": "selector",
-"type": 3
-}, {
-"child": [ {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_withball",
-"offset": Vector2( -220, 1000 ),
-"params": [  ],
-"size": Vector2( 219, 85 ),
-"values": [  ]
-},
-"name": "task3",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_Sprinttogoal",
-"offset": Vector2( -220, 1120 ),
-"params": [  ],
-"size": Vector2( 237, 85 ),
-"values": [  ]
-},
-"name": "task4",
-"type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( -380, 1040 ),
-"size": Vector2( 106, 81.75 )
-},
-"name": "sequence2",
-"type": 2
-} ],
-"data": {
-"count": 1,
-"offset": Vector2( -540, 1020 ),
-"size": Vector2( 99, 61.75 )
-},
-"name": "selector2",
-"type": 3
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( -700, 840 ),
-"size": Vector2( 100, 81.75 )
-},
-"name": "sequence",
-"type": 2
-}, {
-"child": [  ],
-"data": {
-"data": {
-"connection": [ {
-"from": "sequence2",
-"from_port": 0,
-"to": "inverter",
-"to_port": 0
-}, {
-"from": "sequence2",
-"from_port": 1,
-"to": "task2",
-"to_port": 0
-}, {
-"from": "sequence2",
-"from_port": 2,
-"to": "task3",
-"to_port": 0
-}, {
-"from": "inverter",
-"from_port": 0,
-"to": "task",
-"to_port": 0
-} ],
-"nodes": [ {
-"child": [  ],
-"data": {
-"count": 3,
-"offset": Vector2( -380, 780 ),
-"size": Vector2( 106, 101.75 )
-},
-"name": "sequence2",
-"type": 2
-}, {
-"child": [  ],
-"data": {
-"offset": Vector2( -280, 640 ),
-"size": Vector2( 92, 43 )
-},
-"name": "inverter",
-"type": 14
-}, {
-"child": [  ],
-"data": {
-"fn": "task_matchstart",
-"offset": Vector2( -100, 620 ),
-"params": [  ],
-"size": Vector2( 277, 85 ),
-"values": [  ]
-},
-"name": "task",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_startgameplayer",
-"offset": Vector2( -200, 740 ),
-"params": [  ],
-"size": Vector2( 258, 85 ),
-"values": [  ]
-},
-"name": "task2",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_passBall",
-"offset": Vector2( -200, 840 ),
-"params": [  ],
-"size": Vector2( 258, 85 ),
-"values": [  ]
-},
-"name": "task3",
-"type": 1
-} ],
-"root": {
-"child": [ {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_matchstart",
-"offset": Vector2( -100, 620 ),
-"params": [  ],
-"size": Vector2( 277, 85 ),
-"values": [  ]
-},
-"name": "task",
-"type": 1
-} ],
-"data": {
-"offset": Vector2( -280, 640 ),
-"size": Vector2( 92, 43 )
-},
-"name": "inverter",
-"type": 14
-}, {
-"child": [  ],
-"data": {
-"fn": "task_startgameplayer",
-"offset": Vector2( -200, 740 ),
-"params": [  ],
-"size": Vector2( 258, 85 ),
-"values": [  ]
-},
-"name": "task2",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_passBall",
-"offset": Vector2( -200, 840 ),
-"params": [  ],
-"size": Vector2( 258, 85 ),
-"values": [  ]
-},
-"name": "task3",
-"type": 1
-} ],
-"data": {
-"count": 3,
-"offset": Vector2( -380, 780 ),
-"size": Vector2( 106, 101.75 )
-},
-"name": "sequence2",
-"type": 2
-}
-},
-"label": "kickoff",
-"offset": Vector2( -380, 780 ),
-"size": Vector2( 236, 80 )
-},
-"name": "minim_node",
-"type": 99
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"data": {
-"connection": [ {
-"from": "sequence2",
-"from_port": 0,
-"to": "inverter",
-"to_port": 0
-}, {
-"from": "sequence2",
-"from_port": 1,
-"to": "task2",
-"to_port": 0
-}, {
-"from": "sequence2",
-"from_port": 2,
-"to": "task3",
-"to_port": 0
-}, {
-"from": "inverter",
-"from_port": 0,
-"to": "task",
-"to_port": 0
-} ],
-"nodes": [ {
-"child": [  ],
-"data": {
-"count": 3,
-"offset": Vector2( -380, 780 ),
-"size": Vector2( 106, 101.75 )
-},
-"name": "sequence2",
-"type": 2
-}, {
-"child": [  ],
-"data": {
-"offset": Vector2( -280, 640 ),
-"size": Vector2( 92, 43 )
-},
-"name": "inverter",
-"type": 14
-}, {
-"child": [  ],
-"data": {
-"fn": "task_matchstart",
-"offset": Vector2( -100, 620 ),
-"params": [  ],
-"size": Vector2( 277, 85 ),
-"values": [  ]
-},
-"name": "task",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_startgameplayer",
-"offset": Vector2( -200, 740 ),
-"params": [  ],
-"size": Vector2( 258, 85 ),
-"values": [  ]
-},
-"name": "task2",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_passBall",
-"offset": Vector2( -200, 840 ),
-"params": [  ],
-"size": Vector2( 258, 85 ),
-"values": [  ]
-},
-"name": "task3",
-"type": 1
-} ],
-"root": {
-"child": [ {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_matchstart",
-"offset": Vector2( -100, 620 ),
-"params": [  ],
-"size": Vector2( 277, 85 ),
-"values": [  ]
-},
-"name": "task",
-"type": 1
-} ],
-"data": {
-"offset": Vector2( -280, 640 ),
-"size": Vector2( 92, 43 )
-},
-"name": "inverter",
-"type": 14
-}, {
-"child": [  ],
-"data": {
-"fn": "task_startgameplayer",
-"offset": Vector2( -200, 740 ),
-"params": [  ],
-"size": Vector2( 258, 85 ),
-"values": [  ]
-},
-"name": "task2",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_passBall",
-"offset": Vector2( -200, 840 ),
-"params": [  ],
-"size": Vector2( 258, 85 ),
-"values": [  ]
-},
-"name": "task3",
-"type": 1
-} ],
-"data": {
-"count": 3,
-"offset": Vector2( -380, 780 ),
-"size": Vector2( 106, 101.75 )
-},
-"name": "sequence2",
-"type": 2
-}
-},
-"label": "kickoff",
-"offset": Vector2( -380, 780 ),
-"size": Vector2( 236, 80 )
-},
-"name": "minim_node",
-"type": 99
-}, {
-"child": [  ],
-"data": {
-"fn": "task_matchstart",
-"offset": Vector2( -380, 880 ),
-"params": [  ],
-"size": Vector2( 231, 85 ),
-"values": [  ]
-},
-"name": "task",
-"type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( -540, 800 ),
-"size": Vector2( 93, 81.75 )
-},
-"name": "selector",
-"type": 3
-}, {
-"child": [  ],
-"data": {
-"fn": "task_matchstart",
-"offset": Vector2( -380, 880 ),
+"offset": Vector2( -440, 900 ),
 "params": [  ],
 "size": Vector2( 231, 85 ),
 "values": [  ]
@@ -764,125 +723,28 @@ tree = {
 "name": "task",
 "type": 1
 }, {
-"child": [ {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_withball",
-"offset": Vector2( -220, 1000 ),
-"params": [  ],
-"size": Vector2( 219, 85 ),
-"values": [  ]
-},
-"name": "task3",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_Sprinttogoal",
-"offset": Vector2( -220, 1120 ),
-"params": [  ],
-"size": Vector2( 237, 85 ),
-"values": [  ]
-},
-"name": "task4",
-"type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( -380, 1040 ),
-"size": Vector2( 106, 81.75 )
-},
-"name": "sequence2",
-"type": 2
-} ],
-"data": {
-"count": 1,
-"offset": Vector2( -540, 1020 ),
-"size": Vector2( 99, 61.75 )
-},
-"name": "selector2",
-"type": 3
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_withball",
-"offset": Vector2( -220, 1000 ),
-"params": [  ],
-"size": Vector2( 219, 85 ),
-"values": [  ]
-},
-"name": "task3",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_Sprinttogoal",
-"offset": Vector2( -220, 1120 ),
-"params": [  ],
-"size": Vector2( 237, 85 ),
-"values": [  ]
-},
-"name": "task4",
-"type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( -380, 1040 ),
-"size": Vector2( 106, 81.75 )
-},
-"name": "sequence2",
-"type": 2
-}, {
-"child": [  ],
-"data": {
-"fn": "task_withball",
-"offset": Vector2( -220, 1000 ),
-"params": [  ],
-"size": Vector2( 219, 85 ),
-"values": [  ]
-},
-"name": "task3",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_Sprinttogoal",
-"offset": Vector2( -220, 1120 ),
-"params": [  ],
-"size": Vector2( 237, 85 ),
-"values": [  ]
-},
-"name": "task4",
-"type": 1
-} ],
-"root": {
-"child": [ {
-"child": [ {
-"child": [ {
 "child": [  ],
 "data": {
 "data": {
 "connection": [ {
-"from": "sequence2",
+"from": "sequence3",
+"from_port": 2,
+"to": "task6",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 1,
+"to": "task5",
+"to_port": 0
+}, {
+"from": "sequence3",
 "from_port": 0,
 "to": "inverter",
 "to_port": 0
 }, {
-"from": "sequence2",
-"from_port": 1,
-"to": "task2",
-"to_port": 0
-}, {
-"from": "sequence2",
-"from_port": 2,
-"to": "task3",
-"to_port": 0
-}, {
 "from": "inverter",
 "from_port": 0,
-"to": "task",
+"to": "task2",
 "to_port": 0
 } ],
 "nodes": [ {
@@ -892,7 +754,7 @@ tree = {
 "offset": Vector2( -380, 780 ),
 "size": Vector2( 106, 101.75 )
 },
-"name": "sequence2",
+"name": "sequence3",
 "type": 2
 }, {
 "child": [  ],
@@ -906,20 +768,9 @@ tree = {
 "child": [  ],
 "data": {
 "fn": "task_matchstart",
-"offset": Vector2( -100, 620 ),
+"offset": Vector2( -100, 618.8 ),
 "params": [  ],
 "size": Vector2( 277, 85 ),
-"values": [  ]
-},
-"name": "task",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_startgameplayer",
-"offset": Vector2( -200, 740 ),
-"params": [  ],
-"size": Vector2( 258, 85 ),
 "values": [  ]
 },
 "name": "task2",
@@ -927,13 +778,24 @@ tree = {
 }, {
 "child": [  ],
 "data": {
-"fn": "task_passBall",
-"offset": Vector2( -200, 840 ),
+"fn": "task_startgameplayer",
+"offset": Vector2( -160, 720 ),
 "params": [  ],
 "size": Vector2( 258, 85 ),
 "values": [  ]
 },
-"name": "task3",
+"name": "task5",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_passBall",
+"offset": Vector2( -140, 840 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task6",
 "type": 1
 } ],
 "root": {
@@ -942,12 +804,12 @@ tree = {
 "child": [  ],
 "data": {
 "fn": "task_matchstart",
-"offset": Vector2( -100, 620 ),
+"offset": Vector2( -100, 618.8 ),
 "params": [  ],
 "size": Vector2( 277, 85 ),
 "values": [  ]
 },
-"name": "task",
+"name": "task2",
 "type": 1
 } ],
 "data": {
@@ -960,23 +822,23 @@ tree = {
 "child": [  ],
 "data": {
 "fn": "task_startgameplayer",
-"offset": Vector2( -200, 740 ),
+"offset": Vector2( -160, 720 ),
 "params": [  ],
 "size": Vector2( 258, 85 ),
 "values": [  ]
 },
-"name": "task2",
+"name": "task5",
 "type": 1
 }, {
 "child": [  ],
 "data": {
 "fn": "task_passBall",
-"offset": Vector2( -200, 840 ),
+"offset": Vector2( -140, 840 ),
 "params": [  ],
 "size": Vector2( 258, 85 ),
 "values": [  ]
 },
-"name": "task3",
+"name": "task6",
 "type": 1
 } ],
 "data": {
@@ -984,11 +846,149 @@ tree = {
 "offset": Vector2( -380, 780 ),
 "size": Vector2( 106, 101.75 )
 },
-"name": "sequence2",
+"name": "sequence3",
 "type": 2
 }
 },
-"label": "kickoff",
+"label": "",
+"offset": Vector2( -380, 780 ),
+"size": Vector2( 236, 80 )
+},
+"name": "minim_node",
+"type": 99
+} ],
+"root": {
+"child": [ {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"data": {
+"connection": [ {
+"from": "sequence3",
+"from_port": 2,
+"to": "task6",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 1,
+"to": "task5",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 0,
+"to": "inverter",
+"to_port": 0
+}, {
+"from": "inverter",
+"from_port": 0,
+"to": "task2",
+"to_port": 0
+} ],
+"nodes": [ {
+"child": [  ],
+"data": {
+"count": 3,
+"offset": Vector2( -380, 780 ),
+"size": Vector2( 106, 101.75 )
+},
+"name": "sequence3",
+"type": 2
+}, {
+"child": [  ],
+"data": {
+"offset": Vector2( -280, 640 ),
+"size": Vector2( 92, 43 )
+},
+"name": "inverter",
+"type": 14
+}, {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -100, 618.8 ),
+"params": [  ],
+"size": Vector2( 277, 85 ),
+"values": [  ]
+},
+"name": "task2",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_startgameplayer",
+"offset": Vector2( -160, 720 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_passBall",
+"offset": Vector2( -140, 840 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task6",
+"type": 1
+} ],
+"root": {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -100, 618.8 ),
+"params": [  ],
+"size": Vector2( 277, 85 ),
+"values": [  ]
+},
+"name": "task2",
+"type": 1
+} ],
+"data": {
+"offset": Vector2( -280, 640 ),
+"size": Vector2( 92, 43 )
+},
+"name": "inverter",
+"type": 14
+}, {
+"child": [  ],
+"data": {
+"fn": "task_startgameplayer",
+"offset": Vector2( -160, 720 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_passBall",
+"offset": Vector2( -140, 840 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task6",
+"type": 1
+} ],
+"data": {
+"count": 3,
+"offset": Vector2( -380, 780 ),
+"size": Vector2( 106, 101.75 )
+},
+"name": "sequence3",
+"type": 2
+}
+},
+"label": "",
 "offset": Vector2( -380, 780 ),
 "size": Vector2( 236, 80 )
 },
@@ -998,7 +998,7 @@ tree = {
 "child": [  ],
 "data": {
 "fn": "task_matchstart",
-"offset": Vector2( -380, 880 ),
+"offset": Vector2( -440, 900 ),
 "params": [  ],
 "size": Vector2( 231, 85 ),
 "values": [  ]

@@ -4,6 +4,9 @@ var goalDetected: bool
 
 var centerpos
 
+var homegoalposition
+var awaygoalposition
+
 var ballposition setget setposition, getposition
 var ballforce setget setforce, getforce
 

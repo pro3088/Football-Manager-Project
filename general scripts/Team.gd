@@ -32,8 +32,9 @@ func _ready():
 	
 
 func _process(_delta):
-	GetClosesttoBall()
-	GetClosestPlayer()
+	if HomeTeam.size() != 0:
+		GetClosesttoBall()
+		GetClosestPlayer()
 #	teamPossession()
 	pass
 

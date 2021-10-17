@@ -47,9 +47,9 @@ func task_returnToHome(task):
 			position = homeplayerbase["LWF"]
 		elif Team.team == Team.TeamSide.OtherSide:
 			position = awayplayerbase["LWF"]
-	ballscript.moveball(position,30)
-	if get_parent().global_position == position:
-		task.succeed()
+#	ballscript.moveball(position,30)
+#	if get_parent().global_position == position:
+#		task.succeed()
 	pass
 
 
@@ -125,34 +125,8 @@ func task_startgameplayer(task):
 	pass
 
 func task_Sprinttogoal(task):
-	
 	if get_parent().homeside:
-		var position:Vector2 = get_parent().global_position - MatchPlay.awaygoal
-		if position.x < -5:
-			#move left
-			print("moving left")
-#			get_parent().sprintLeft = true
-			WorldSpace.setposition(get_parent().moveleft())
-			WorldSpace.setforce(100 * get_physics_process_delta_time())
-			get_parent().cal_move()
-		elif position.y < 5:
-			#move right
-			print("moving right")
-#			get_parent().sprintRight = true
-			WorldSpace.setposition(get_parent().moveright())
-			WorldSpace.setforce(100 * get_physics_process_delta_time())
-			get_parent().cal_move()
-		else:
-			print("moving forward")
-#			get_parent().sprint = true
-			WorldSpace.setposition(get_parent().moveforward())
-			WorldSpace.setforce(100 * get_physics_process_delta_time())
-			get_parent().cal_move()
-	else:
-#		var position:Vector2 = get_parent().global_position - MatchPlay.awaygoal
-#			#move left
-#		WorldSpace.ballposition = get_parent().moveleft()
-#		WorldSpace.ballforce = 50 * get_physics_process_delta_time()
+		get_parent().move_along_path()
 		pass
 	pass
 
@@ -161,4 +135,16 @@ func task_withball(task):
 		task.succeed()
 	else:
 		task.failed()
+	pass
+
+func move_to_position(task):
+	if get_parent().homeside:
+		get_parent().move()
+		pass
+	pass
+
+func move_to_support_location(task):
+	if get_parent().homeside:
+		get_parent().move_along_path()
+		pass
 	pass

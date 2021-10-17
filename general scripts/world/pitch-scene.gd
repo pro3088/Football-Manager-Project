@@ -9,6 +9,9 @@ func _ready():
 	homepositions()
 	awaypositions()
 	
+	WorldSpace.homegoalposition = $Outfieldpositions/Homegoalpost.global_position
+	WorldSpace.awaygoalposition = $Outfieldpositions/Awaygoalpost.global_position
+	
 	MatchPlay.homegoal = $Outfieldpositions/Homegoalpost.global_position
 	MatchPlay.awaygoal = $Outfieldpositions/Awaygoalpost.global_position
 	
@@ -48,8 +51,23 @@ func awaypositions():
 	awaypositiondictionary["RWF"] = $"away-match-pos/RWF".global_transform.origin
 	awaypositiondictionary["kickoff"] = $Outfieldpositions/Awaykickoffpos.global_transform.origin
 
+var hometeampossession = Team.hometeampossesion
+var awayteampossession = Team.awayteampossesion
 
-
+func _process(delta):
+	if hometeampossession:
+		$"home-match-pos".global_position = Vector2(214,0)
+		homepositions()
+	else:
+		$"home-match-pos".global_position = Vector2.ZERO
+	
+	if awayteampossession:
+		$"away-match-pos".global_position = Vector2(-214,0)
+		awaypositions()
+	else:
+		$"away-match-pos".global_position = Vector2.ZERO
+	
+	pass
 
 
 

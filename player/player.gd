@@ -64,6 +64,8 @@ var forwardsideline
 
 var player = self
 
+var path
+
 var homeside:bool
 var awayside:bool
 
@@ -80,6 +82,8 @@ func _ready():
 
 func _physics_process(delta):
 #	cal_move(delta)
+	Playerbase.playerposition = self.global_position
+	path = Playerbase.playerpath
 	LookAtBall()
 	playerteam()
 #	ReturntoHome(delta)
@@ -90,72 +94,6 @@ func _physics_process(delta):
 
 #..........................................................................
 
-func moveforward():
-	if running:
-		var smallpos:Array = $"Grid-middle-forward/running-forward".get_children()
-		var rand_position = smallpos[randi() % smallpos.size()]
-		return rand_position.global_position
-	elif sprint:
-		var smallpos:Array = $"Grid-middle-forward/sprint-forward".get_children()
-		var rand_position = smallpos[randi() % smallpos.size()]
-		return rand_position.global_position
-	else:
-		var smallpos:Array = $"Grid-middle-forward/small-move-forward".get_children()
-		var rand_position = smallpos[randi() % smallpos.size()]
-		return rand_position.global_position
-
-func moveleft():
-	if sprintLeft:
-		var smallpos:Array = $"Grid-middle-forward/sprint-left".get_children()
-		var rand_position = smallpos[randi() % smallpos.size()]
-		return rand_position.global_position
-	else:
-		var smallpos:Array = $"Grid-middle-forward/mid-move-left".get_children()
-		var rand_position = smallpos[randi() % smallpos.size()]
-		return rand_position.global_position
-
-func moveright():
-	if sprintRight:
-		var smallpos:Array = $"Grid-middle-forward/sprint-right".get_children()
-		var rand_position = smallpos[randi() % smallpos.size()]
-		return rand_position.global_position
-	else:
-		var smallpos:Array = $"Grid-middle-forward/small-move-right".get_children()
-		var rand_position = smallpos[randi() % smallpos.size()]
-		return rand_position.global_position
-
-func turnright():
-	if sprintRight:
-		var smallpos:Array = $"Grid-right/sprint-turn".get_children()
-		var rand_position = smallpos[randi() % smallpos.size()]
-		return rand_position.global_position
-	else:
-		var smallpos:Array = $"Grid-right/small-turn".get_children()
-		var rand_position = smallpos[randi() % smallpos.size()]
-		return rand_position.global_position
-
-func turnleft():
-	if sprintLeft:
-		var smallpos:Array = $"Grid-left/sprint-turn".get_children()
-		var rand_position = smallpos[randi() % smallpos.size()]
-		return rand_position.global_position
-	else:
-		var smallpos:Array = $"Grid-left/small-turn".get_children()
-		var rand_position = smallpos[randi() % smallpos.size()]
-		return rand_position.global_position
-
-func moveback():
-	if moveBackLeft:
-		var position = $"Grid-back/left".global_position
-		return position.global_position
-	elif moveBackRight:
-		var position = $"Grid-back/right".global_position
-		return position.global_position
-	else:
-		var position = $"Grid-back/middle"
-		return position.global_position
-
-#..............................................................................
 
 func cal_move():
 	if self == Team.ClosestToBall:
@@ -165,6 +103,24 @@ func cal_move():
 		velocity = dir * speed * get_process_delta_time()
 	else:
 		velocity = Vector2.ZERO
+
+func move_along_path():
+	var distance = speed * get_process_delta_time()
+	var last_point = self.global_position
+	while path.size():
+		var distance_between_points = last_point.distance_to(path[0])
+		# The position to move to falls between two points.
+		if distance <= distance_between_points:
+			self.global_position = last_point.linear_interpolate(path[0], distance / distance_between_points)
+			return
+		# The position is past the end of the segment.
+		distance -= distance_between_points
+		last_point = path[0]
+		path.remove(0)
+	# The character reached the end of the path.
+	self.global_position = last_point
+#	set_process(false)
+
 
 func move(position):
 	if position != null:
@@ -229,3 +185,20 @@ func detectsideline():
 		leftsideline = false
 		rightsideline = false
 		pass
+
+func getPolygons():
+	return $CollisionPolygon2D.get_polygon()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
