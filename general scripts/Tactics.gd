@@ -1,16 +1,38 @@
 extends Node
 
+var pitchWidth:float = 0.1 #width of the center line of the pitch #horizontal
+var defenseWidth:float = 0.1 #width of the defense (of each player) between counter 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var defenseLine:float = 0.1 #length from the center line of the pitch #vertical
+
+var supportRange:float = 0.1  #distance between players
+
+var avgTeamAtkBias:float = 0.5
+
+enum attackstyle{ #style of attacking play
+	counter
+	possession
+}
+
+enum positioning{ # do players fill the spaces
+	maintain
+	flexible
+}
+
+enum marking{
+	manToMan
+	conservative
+}
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
+
+
+
+
+
+
+
+

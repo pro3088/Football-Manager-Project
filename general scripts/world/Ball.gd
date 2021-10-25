@@ -7,7 +7,11 @@ func _process(_delta):
 	var position = WorldSpace.ballposition
 	var force = WorldSpace.ballforce
 	if position != null:
-		moveball(position,force)
+		if !WorldSpace.training:
+			moveball(position,force)
+		else:
+			self.global_position = WorldSpace.getposition()
+			pass
 	pass
 
 func moveball(position,force):

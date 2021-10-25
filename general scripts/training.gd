@@ -42,7 +42,7 @@ func _ready():
 	self.add_child(Ball)
 	Ball.global_transform.origin = WorldSpace.centerpos
 	
-	WorldSpace.training = false
+	WorldSpace.training = true
 	
 	HomeTeam()
 	OppositionTeam()

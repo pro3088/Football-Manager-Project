@@ -75,7 +75,7 @@ func Home(pitch,playerArray):
 		var append = playerArray[x]
 		Playerbase.setHomePlayers(playerArray)
 		Playerbase.setHomepositions(playerArray)
-		Playerbase.setkickoff(playerArray)
+		Playerbase.setkickoff()
 		pitch.add_child(append)
 
 # this function creates the pitchs for the opposition team

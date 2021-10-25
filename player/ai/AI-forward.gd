@@ -126,7 +126,7 @@ func task_startgameplayer(task):
 
 func task_Sprinttogoal(task):
 	if get_parent().homeside:
-		get_parent().move_along_path()
+#		get_parent().move_along_path()
 		pass
 	pass
 
@@ -137,9 +137,11 @@ func task_withball(task):
 		task.failed()
 	pass
 
-func move_to_position(task):
+func task_moveToPosition(task):
 	if get_parent().homeside:
-		get_parent().move()
+		var position = get_parent().calculate_Move_Position()
+		#print(position)
+		get_parent().move(position)
 		pass
 	pass
 
