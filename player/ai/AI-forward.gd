@@ -137,16 +137,14 @@ func task_withball(task):
 		task.failed()
 	pass
 
-func task_moveToPosition(task):
+func task_moveToPosition(_task):
 	if get_parent().homeside:
 		var position = get_parent().calculate_Move_Position()
-		#print(position)
+		get_parent().move(position)
+	elif get_parent().awayside:
+		var position = get_parent().calculate_Move_Position()
 		get_parent().move(position)
 		pass
 	pass
 
-func move_to_support_location(task):
-	if get_parent().homeside:
-		get_parent().move_along_path()
-		pass
-	pass
+

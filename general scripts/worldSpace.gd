@@ -26,6 +26,5 @@ func getforce():
 	return ballforce
 
 
-var attackbias 
-var defensebias
-var defensiveline
+
+

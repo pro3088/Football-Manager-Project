@@ -49,12 +49,14 @@ func _ready():
 	Team.HomeTeam = HomeTeamArray
 	Team.AwayTeam = OppositionTeamArray
 	Team.ballPos = Ball.global_position
+	
+	Team.HomeTeam = HomeTeamArray
+	Team.AwayTeam = OppositionTeamArray
 
 func _process(_delta):
 #	goal()
 	Team.ballPos = Ball.global_position
-	Team.HomeTeam = HomeTeamArray
-	Team.AwayTeam = OppositionTeamArray
+	
 ###.....................................
 #
 ##To get the goal count

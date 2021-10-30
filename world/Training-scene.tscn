@@ -43,12 +43,12 @@ max_value = 300.0
 margin_top = 38.0
 margin_right = 187.0
 margin_bottom = 52.0
-text = "ATTACK BIAS"
+text = "pressure BIAS"
 align = 1
 autowrap = true
 uppercase = true
 
-[node name="attack bias" type="HSlider" parent="training ui/VBoxContainer"]
+[node name="pressure bias" type="HSlider" parent="training ui/VBoxContainer"]
 margin_top = 56.0
 margin_right = 187.0
 margin_bottom = 72.0

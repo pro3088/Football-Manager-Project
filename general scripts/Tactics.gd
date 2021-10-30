@@ -5,6 +5,9 @@ var defenseWidth:float = 0.1 #width of the defense (of each player) between coun
 
 var defenseLine:float = 0.1 #length from the center line of the pitch #vertical
 
+var pressurebias: float = 0.3
+var defensebias: float = 0.1
+
 var supportRange:float = 0.1  #distance between players
 
 var avgTeamAtkBias:float = 0.5
@@ -23,8 +26,6 @@ enum marking{
 	manToMan
 	conservative
 }
-
-
 
 
 
