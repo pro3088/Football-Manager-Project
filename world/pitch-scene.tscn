@@ -33,7 +33,7 @@ offset = Vector2( 380.567, 189.181 )
 [node name="home-match-pos" type="Node2D" parent="."]
 
 [node name="GK" type="Position2D" parent="home-match-pos"]
-position = Vector2( 72.5637, 188.871 )
+position = Vector2( 71, 188.871 )
 
 [node name="CB" type="Position2D" parent="home-match-pos"]
 position = Vector2( 137.564, 188.871 )

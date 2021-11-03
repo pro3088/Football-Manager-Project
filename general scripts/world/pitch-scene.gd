@@ -5,6 +5,7 @@ var awaypositiondictionary:Dictionary
 
 onready var centerpos = $"pitch-positions/centre-line".global_transform.origin
 
+
 func _ready():
 	homepositions()
 	awaypositions()

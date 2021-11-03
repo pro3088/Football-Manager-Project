@@ -4,7 +4,6 @@ var goalDetected: bool
 
 var centerpos # from pitch scene
 
-
 var homegoalposition
 var awaygoalposition
 
