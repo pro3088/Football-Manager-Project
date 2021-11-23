@@ -5,6 +5,7 @@
 [ext_resource path="res://general scripts/training.gd" type="Script" id=3]
 
 [node name="training - scene" type="Node2D"]
+position = Vector2( -1, 0 )
 script = ExtResource( 3 )
 
 [node name="pitch-scene" parent="." instance=ExtResource( 1 )]
@@ -106,4 +107,5 @@ uppercase = true
 margin_top = 18.0
 margin_right = 199.0
 margin_bottom = 34.0
-min_value = -100.0
+min_value = -115.0
+max_value = 114.0

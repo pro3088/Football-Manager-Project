@@ -218,9 +218,13 @@ func calculate_Move_Position():
 	var defenseLine = Tactics.defenseLine
 	var movetoposition:Vector2 = homeposition
 	var differentiator = ballpos - centerpos # difference btw the center pos and ball pos
+	var Maxballx = 308 # max distance for ball position on the x axis
+	var Maxballyup = 73
+	var Maxballydown = 302
 	
-	# pressure
+	# pressure..................................................................
 	if homeside:
+		# x-axis................................................................
 		if differentiator.x >= 10 :
 			movetoposition.x = (differentiator.x * ((pressureBias + defenseLine)/2)) + homeposition.x
 			if role == "GK":
@@ -241,22 +245,31 @@ func calculate_Move_Position():
 				if movetoposition.x <= homeposition.x:
 					movetoposition.x = homeposition.x
 		
-		# defense
+		# defense...............................................................
+		
 		elif differentiator.x <= -10:
 			if role == "CMF" or role == "AMF":
-				movetoposition.x = ((((((hCDMpos.x + 10) - homeposition.x)/differentiator.x) * differentiator.x) * ((defenseBias * defenseLine)/2))) + homeposition.x
+				movetoposition.x = (-(differentiator.x/ Maxballx) * ((hCDMpos.x + 10) - homeposition.x)) + homeposition.x
 			elif role == "CB" or role == "RB" or role == "LB" or role == "CDM" or role == "GK":
 				movetoposition.x = homeposition.x
 			elif role == "LWF" or role == "RWF" or role == "LMF" or role == "RMF":
-				movetoposition.x = ((((((hCBpos.x + 10) - homeposition.x)/differentiator.x) * differentiator.x) * ((defenseBias * defenseLine)/2))) + homeposition.x
+				movetoposition.x = (-(differentiator.x/ Maxballx) * ((hCBpos.x  + 50) - homeposition.x) * 0.7) + homeposition.x 
+			elif role == "CF":
+				movetoposition.x = (-(differentiator.x/ Maxballx) * ((hCBpos.x  + 50) - homeposition.x) * 0.3) + homeposition.x
 		
 		var mpUP = Vector2(125.127,99.781)
 		var mpDOWN = Vector2(125.127,277.07)
+		
+		# y-axis................................................................
 		if role == "GK" :
-			if differentiator.y >= 10:
-				movetoposition.y = ((((mpDOWN.y - homeposition.y)/differentiator.y) * differentiator.y ) * 0.9) + homeposition.y
-			elif differentiator.y <= -10:
-				movetoposition.y = ((((mpUP.y - homeposition.y)/differentiator.y) * differentiator.y) * 0.3) + homeposition.y
+			#up.................................................................
+			if differentiator.y <= -10:
+				movetoposition.y = (-(differentiator.y/ Maxballyup) * (mpUP.y - homeposition.y)) + homeposition.y
+				print(movetoposition.y," ", -(differentiator.y/ Maxballyup), " ", (mpUP.y - homeposition.y)
+				, " ", ballpos.y, " ", homeposition.y, " ", mpUP.y, " ", Maxballyup)
+			# down..............................................................
+#			elif differentiator.y >= 10:
+#				movetoposition.y = (-(differentiator.y/ Maxballydown) * (mpDOWN.y - homeposition.y)) + homeposition.y
 		
 		elif role == "CMF" :
 			if differentiator.y >= 10:
@@ -282,38 +295,15 @@ func calculate_Move_Position():
 			elif differentiator.y <= -10:
 				movetoposition.y = ((((mpUP.y - homeposition.y)/differentiator.y) * differentiator.y) * 0.3) + homeposition.y
 		
+		elif role == "RWF":
+			if differentiator.y >= 10:
+				movetoposition.y = ((((mpDOWN.y - homeposition.y)/differentiator.y) * differentiator.y ) * 0.8) + homeposition.y
+		
+		elif role =="LWF":
+			if differentiator.y <= -10:
+				movetoposition.y = ((((mpUP.y - homeposition.y)/differentiator.y) * differentiator.y) * 0.3) + homeposition.y
+		
 	#away side
-	elif awayside:
-		if differentiator.x <= -10 :
-			movetoposition.x = (differentiator.x * ((pressureBias + defenseLine)/2)) + homeposition.x
-			if role == "GK":
-				movetoposition.x = ((differentiator.x * ((pressureBias + defenseLine)/2)) + homeposition.x) * linebiasGK
-				if movetoposition.x >= homeposition.x:
-					movetoposition.x = homeposition.x
-			elif role == "CB":
-				movetoposition.x = ((differentiator.x * ((pressureBias + defenseLine)/2)) + homeposition.x) * linebiasCB
-				if movetoposition.x >= homeposition.x:
-					movetoposition.x = homeposition.x
-			elif role == "CDM":
-				movetoposition.x = ((differentiator.x * ((pressureBias + defenseLine)/2)) + homeposition.x) * linebiasCDM
-				if movetoposition.x >= homeposition.x:
-					movetoposition.x = homeposition.x
-			elif role == "CMF":
-				movetoposition.x = ((differentiator.x * ((pressureBias + defenseLine)/2)) + homeposition.x) * linebiasCMF
-				if movetoposition.x >= homeposition.x:
-					movetoposition.x = homeposition.x
-			
-			movetoposition.y = homeposition.y
-			
-		# defensive form
-		if differentiator.x >= 10:
-			if role == "CMF" or role == "AMF":
-				movetoposition.x = ((((((aCDMpos.x + 10) - homeposition.x)/differentiator.x) * differentiator.x) * ((defenseBias * defenseLine)/2))) + homeposition.x
-			elif role == "CB" or role == "RB" or role == "LB" or role == "CDM" or role == "GK":
-				movetoposition.x = homeposition.x
-			elif role == "LWF" or role == "RWF" or role == "LMF" or role == "RMF":
-				movetoposition.x = ((((((aCBpos.x + 10) - homeposition.x)/differentiator.x) * differentiator.x) * ((defenseBias * defenseLine)/2))) + homeposition.x
-			movetoposition.y = homeposition.y
 	return movetoposition
 
 
