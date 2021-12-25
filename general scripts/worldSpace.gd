@@ -4,6 +4,8 @@ var goalDetected: bool
 
 var centerpos # from pitch scene
 
+var ballResource = preload("res://world/Ball.tscn").instance()
+
 var homegoalposition
 var awaygoalposition
 

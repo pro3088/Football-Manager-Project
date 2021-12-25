@@ -37,8 +37,7 @@ var OppositionTeampos = Array()
 
 func _ready():
 	# A position 2d to position the ball at the middle of the field
-	var Ball_resource = load("res://world/Ball.tscn")
-	Ball = Ball_resource.instance()
+	Ball = WorldSpace.ballResource
 	self.add_child(Ball)
 	Ball.global_transform.origin = WorldSpace.centerpos
 	

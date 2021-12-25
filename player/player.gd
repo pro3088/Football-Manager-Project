@@ -260,44 +260,46 @@ func calculate_Move_Position():
 		var mpUP = Vector2(125.127,99.781)
 		var mpDOWN = Vector2(125.127,277.07)
 		
+		var marklineupy = (homeposition.y - Maxballyup) # the line for y axis up
+		var marklinedowny = (homeposition.y - Maxballydown)
+		
 		# y-axis................................................................
 		if role == "GK" :
 			#up.................................................................
 			if differentiator.y <= -10:
-				movetoposition.y = (-(differentiator.y/ Maxballyup) * (mpUP.y - homeposition.y)) + homeposition.y
-				print(movetoposition.y," ", -(differentiator.y/ Maxballyup), " ", (mpUP.y - homeposition.y)
-				, " ", ballpos.y, " ", homeposition.y, " ", mpUP.y, " ", Maxballyup)
+				movetoposition.y = homeposition.y - ((1 - ((differentiator.y + marklineupy)/marklineupy)) * (homeposition.y - mpUP.y) * 0.85)
 			# down..............................................................
-#			elif differentiator.y >= 10:
-#				movetoposition.y = (-(differentiator.y/ Maxballydown) * (mpDOWN.y - homeposition.y)) + homeposition.y
+			elif differentiator.y >= 10:
+				movetoposition.y = homeposition.y - ((1 - ((differentiator.y + marklinedowny)/marklinedowny)) * (homeposition.y - mpDOWN.y) * 0.85)
+				print((1 - ((differentiator.y + marklinedowny)/marklinedowny)))
 		
 		elif role == "CMF" :
 			if differentiator.y >= 10:
 				movetoposition.y = ((((mpDOWN.y - homeposition.y)/differentiator.y) * differentiator.y ) * 0.6) + homeposition.y
 			elif differentiator.y <= -10:
-				movetoposition.y = ((((mpUP.y - homeposition.y)/differentiator.y) * differentiator.y) * 0.3) + homeposition.y
+				movetoposition.y = homeposition.y - ((1 - ((differentiator.y + marklineupy)/marklineupy)) * (homeposition.y - mpUP.y) * 0.7)
 		
 		elif role == "CDM" :
 			if differentiator.y >= 10:
 				movetoposition.y = ((((mpDOWN.y - homeposition.y)/differentiator.y) * differentiator.y ) * 0.6) + homeposition.y
 			elif differentiator.y <= -10:
-				movetoposition.y = ((((mpUP.y - homeposition.y)/differentiator.y) * differentiator.y) * 0.3) + homeposition.y
+				movetoposition.y = homeposition.y - ((1 - ((differentiator.y + marklineupy)/marklineupy) ) * (homeposition.y - mpUP.y) * 0.5)
 		
 		elif  role == "AMF":
 			if differentiator.y >= 10:
 				movetoposition.y = ((((mpDOWN.y - homeposition.y)/differentiator.y) * differentiator.y ) * 0.3) + homeposition.y
 			elif differentiator.y <= -10:
-				movetoposition.y = ((((mpUP.y - homeposition.y)/differentiator.y) * differentiator.y) * 0.3) + homeposition.y
+				movetoposition.y = homeposition.y - ((1 - ((differentiator.y + marklineupy)/marklineupy)) * (homeposition.y - mpUP.y))
 		
 		elif role == "CF":
 			if differentiator.y >= 10:
 				movetoposition.y = ((((mpDOWN.y - homeposition.y)/differentiator.y) * differentiator.y ) * 0.8) + homeposition.y
 			elif differentiator.y <= -10:
-				movetoposition.y = ((((mpUP.y - homeposition.y)/differentiator.y) * differentiator.y) * 0.3) + homeposition.y
+				movetoposition.y = homeposition.y - ((1 - ((differentiator.y + marklineupy)/marklineupy)) * (homeposition.y - mpUP.y) * 0.6)
 		
 		elif role == "RWF":
-			if differentiator.y >= 10:
-				movetoposition.y = ((((mpDOWN.y - homeposition.y)/differentiator.y) * differentiator.y ) * 0.8) + homeposition.y
+			if differentiator.y <= -10:
+				movetoposition.y = homeposition.y - ((1 - ((differentiator.y + marklineupy)/marklineupy)) * (homeposition.y - (mpDOWN.y + 20)))
 		
 		elif role =="LWF":
 			if differentiator.y <= -10:

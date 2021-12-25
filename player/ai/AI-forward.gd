@@ -2,7 +2,7 @@ extends Node2D
 
 var playerscript = load("res://player/player.gd")
 
-var ballscript = load("res://general scripts/world/Ball.gd")
+var ballResource = WorldSpace.ballResource
 
 var forwardplayers = ["CF","LWF","RWF","AMF"]
 
@@ -13,9 +13,11 @@ func task_passBall(task):
 			rand_position = Team.HomeTeam[randi() % Team.HomeTeam.size()]
 		elif get_parent().awayside:
 			rand_position = Team.AwayTeam[randi() % Team.AwayTeam.size()]
-		WorldSpace.ballposition = rand_position.global_position
-		WorldSpace.ballforce = 50 * get_physics_process_delta_time()
-		MatchPlay.matchstart = true
+		ballResource.passball(rand_position.global_position,50 * get_process_delta_time())
+#		MatchPlay.matchstart = true
+#		WorldSpace.ballposition = rand_position.global_position
+#		WorldSpace.ballforce = 50 * get_physics_process_delta_time()
+#		MatchPlay.matchstart = true
 	task.succeed()
 	
 	pass

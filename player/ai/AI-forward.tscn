@@ -349,56 +349,6 @@ tree = {
 "type": 3
 }, {
 "child": [ {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_matchstart",
-"offset": Vector2( -80, 500 ),
-"params": [  ],
-"size": Vector2( 277, 85 ),
-"values": [  ]
-},
-"name": "task5",
-"type": 1
-} ],
-"data": {
-"offset": Vector2( -260, 520 ),
-"size": Vector2( 92, 43 )
-},
-"name": "inverter",
-"type": 14
-}, {
-"child": [  ],
-"data": {
-"fn": "task_startgameplayer",
-"offset": Vector2( -140, 600 ),
-"params": [  ],
-"size": Vector2( 258, 85 ),
-"values": [  ]
-},
-"name": "task6",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_passBall",
-"offset": Vector2( -120, 720 ),
-"params": [  ],
-"size": Vector2( 258, 85 ),
-"values": [  ]
-},
-"name": "task7",
-"type": 1
-} ],
-"data": {
-"count": 3,
-"offset": Vector2( -360, 660 ),
-"size": Vector2( 106, 101.75 )
-},
-"name": "sequence3",
-"type": 2
-}, {
-"child": [ {
 "child": [  ],
 "data": {
 "fn": "task_matchstart",
@@ -460,6 +410,56 @@ tree = {
 },
 "name": "task",
 "type": 1
+}, {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -80, 500 ),
+"params": [  ],
+"size": Vector2( 277, 85 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+} ],
+"data": {
+"offset": Vector2( -260, 520 ),
+"size": Vector2( 92, 43 )
+},
+"name": "inverter",
+"type": 14
+}, {
+"child": [  ],
+"data": {
+"fn": "task_startgameplayer",
+"offset": Vector2( -140, 600 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task6",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_passBall",
+"offset": Vector2( -120, 720 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task7",
+"type": 1
+} ],
+"data": {
+"count": 3,
+"offset": Vector2( -360, 660 ),
+"size": Vector2( 106, 101.75 )
+},
+"name": "sequence3",
+"type": 2
 } ],
 "root": {
 "child": [ {
