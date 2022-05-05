@@ -21,6 +21,10 @@ var teamPositionsAway = Array()
 var ClosestToBall
 var ClosestPlayer
 
+var hometeampossesion: bool
+var awayteampossesion: bool
+
+var playerwithball
 #............................................................................
 
 func _ready():
@@ -28,14 +32,16 @@ func _ready():
 	
 
 func _process(_delta):
-	GetClosesttoBall()
-	GetClosestPlayer()
+	if HomeTeam.size() != 0:
+		GetClosesttoBall()
+		GetClosestPlayer()
+#	teamPossession()
 	pass
 
 #...........................................
 
-var HomeTeam
-var OppositionTeam
+var HomeTeam: Array
+var AwayTeam: Array
 
 var ballPos
 
@@ -49,7 +55,7 @@ func CreatePlayers(pitch):
 	var playerArray = Array()
 	fieldPlayers.resize(TeamNum)
 	#This creates the pitchs for the loading
-	for x in range(fieldPlayers.size()):
+	for _x in range(fieldPlayers.size()):
 		var Player = Player_resource.instance()
 		playerArray.append(Player)
 	
@@ -66,16 +72,20 @@ func CreatePlayers(pitch):
 # this function creates the pitchs for the heam team
 func Home(pitch,playerArray):
 	for x in range(TeamNum):
-		playerArray[x].global_position = teamPositionsHome[x]
 		var append = playerArray[x]
+		Playerbase.setHomePlayers(playerArray)
+		Playerbase.setHomepositions(playerArray)
+		Playerbase.setkickoff()
 		pitch.add_child(append)
 
 # this function creates the pitchs for the opposition team
 func OtherSide(pitch,playerArray):
 	for x in range(TeamNum):
-		playerArray[x].global_position = teamPositionsAway[x]
 		var append = playerArray[x]
+		Playerbase.setAwayPlayers(playerArray)
+		Playerbase.setAwaypositions(playerArray)
 		pitch.add_child(append)
+	
 	
 	pass
 
@@ -89,12 +99,20 @@ func GetClosesttoBall():
 func GetClosestPlayer():
 	ClosestPlayer = HomeTeam[0]
 	for x in HomeTeam:
-			if x.global_position.distance_to(ClosestToBall.global_position) < ClosestPlayer.global_position.distance_to(ClosestToBall.global_position):
-				if x.global_position.distance_to(ClosestToBall.global_position) > 1:
-					ClosestPlayer = x
+		if x.global_position.distance_to(ClosestToBall.global_position) < ClosestPlayer.global_position.distance_to(ClosestToBall.global_position):
+			if x.global_position.distance_to(ClosestToBall.global_position) > 1:
+				ClosestPlayer = x
 
-
-
+func teamPossession():
+	for player in HomeTeam:
+		if player.withBall():
+			hometeampossesion = true
+			playerwithball = player
+	for player in AwayTeam:
+		if player.withBall():
+			awayteampossesion = true
+			playerwithball = player
+	pass
 
 
 

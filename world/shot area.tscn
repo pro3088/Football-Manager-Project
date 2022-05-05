@@ -3,4 +3,3 @@
 [node name="shot area" type="Area2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 180.044, 298.814 )

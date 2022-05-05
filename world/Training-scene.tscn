@@ -1,0 +1,111 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://world/pitch-scene.tscn" type="PackedScene" id=1]
+[ext_resource path="res://world/training ui.gd" type="Script" id=2]
+[ext_resource path="res://general scripts/training.gd" type="Script" id=3]
+
+[node name="training - scene" type="Node2D"]
+position = Vector2( -1, 0 )
+script = ExtResource( 3 )
+
+[node name="pitch-scene" parent="." instance=ExtResource( 1 )]
+position = Vector2( 58, 40 )
+
+[node name="HomeTeam" type="Node2D" parent="."]
+
+[node name="AwayTeam" type="Node2D" parent="."]
+
+[node name="training ui" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="training ui"]
+margin_right = 187.0
+margin_bottom = 98.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="training ui/VBoxContainer"]
+margin_right = 187.0
+margin_bottom = 14.0
+text = "BALL POS"
+align = 1
+autowrap = true
+uppercase = true
+
+[node name="ball pos" type="HSlider" parent="training ui/VBoxContainer"]
+margin_top = 18.0
+margin_right = 187.0
+margin_bottom = 34.0
+min_value = -300.0
+max_value = 300.0
+
+[node name="Label2" type="Label" parent="training ui/VBoxContainer"]
+margin_top = 38.0
+margin_right = 187.0
+margin_bottom = 52.0
+text = "pressure BIAS"
+align = 1
+autowrap = true
+uppercase = true
+
+[node name="pressure bias" type="HSlider" parent="training ui/VBoxContainer"]
+margin_top = 56.0
+margin_right = 187.0
+margin_bottom = 72.0
+max_value = 1.0
+step = 0.1
+
+[node name="Label3" type="Label" parent="training ui/VBoxContainer"]
+margin_top = 76.0
+margin_right = 187.0
+margin_bottom = 90.0
+text = "dEFENSE BIAS"
+align = 1
+autowrap = true
+uppercase = true
+
+[node name="defense bias" type="HSlider" parent="training ui/VBoxContainer"]
+margin_top = 94.0
+margin_right = 187.0
+margin_bottom = 110.0
+max_value = 1.0
+step = 0.1
+
+[node name="Label4" type="Label" parent="training ui/VBoxContainer"]
+margin_top = 114.0
+margin_right = 187.0
+margin_bottom = 128.0
+text = "defensive line"
+align = 1
+autowrap = true
+uppercase = true
+
+[node name="defensive line" type="HSlider" parent="training ui/VBoxContainer"]
+margin_top = 132.0
+margin_right = 187.0
+margin_bottom = 148.0
+max_value = 1.0
+step = 0.1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="training ui"]
+margin_left = 202.0
+margin_right = 401.0
+margin_bottom = 34.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="training ui/VBoxContainer2"]
+margin_right = 199.0
+margin_bottom = 14.0
+text = "v ball pos"
+align = 1
+uppercase = true
+
+[node name="Vball pos" type="HSlider" parent="training ui/VBoxContainer2"]
+margin_top = 18.0
+margin_right = 199.0
+margin_bottom = 34.0
+min_value = -115.0
+max_value = 114.0

@@ -39,21 +39,42 @@ _global_script_class_icons={
 [application]
 
 config/name="project-FM"
-run/main_scene="res://world/Pitch.tscn"
+run/main_scene="res://world/Match-scene.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Team="*res://general scripts/Team.gd"
 Database="*res://general scripts/Database.gd"
+BTDebugServer="*res://addons/btree/script/bt_debug_server.gd"
+MatchPlay="*res://general scripts/matchPlay.gd"
+Playerbase="*res://general scripts/Playerbase.gd"
+WorldSpace="*res://general scripts/worldSpace.gd"
+Tactics="*res://general scripts/Tactics.gd"
 PluginSettings="*res://addons/github-integration/scripts/PluginSettings.gd"
 IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
 UserData="*res://addons/github-integration/scripts/user_data.gd"
 RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
 
+[display]
+
+window/size/width=926
+window/size/height=428
+
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/github-integration/plugin.cfg", "res://addons/godot-sqlite/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/btree/plugin.cfg", "res://addons/github-integration/plugin.cfg", "res://addons/godot-sqlite/plugin.cfg" )
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="world"
+2d_physics/layer_3="ball"
+
+[network]
+
+limits/websocket_server/max_in_buffer_kb=4096
+limits/websocket_server/max_out_buffer_kb=4096
 
 [rendering]
 

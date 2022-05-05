@@ -3,31 +3,24 @@ extends Node
 const sqlite = preload("res://addons/godot-sqlite/bin/gdsqlite.gdns")
 var db
 var db_name = "res://DataStore/fm_db"
-# Called when the node enters the scene tree for the first time.
+ #Called when the node enters the scene tree for the first time.
+
+var playerinfoarray:Array
+
 func _ready():
-	db = sqlite.new()
-	db.path = db_name
-	db.foreign_keys = true
-	getplayers(1)
 	pass
 
-func commitDatatoDb():
-	db.open_db()
-	var tableName = "Player"
-	var dict : Dictionary = Dictionary()
-	
-	
-func readfromdb():
-	db.open_db()
-	
-	
-func getplayers(id:int):
+func getplayersinfo(id:int):
+	var dict: Dictionary
+	db.query("SELECT Players.name, Players.age, Players.attack, Players.defence, Players.cross, Players.pass, Players.curve, Players.physique, Players.form, Role.name as role, Country.name as country FROM Players LEFT JOIN Role on Players.roleid = role.id JOIN Country on Players.countryid = Country.id WHERE Players.id = "+ str(id))
+	for x in db.query_result:
+		dict = x
+	return dict
+
+func arrayforplayers(number):
 	db = sqlite.new()
+	db.path = db_name
 	db.open_db()
-	var selectarray: Array = db.select_rows("Player",["*"])
-	print (selectarray)
-	pass
-	
-	
-	
-	
+	for x in range(number+1):
+		playerinfoarray.append(getplayersinfo(x))
+	db.close_db()
