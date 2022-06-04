@@ -10,6 +10,10 @@ func _ready():
 	homepositions()
 	awaypositions()
 	
+	var field_measure = $"field-size"
+	var fieldExtents = field_measure.shape.extents
+	var fieldPosition = field_measure.position
+	
 	WorldSpace.homegoalposition = $Outfieldpositions/Homegoalpost.global_position
 	WorldSpace.awaygoalposition = $Outfieldpositions/Awaygoalpost.global_position
 	
@@ -20,6 +24,8 @@ func _ready():
 	
 	Playerbase.homePlayerPositions = homepositiondictionary
 	Playerbase.awayPlayerPositions = awaypositiondictionary
+	
+	grid(fieldExtents,fieldPosition)
 	pass # Replace with function body.
 
 func homepositions():
@@ -55,7 +61,7 @@ func awaypositions():
 var hometeampossession = Team.hometeampossesion
 var awayteampossession = Team.awayteampossesion
 
-func _process(delta):
+func _process(_delta):
 	if hometeampossession:
 		$"home-match-pos".global_position = Vector2(214,0)
 		homepositions()
@@ -70,7 +76,12 @@ func _process(delta):
 	
 	pass
 
-
+func grid(fieldExtents,fieldPosition):
+	$"Path Grid".grid(fieldExtents,fieldPosition,self.position)
+	for x in $"Path Grid".gridArray:
+		var rect = preload("res://player/Color Grid.tscn").instance()
+		self.add_child(rect)
+		rect.global_transform.origin = x
 
 
 

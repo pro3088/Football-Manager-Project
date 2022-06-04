@@ -3,12 +3,8 @@ extends Node
 const sqlite = preload("res://addons/godot-sqlite/bin/gdsqlite.gdns")
 var db
 var db_name = "res://DataStore/fm_db"
- #Called when the node enters the scene tree for the first time.
 
 var playerinfoarray:Array
-
-func _ready():
-	pass
 
 func getplayersinfo(id:int):
 	var dict: Dictionary

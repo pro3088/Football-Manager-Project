@@ -3,24 +3,6 @@ extends Node
 var homePlayerPositions: Dictionary
 var awayPlayerPositions: Dictionary
 
-var homekickoff: bool
-var awaykickoff: bool
-
-var Kickoffplayer
-
-var array:Array
-
-var playerposition : Vector2 
-
-var playerdistance = 50
-
-var CB: int = 0
-var CDM: int = 0
-var CMF: int = 0
-var AMF: int = 0
-var SS: int = 0
-var CF: int = 0
-
 var hplayersCBArray:Array
 var hplayersCDMArray:Array
 var hplayersCMFArray:Array
@@ -35,6 +17,16 @@ var aplayersAMFArray:Array
 var aplayersSSArray:Array
 var aplayersCFArray:Array
 
+var homekickoff: bool
+var awaykickoff: bool
+
+var CB: int = 0
+var CDM: int = 0
+var CMF: int = 0
+var AMF: int = 0
+var SS: int = 0
+var CF: int = 0
+
 var awayCB: int = 0
 var awayCDM: int = 0
 var awayCMF: int = 0
@@ -46,6 +38,15 @@ var hCBposition
 var hCDMposition
 var aCBposition
 var aCDMposition
+
+var playerposition : Vector2 
+
+var playerdistance = 50
+
+var Kickoffplayer
+
+var array:Array
+
 
 func setHomePlayers(playerarray):
 	hCBposition = homePlayerPositions["CB"]
@@ -403,8 +404,6 @@ func getawayplayernum(playerarray):
 				awayCF += 1
 				aplayersSSArray.append(x)
 
-
-
 func setkickoff():
 	var training = WorldSpace.training
 	if !MatchPlay.matchstart and hplayersCFArray.size() > 0 and !training:
@@ -415,7 +414,7 @@ func setkickoff():
 		Kickoffplayer = hplayersSSArray[0]
 		pass
 	pass
-	
+
 func restartplay():
 	var training = WorldSpace.training
 	if MatchPlay.restarthomeplay and hplayersCFArray.size() > 0 and !training:

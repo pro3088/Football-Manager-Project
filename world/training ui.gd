@@ -8,6 +8,7 @@ var vballpos
 
 var defensiveline
 
+var ballResource = WorldSpace.ballResource
 
 func _physics_process(_delta):
 	hballpos = $"VBoxContainer/ball pos".get_value()

@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/football pitch.png" type="Texture" id=1]
 [ext_resource path="res://world/priority-shot-area.tscn" type="PackedScene" id=2]
 [ext_resource path="res://general scripts/world/pitch-scene.gd" type="Script" id=3]
 [ext_resource path="res://general scripts/world/throw-area.gd" type="Script" id=4]
 [ext_resource path="res://general scripts/world/goal-kick-area.gd" type="Script" id=5]
+[ext_resource path="res://player/Path Grid.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10.3482, 32.3222 )
@@ -17,6 +18,9 @@ extents = Vector2( 381.272, 17.3808 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 13.097, 61.9803 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 323.52, 151.929 )
 
 [node name="pitch-scene" type="Node2D"]
 script = ExtResource( 3 )
@@ -239,8 +243,18 @@ position = Vector2( 396.179, 177.484 )
 [node name="Homegoalpost" type="Position2D" parent="Outfieldpositions"]
 position = Vector2( 40.179, 188.484 )
 
+[node name="GridStartPos" type="Position2D" parent="Outfieldpositions"]
+position = Vector2( 57, 38 )
+
 [node name="Awaygoalpost" type="Position2D" parent="Outfieldpositions"]
 position = Vector2( 717.179, 188.484 )
+
+[node name="field-size" type="CollisionShape2D" parent="."]
+modulate = Color( 0.0705882, 0.364706, 0.945098, 1 )
+position = Vector2( 380.207, 189.446 )
+shape = SubResource( 5 )
+
+[node name="Path Grid" parent="." instance=ExtResource( 6 )]
 
 [connection signal="body_entered" from="throw-area" to="throw-area" method="_on_throwarea_body_entered"]
 [connection signal="body_exited" from="throw-area" to="throw-area" method="_on_throwarea_body_exited"]

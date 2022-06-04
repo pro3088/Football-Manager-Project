@@ -3,7 +3,6 @@
 [ext_resource path="res://Assets/FOOTBALL_BALL SPRITE.png" type="Texture" id=1]
 [ext_resource path="res://general scripts/world/Ball.gd" type="Script" id=2]
 
-
 [sub_resource type="CircleShape2D" id=1]
 radius = 5.43952
 
@@ -11,6 +10,8 @@ radius = 5.43952
 radius = 5.29604
 
 [node name="Ball" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 3
 gravity_scale = 0.0
 script = ExtResource( 2 )
 
@@ -21,6 +22,8 @@ texture = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="CollisionShape2D"]
+collision_layer = 4
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/Area2D"]
 shape = SubResource( 2 )

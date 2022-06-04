@@ -7,57 +7,40 @@ var ballResource = WorldSpace.ballResource
 var forwardplayers = ["CF","LWF","RWF","AMF"]
 
 func task_passBall(task):
-	var rand_position
+	var passTarget
 	if !MatchPlay.matchstart:
 		if get_parent().homeside:
-			rand_position = Team.HomeTeam[randi() % Team.HomeTeam.size()]
+			for x in Team.HomeTeam:
+				if x.role == 'SS':
+					passTarget = x
+				elif x.role == 'AMF':
+					passTarget = x
+				elif x.role == 'CMF':
+					passTarget = x
 		elif get_parent().awayside:
-			rand_position = Team.AwayTeam[randi() % Team.AwayTeam.size()]
-		ballResource.passball(rand_position.global_position,50 * get_process_delta_time())
-#		MatchPlay.matchstart = true
-#		WorldSpace.ballposition = rand_position.global_position
-#		WorldSpace.ballforce = 50 * get_physics_process_delta_time()
-#		MatchPlay.matchstart = true
-	task.succeed()
-	
+			for x in Team.AwayTeam:
+				if x.role == 'SS':
+					passTarget = x.global_position
+				elif x.role == 'AMF':
+					passTarget = x.global_position
+				elif x.role == 'CMF':
+					passTarget = x.global_position
+		get_parent().ballpassed(get_parent(),passTarget)
+		ballResource.passball(passTarget.global_position, 3 * get_process_delta_time())
+		MatchPlay.matchstart = true
+		task.succeed()
+	elif MatchPlay.matchstart:
+		pass
 	pass
 
 func task_shootBall(task):
 	pass
 
-func task_returnToHome(task):
-	var position 
-	var homeplayerbase = Playerbase.homePlayerPositions
-	var awayplayerbase = Playerbase.awayPlayerPositions
-	if get_parent().role == "CF":
-		if Team.team == Team.TeamSide.HomeSide:
-			position = homeplayerbase["CF"]
-		elif Team.team == Team.TeamSide.OtherSide:
-			position = awayplayerbase["CF"]
-	if get_parent().role == "AMF":
-		if Team.team == Team.TeamSide.HomeSide:
-			position = homeplayerbase["AMF"]
-		elif Team.team == Team.TeamSide.OtherSide:
-			position = awayplayerbase["AMF"]
-	if get_parent().role == "RWF":
-		if Team.team == Team.TeamSide.HomeSide:
-			position = homeplayerbase["RWF"]
-		elif Team.team == Team.TeamSide.OtherSide:
-			position = awayplayerbase["RWF"]
-	if get_parent().role == "LWF":
-		if Team.team == Team.TeamSide.HomeSide:
-			position = homeplayerbase["LWF"]
-		elif Team.team == Team.TeamSide.OtherSide:
-			position = awayplayerbase["LWF"]
-#	ballscript.moveball(position,30)
-#	if get_parent().global_position == position:
-#		task.succeed()
-	pass
-
 
 func task_withBall(task):
-	if get_parent().withBall():
+	if get_parent().withBall():                            
 		task.succeed()
+		print("with ball")
 	else:
 		task.failed()
 
@@ -82,13 +65,18 @@ func task_matchstart(task):
 	else:
 		task.failed()
 
-func task_detectopponent(task):
-	if playerscript.Detectplayer():
+#func task_detectopponent(task):
+#	if playerscript.Detectplayer():
+#		task.succeed()
+#	else:
+#		task.failed()
+#	pass
+
+func task_training(task):
+	if WorldSpace.training:
 		task.succeed()
 	else:
 		task.failed()
-	pass
-
 
 func task_forwardplayer(task):
 	for x in forwardplayers:
@@ -97,28 +85,6 @@ func task_forwardplayer(task):
 		else:
 			task.failed()
 
-
-func task_detectboundforward(task):
-	if playerscript.sidelineforward:
-		task.succeed()
-	else:
-		task.failed()
-	pass
-
-func task_detectboundleft(task):
-	if playerscript.sidelineleft:
-		task.succeed()
-	else:
-		task.failed()
-	pass
-
-func task_detectboundright(task):
-	if playerscript.sidelineright:
-		task.succeed()
-	else:
-		task.failed()
-	pass
-
 func task_startgameplayer(task):
 	if get_parent() == Playerbase.Kickoffplayer:
 		task.succeed()
@@ -126,18 +92,14 @@ func task_startgameplayer(task):
 		task.failed()
 	pass
 
-func task_Sprinttogoal(task):
-	if get_parent().homeside:
-#		get_parent().move_along_path()
+func task_moveball(task):
+	if get_parent().homeside: 
+		if get_parent().ballholder:
+			ballResource.pushball(get_parent().position + Vector2(100,0), 3 * get_process_delta_time() )
+			print("working...............")
 		pass
 	pass
 
-func task_withball(task):
-	if get_parent().withBall():
-		task.succeed()
-	else:
-		task.failed()
-	pass
 
 func task_moveToPosition(_task):
 	if get_parent().homeside:

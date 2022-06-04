@@ -14,6 +14,11 @@ var training:bool = true
 var ballposition setget setposition, getposition
 var ballforce setget setforce, getforce
 
+var fieldExtents
+var fieldPosition
+
+var grid
+
 func setposition(position):
 	ballposition = position
 

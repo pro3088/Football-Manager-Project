@@ -1,23 +1,18 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/player sprite.png" type="Texture" id=1]
 [ext_resource path="res://player/player.gd" type="Script" id=2]
 [ext_resource path="res://player/Ballholder.gd" type="Script" id=3]
 [ext_resource path="res://player/ai/AI-forward.tscn" type="PackedScene" id=5]
-[ext_resource path="res://player/Detectplayer.gd" type="Script" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 7.15517
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 2.7316
+radius = 4.27875
 
-[sub_resource type="CircleShape2D" id=3]
-radius = 60.0
-
-[node name="player" type="KinematicBody2D" groups=[
-"players",
-]]
+[node name="player" type="KinematicBody2D" groups=["players"]]
+collision_mask = 7
 script = ExtResource( 2 )
 
 [node name="FOOTBALL_PLAYER SPRITE" type="Sprite" parent="."]
@@ -29,29 +24,15 @@ position = Vector2( -5.52806, -0.23597 )
 shape = SubResource( 1 )
 
 [node name="Ballholder" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ballholder"]
-position = Vector2( 10.7769, -0.13861 )
+position = Vector2( 9.7769, -0.13861 )
 shape = SubResource( 2 )
-
-[node name="Detectplayer" type="Area2D" parent="."]
-collision_layer = 0
-script = ExtResource( 6 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Detectplayer"]
-position = Vector2( 34, 0 )
-shape = SubResource( 3 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="AI-forward" parent="." instance=ExtResource( 5 )]
 
 [connection signal="body_entered" from="Ballholder" to="Ballholder" method="_on_Ballholder_body_entered"]
 [connection signal="body_exited" from="Ballholder" to="Ballholder" method="_on_Ballholder_body_exited"]
-[connection signal="body_entered" from="Detectplayer" to="Detectplayer" method="_on_Detectplayer_body_entered"]
-[connection signal="body_exited" from="Detectplayer" to="Detectplayer" method="_on_Detectplayer_body_exited"]

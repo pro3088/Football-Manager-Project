@@ -5,31 +5,26 @@ extends Node
 
 enum TeamSide {
 	HomeSide
-	OtherSide
+	AwaySide
 }
-
-var team 
-
-var TeamNum = 11
-var TotalPlayers = TeamNum * 2
 
 var fieldPlayers = Array();
 
 var teamPositionsHome = Array()
 var teamPositionsAway = Array()
 
-var ClosestToBall
-var ClosestPlayer
-
 var hometeampossesion: bool
 var awayteampossesion: bool
 
-var playerwithball
-#............................................................................
+var TeamNum = 11
+var TotalPlayers = TeamNum * 2
 
-func _ready():
-	pass
-	
+var ClosestToBall
+var ClosestPlayer
+
+var playerwithball
+
+var team 
 
 func _process(_delta):
 	if HomeTeam.size() != 0:
@@ -63,8 +58,8 @@ func CreatePlayers(pitch):
 	match team :
 		TeamSide.HomeSide:
 			Home(pitch,playerArray)
-		TeamSide.OtherSide:
-			OtherSide(pitch,playerArray)
+		TeamSide.AwaySide:
+			Away(pitch,playerArray)
 	
 	pass
 
@@ -78,15 +73,13 @@ func Home(pitch,playerArray):
 		Playerbase.setkickoff()
 		pitch.add_child(append)
 
-# this function creates the pitchs for the opposition team
-func OtherSide(pitch,playerArray):
+
+func Away(pitch,playerArray):
 	for x in range(TeamNum):
 		var append = playerArray[x]
 		Playerbase.setAwayPlayers(playerArray)
 		Playerbase.setAwaypositions(playerArray)
 		pitch.add_child(append)
-	
-	
 	pass
 
 func GetClosesttoBall():
