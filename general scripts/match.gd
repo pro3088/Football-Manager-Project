@@ -11,6 +11,8 @@ var team2 = Team.TeamSide.AwaySide
 var HomeTeamArray = Array()
 var AwayTeamArray = Array()
 
+var allPlayerArray:Array
+
 var HomeTeampos = Array()
 var OppositionTeampos = Array()
 
@@ -25,12 +27,15 @@ func _ready():
 	
 	HomeTeam()
 	AwayTeam()
+	allPlayers()
+	
 	Team.HomeTeam = HomeTeamArray
 	Team.AwayTeam = AwayTeamArray
 	Team.ballPos = Ball.global_position
 	
 	Team.HomeTeam = HomeTeamArray
 	Team.AwayTeam = AwayTeamArray
+	Team.allPlayers = allPlayerArray
 
 func _process(_delta):
 	Team.ballPos = Ball.global_position
@@ -50,5 +55,10 @@ func AwayTeam():
 	var child = awayTeam.get_children()
 	AwayTeamArray = child
 
+func allPlayers():
+	for a in HomeTeamArray:
+		allPlayerArray.append(a)
+	for b in AwayTeamArray:
+		allPlayerArray.append(b)
 
 

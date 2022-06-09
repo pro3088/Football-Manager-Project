@@ -78,10 +78,17 @@ func _process(_delta):
 
 func grid(fieldExtents,fieldPosition):
 	$"Path Grid".grid(fieldExtents,fieldPosition,self.position)
+	var grid = $"Path Grid".gridArray 
 	for x in $"Path Grid".gridArray:
 		var rect = preload("res://player/Color Grid.tscn").instance()
 		self.add_child(rect)
 		rect.global_transform.origin = x
+	$"Path Grid".sortedGrid(grid)
+	var pathgrid = $"Path Grid".pathArray
+	Astar.grid = pathgrid
+	$"Path Grid".normGrid()
+	Astar.normGrid = $"Path Grid".normArray
+	
 
 
 

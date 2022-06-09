@@ -2,8 +2,11 @@ extends RigidBody2D
 
 var player
 
+var training:bool = false
+
 func _process(delta):
-	self.global_position = WorldSpace.ballposition
+	if training:
+		self.global_position = WorldSpace.ballposition
 	pass
 
 func pushball(position: Vector2 = self.global_position , force:float = 0.0, left:bool = false,right:bool = false,  up:bool = false, sprint:bool = false): 

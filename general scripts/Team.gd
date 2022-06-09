@@ -38,6 +38,8 @@ func _process(_delta):
 var HomeTeam: Array
 var AwayTeam: Array
 
+var allPlayers: Array
+
 var ballPos
 
 var HomeBase
