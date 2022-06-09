@@ -1,28 +1,5 @@
 extends KinematicBody2D
 
-var velocity = Vector2.ZERO
-
-var teampossesion: bool
-
-var ballResource = WorldSpace.ballResource
-
-#movement variables
-var running:bool
-var sprint:bool
-
-var sprintRight:bool
-var sprintLeft:bool
-
-var moveBackLeft:bool
-var moveBackRight:bool
-var moveBack:bool
-
-var ballholder:bool = true
-#..............................
-
-
-var homeposition # original starting player position
-
 enum playerroles{
 	GK
 	CB
@@ -39,9 +16,8 @@ enum playerroles{
 	CF
 }
 
-
-##Stats for the player
-export(int) var speed = 20
+#PLayer Stats
+export(int) var speed = 100
 export(String) var Name
 export(String) var country
 export(int) var age
@@ -58,7 +34,7 @@ export(int) var minSpeed
 export(int) var physique
 export(int) var form
 export(int) var stamina
-##...............................
+#...............................
 
 #team instruction familiarity
 var counterattack: int = 1 # player tendency to progress play faster
@@ -85,26 +61,41 @@ var aCBpos
 var aCDMpos
 #..................................
 
-
-var team 
-
+# sideline boolean
 var leftsideline
 var rightsideline
 var forwardsideline
+#..............................
+
+#movement variables
+var running:bool
+var sprint:bool
+#..............................
 
 var player = self
+
+var ballResource = WorldSpace.ballResource
+
+var velocity = Vector2.ZERO
+
+var homeposition # original starting player position
+var ballpos
+
+var ballholder:bool = true
+
+var teampossesion: bool
 
 var homeside:bool
 var awayside:bool
 
-var ballpos
+var team 
 
 
 func _ready():
 	if Team.team == Team.TeamSide.HomeSide:
 		$"FOOTBALL_PLAYER SPRITE".modulate = Color(0, 0, 1)
 		homeside = true
-	elif Team.team == Team.TeamSide.OtherSide:
+	elif Team.team == Team.TeamSide.AwaySide:
 		$"FOOTBALL_PLAYER SPRITE".modulate = Color(1, 0, 0)
 		awayside = false
 	hCBpos = Playerbase.hCBposition
@@ -113,28 +104,17 @@ func _ready():
 	aCDMpos = Playerbase.aCDMposition
 	
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	Playerbase.playerposition = self.global_position
 	pressureBias = Tactics.pressurebias
 	defenseBias = Tactics.defensebias
 	ballpos = Team.ballPos
 	LookAtBall()
 	playerteam()
-#	trapball()
 	velocity = move_and_slide(velocity)
 
 #..........................................................................
 
-
-
-func cal_move():
-	if self == Team.ClosestToBall:
-		var direction = ballpos
-		var self_pos = self.global_position
-		var dir = direction - self_pos 
-		velocity = dir * speed * get_process_delta_time()
-	else:
-		velocity = Vector2.ZERO
 
 func move(position):
 	if position != null:
@@ -152,20 +132,11 @@ func withBall():
 		yield(get_tree().create_timer(0.4), "time_out")
 		if Team.team == Team.TeamSide.HomeSide:
 			Team.hometeampossesion = false
-		elif Team.team == Team.TeamSide.OtherSide:
+		elif Team.team == Team.TeamSide.AwaySide:
 			Team.awayteampossesion = false
-		return false
-	elif !ballholder:
 		return false
 	return false
 
-func trapball():
-	var trapball
-	if $Ballholder.ball:
-		if !trapball :
-			ballResource.trapball(self.position)
-	else:
-		trapball = false
 
 func LookAtBall():
 	self.look_at(ballpos)
@@ -179,23 +150,23 @@ func playerteam():
 		homeside = false
 		awayside = true
 
-func Detectplayer():
-	if $Detectplayer.player:
-		return true
-	return false
+#func Detectplayer():
+#	if $Detectplayer.player:
+#		return true
+#	return false
 
-func detectsideline():
-	if $"detect_left-sideline".sideline:
-		leftsideline = true
-	elif $"detect_right-sideline".sideline:
-		rightsideline = true
-	elif $"detect_forward-sideline".sideline:
-		forwardsideline = true
-	else:
-		forwardsideline = false
-		leftsideline = false
-		rightsideline = false
-		pass
+#func detectsideline():
+#	if $"detect_left-sideline".sideline:
+#		leftsideline = true
+#	elif $"detect_right-sideline".sideline:
+#		rightsideline = true
+#	elif $"detect_forward-sideline".sideline:
+#		forwardsideline = true
+#	else:
+#		forwardsideline = false
+#		leftsideline = false
+#		rightsideline = false
+#		pass
 
 func calculate_Move_Position():
 	# this function gives the formation location each player is required to move to 
@@ -207,7 +178,11 @@ func calculate_Move_Position():
 	var Maxballyup = 73
 	var Maxballydown = 302
 	
-	# pressure..................................................................
+	homeside_Cal(defenseLine,movetoposition,differentiator,Maxballx,Maxballyup,Maxballydown)
+
+	return movetoposition
+
+func homeside_Cal(defenseLine,movetoposition,differentiator,Maxballx,Maxballyup,Maxballydown):
 	if homeside:
 		# x-axis................................................................
 		if differentiator.x >= 10 :
@@ -289,9 +264,6 @@ func calculate_Move_Position():
 		elif role =="LWF":
 			if differentiator.y <= -10:
 				movetoposition.y = ((((mpUP.y - homeposition.y)/differentiator.y) * differentiator.y) * 0.3) + homeposition.y
-		
-	#away side
-	return movetoposition
 
 func ballpassed(passer,object):
 	if self == passer:
@@ -301,8 +273,6 @@ func ballpassed(passer,object):
 		ballholder = true
 		pass
 	pass
-
-
 
 
 

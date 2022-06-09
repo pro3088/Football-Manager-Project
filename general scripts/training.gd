@@ -1,39 +1,18 @@
 extends Node2D
 
-##.........................................
+var team1 = Team.TeamSide.HomeSide
+var team2 = Team.TeamSide.AwaySide
 
-var Ball
+var HomeTeamArray = Array()
+var AwayTeamArray = Array()
 
-##..............................................
-
-##...........................................
-
-#To signify where the goal posts are and to signal when the
-#ball is in the net 
+var HomeTeampos = Array()
+var AwayTeampos = Array()
 
 var Othergoal = 0
 var Homegoal = 0
 
-var testTeamPosHome = Array()
-var testTeamposAway = Array()
-
-##...............................................
-
-##..............................................
-
-#To get the teams that are playing on the field and the side
-#they are playing on
-var team1 = Team.TeamSide.HomeSide
-var team2 = Team.TeamSide.OtherSide
-
-var HomeTeamArray = Array()
-var OppositionTeamArray = Array()
-
-
-var HomeTeampos = Array()
-var OppositionTeampos = Array()
-##...........................................
-
+var Ball
 
 func _ready():
 	# A position 2d to position the ball at the middle of the field
@@ -45,32 +24,16 @@ func _ready():
 	WorldSpace.training = true
 	
 	HomeTeam()
-	OppositionTeam()
+	AwayTeam()
 	Team.HomeTeam = HomeTeamArray
-	Team.AwayTeam = OppositionTeamArray
+	Team.AwayTeam = AwayTeamArray
 	Team.ballPos = Ball.global_position
 
 func _process(_delta):
-#	goal()
 	Team.ballPos = Ball.global_position
 	Team.HomeTeam = HomeTeamArray
-	Team.AwayTeam = OppositionTeamArray
-###.....................................
-#
-##To get the goal count
-#func goal():
-#	if Home_goal.ball:
-#		Othergoal +=1
-#		pass
-#		Ball.global_transform.origin = centerball
-#	elif Other_goal.ball:
-#		Homegoal +=1
-#		pass
-#		Ball.global_transform.origin = centerball
-#
-##.......................................
-#
-###......................................
+	Team.AwayTeam = AwayTeamArray
+
 
 # To create the players on the field
 func HomeTeam():
@@ -81,14 +44,12 @@ func HomeTeam():
 	HomeTeamArray = child
 	
 	
-
-
-func OppositionTeam():
+func AwayTeam():
 	Team.team = team2
 	var awayTeam  = $AwayTeam
 	Team.CreatePlayers(awayTeam)
 	var child = awayTeam.get_children()
-	OppositionTeamArray = child
+	AwayTeamArray = child
 
 ##.......................................
 

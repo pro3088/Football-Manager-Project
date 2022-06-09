@@ -267,7 +267,7 @@ tree = {
 "type": 2
 }
 },
-"label": "training ",
+"label": "",
 "offset": Vector2( -400, 780 ),
 "size": Vector2( 236, 80 )
 },
@@ -554,7 +554,7 @@ tree = {
 "type": 2
 }
 },
-"label": "training ",
+"label": "",
 "offset": Vector2( -400, 780 ),
 "size": Vector2( 236, 80 )
 },
@@ -875,7 +875,7 @@ tree = {
 "type": 2
 }
 },
-"label": "training ",
+"label": "",
 "offset": Vector2( -400, 780 ),
 "size": Vector2( 236, 80 )
 },
@@ -1136,7 +1136,7 @@ tree = {
 "type": 2
 }
 },
-"label": "training ",
+"label": "",
 "offset": Vector2( -400, 780 ),
 "size": Vector2( 236, 80 )
 },
@@ -1360,7 +1360,7 @@ tree = {
 "type": 2
 }
 },
-"label": "training ",
+"label": "",
 "offset": Vector2( -400, 780 ),
 "size": Vector2( 236, 80 )
 },

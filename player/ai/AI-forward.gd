@@ -40,6 +40,7 @@ func task_shootBall(task):
 func task_withBall(task):
 	if get_parent().withBall():                            
 		task.succeed()
+		print("with ball")
 	else:
 		task.failed()
 
@@ -64,12 +65,12 @@ func task_matchstart(task):
 	else:
 		task.failed()
 
-func task_detectopponent(task):
-	if playerscript.Detectplayer():
-		task.succeed()
-	else:
-		task.failed()
-	pass
+#func task_detectopponent(task):
+#	if playerscript.Detectplayer():
+#		task.succeed()
+#	else:
+#		task.failed()
+#	pass
 
 func task_training(task):
 	if WorldSpace.training:
@@ -99,13 +100,6 @@ func task_moveball(task):
 		pass
 	pass
 
-func task_withball(task):
-	if get_parent().withBall():
-		print("with balll")
-		task.succeed()
-	else:
-		task.failed()
-	pass
 
 func task_moveToPosition(_task):
 	if get_parent().homeside:
