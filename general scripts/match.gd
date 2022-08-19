@@ -40,7 +40,7 @@ func _ready():
 func _process(_delta):
 	Team.ballPos = Ball.global_position
 
-
+# Create Home players for the match play
 func HomeTeam():
 	Team.team = team1
 	var homeTeam = $HomeTeam
@@ -48,6 +48,7 @@ func HomeTeam():
 	var child = homeTeam.get_children()
 	HomeTeamArray = child
 
+# Create Away players for the match play
 func AwayTeam():
 	Team.team = team2
 	var awayTeam  = $AwayTeam
@@ -55,10 +56,12 @@ func AwayTeam():
 	var child = awayTeam.get_children()
 	AwayTeamArray = child
 
+# putting all players in a single array
 func allPlayers():
 	for a in HomeTeamArray:
 		allPlayerArray.append(a)
 	for b in AwayTeamArray:
 		allPlayerArray.append(b)
+	WorldSpace.allPlayerArray = allPlayerArray
 
 

@@ -2,24 +2,32 @@ extends Node2D
 
 
 var colNum = 25
-var rowNum = 11
+var rowNum = 20
 
+var nodeH
+var nodeW
+var nodeDiameter
+var gridSizeX 
+var gridSizeY
 
 var gridArray:Array
 var pathArray:Array
-var normArray:Array
+var normNode:Array
 
 func _ready():
 	pass
 
 
 func grid(fieldExtents,fieldPosition,addValue):
+	
+	Astar.rowNum = rowNum
+	Astar.colNum = colNum
+	
 	var startPosition = Vector2.ZERO
-	startPosition.x = (fieldPosition.x - fieldExtents.x) + addValue.x + 10
-	startPosition.y = (fieldPosition.y - fieldExtents.y) + addValue.y + 10
+	startPosition.x = (fieldPosition.x - fieldExtents.x) + addValue.x
+	startPosition.y = (fieldPosition.y - fieldExtents.y) + addValue.y
 	var spaceX = (fieldExtents.x * 2)/colNum
 	var spaceY = (fieldExtents.y * 2)/rowNum
-	
 	var newposition = startPosition
 	var position = newposition
 	for _i in range(0,colNum):
@@ -52,12 +60,13 @@ func sortedGrid(Tarray):
 					Tarray.remove(idx)
 		temparray = []
 
-func normGrid():
+func normNode():
 	var temparray:Array = []
+	var walkable:bool = false
 	for i in pathArray:
 		for a in i:
-			temparray.append(0)
-		normArray.append(temparray)
+			temparray.append(Astar.ArrayNode.new(walkable,a,a.x,a.y))
+		normNode.append(temparray)
 		temparray = []
 
 
