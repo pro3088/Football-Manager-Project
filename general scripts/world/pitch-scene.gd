@@ -28,6 +28,7 @@ func _ready():
 	grid(fieldExtents,fieldPosition)
 	pass # Replace with function body.
 
+#Get Home Player Positions and save to dictionary
 func homepositions():
 	homepositiondictionary["GK"] = $"home-match-pos/GK".global_transform.origin
 	homepositiondictionary["CB"] = $"home-match-pos/CB".global_transform.origin
@@ -43,6 +44,7 @@ func homepositions():
 	homepositiondictionary["RWF"] = $"home-match-pos/RWF".global_transform.origin
 	homepositiondictionary["kickoff"] = $Outfieldpositions/Homekickoffpos.global_transform.origin
 
+#Get Away Player Positions and save to dictionary
 func awaypositions():
 	awaypositiondictionary["GK"] = $"away-match-pos/GK".global_transform.origin
 	awaypositiondictionary["CB"] = $"away-match-pos/CB".global_transform.origin
@@ -73,27 +75,45 @@ func _process(_delta):
 		awaypositions()
 	else:
 		$"away-match-pos".global_position = Vector2.ZERO
+	var seeker = Astar.grid[5][11]
+	var target = $Outfieldpositions/Awaygoalpost.global_position
 	
-	pass
 
+
+#Initializing the grid positions and sending to Astar
 func grid(fieldExtents,fieldPosition):
 	$"Path Grid".grid(fieldExtents,fieldPosition,self.position)
 	var grid = $"Path Grid".gridArray 
-	for x in $"Path Grid".gridArray:
-		var rect = preload("res://player/Color Grid.tscn").instance()
-		self.add_child(rect)
-		rect.global_transform.origin = x
-	$"Path Grid".sortedGrid(grid)
 	var pathgrid = $"Path Grid".pathArray
-	Astar.grid = pathgrid
-	$"Path Grid".normGrid()
-	Astar.normGrid = $"Path Grid".normArray
+	var run = false
 	
+#	if !run:
+#		for x in $"Path Grid".gridArray:
+#			var rect = ColorRect.new()
+#			self.add_child(rect)
+#			rect.rect_global_position = x
+#			rect.rect_size.x = $"Path Grid".colNum
+#			rect.rect_size.y = $"Path Grid".rowNum
+#			run = true
+#			pass
 
-
-
-
-
+#	if !run:
+#		if Astar.pathGotten != null:
+#			for a in Astar.pathGotten:
+#				var x = a.worldposition
+#				var rect = ColorRect.new()
+#				self.add_child(rect)
+#				rect.rect_global_position = x
+#				rect.rect_size.x = $"Path Grid".colNum
+#				rect.rect_size.y = $"Path Grid".rowNum
+#				run = true
+#				pass
+	
+	$"Path Grid".sortedGrid(grid)
+	Astar.grid = pathgrid
+	$"Path Grid".normNode()
+	Astar.nodeGrid = $"Path Grid".normNode
+	
 
 
 

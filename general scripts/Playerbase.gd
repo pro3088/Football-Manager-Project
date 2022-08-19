@@ -1,4 +1,7 @@
-extends Node
+class_name Player
+
+extends KinematicBody2D
+
 
 var homePlayerPositions: Dictionary
 var awayPlayerPositions: Dictionary
@@ -47,7 +50,7 @@ var Kickoffplayer
 
 var array:Array
 
-
+#Giving Home Players their stats
 func setHomePlayers(playerarray):
 	hCBposition = homePlayerPositions["CB"]
 	hCDMposition =  homePlayerPositions["CDM"]

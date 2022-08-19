@@ -8,6 +8,15 @@
 position = Vector2( -1, 0 )
 script = ExtResource( 3 )
 
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+margin_right = 987.0
+margin_bottom = 429.0
+color = Color( 0.0784314, 0.32549, 0.0588235, 1 )
+
 [node name="pitch-scene" parent="." instance=ExtResource( 1 )]
 position = Vector2( 58, 40 )
 
@@ -92,9 +101,6 @@ step = 0.1
 margin_left = 202.0
 margin_right = 401.0
 margin_bottom = 34.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="training ui/VBoxContainer2"]
 margin_right = 199.0
@@ -108,4 +114,21 @@ margin_top = 18.0
 margin_right = 199.0
 margin_bottom = 34.0
 min_value = -115.0
-max_value = 114.0
+max_value = 115.0
+
+[node name="Label2" type="Label" parent="training ui/VBoxContainer2"]
+margin_top = 38.0
+margin_right = 199.0
+margin_bottom = 52.0
+text = "Touch line width"
+align = 1
+uppercase = true
+
+[node name="touchline-width" type="HSlider" parent="training ui/VBoxContainer2"]
+margin_top = 56.0
+margin_right = 199.0
+margin_bottom = 72.0
+min_value = 0.5
+max_value = 1.0
+step = 0.1
+value = 0.5
