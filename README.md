@@ -21,6 +21,10 @@ This project is a football manager game inspired by PES 2017 and Top Eleven. The
 
 ![FM_clone 3](https://user-images.githubusercontent.com/53413092/185654931-768cdde2-fe9a-4311-b6b5-1f57d050bbed.png)
 
+### Process
+
+To see my thought process, look through this article on medium -> https://rotimia.medium.com/my-process-on-making-a-football-manager-clone-93e05903a843
+
 ### Youtube Video
 
 https://youtu.be/QHi0OK6mLyc
