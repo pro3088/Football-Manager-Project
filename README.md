@@ -5,6 +5,10 @@
 
 This project is a football manager game inspired by PES 2017 and Top Eleven. The project is meant to feature the tactics put in place to make a football manager game. This article will feature Artificial intelligence techniques such as Behaviour trees and state machines. It will also feature data structures and algorithm including SQL basics. All these were implemented to the project’s current stage.
 
+### Class Diagram
+
+![Football Manager Class Diagram ](https://user-images.githubusercontent.com/53413092/189932003-d277cfec-d8dd-4fdf-8d73-eaae94975af2.png)
+
 ### Behaviour Tree
 
 ![FM_clone - bT](https://user-images.githubusercontent.com/53413092/185654892-f1060bd6-4dc5-44bd-938f-37da3f4d1508.png)
