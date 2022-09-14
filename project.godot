@@ -140,8 +140,12 @@ _global_script_class_icons={
 "HistoryRow": "",
 "InvitationItem": "",
 "Player": "",
+<<<<<<< HEAD
 "RepositoryItem": "",
 "Stats": ""
+=======
+"RepositoryItem": ""
+>>>>>>> cd3bdc3164f2d96797ac4f38e9add5d70e4475d3
 }
 
 [application]
@@ -160,7 +164,10 @@ Playerbase="*res://general scripts/Playerbase.gd"
 WorldSpace="*res://general scripts/worldSpace.gd"
 Tactics="*res://general scripts/Tactics.gd"
 Astar="*res://general scripts/A-star Path.gd"
+<<<<<<< HEAD
 PlayerStats="*res://player/Player Stats.gd"
+=======
+>>>>>>> cd3bdc3164f2d96797ac4f38e9add5d70e4475d3
 PluginSettings="*res://addons/github-integration/scripts/PluginSettings.gd"
 IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
 UserData="*res://addons/github-integration/scripts/user_data.gd"

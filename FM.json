@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [
 	{
 		"name": "sqlite_sequence",
@@ -352,4 +353,360 @@
 			}
 		]
 	}
+=======
+[
+	{
+		"name": "sqlite_sequence",
+		"sql": "CREATE TABLE sqlite_sequence(name,seq)",
+		"type": "table",
+		"row_array": [
+			{
+				"name": "Role",
+				"seq": 13
+			},
+			{
+				"name": "Country",
+				"seq": 2
+			},
+			{
+				"name": "Team",
+				"seq": 2
+			},
+			{
+				"name": "manager",
+				"seq": 2
+			},
+			{
+				"name": "Players",
+				"seq": 11
+			}
+		]
+	},
+	{
+		"name": "Role",
+		"sql": "CREATE TABLE \"Role\" (\n\t\"id\"\tINTEGER NOT NULL UNIQUE,\n\t\"name\"\tTEXT NOT NULL,\n\tPRIMARY KEY(\"id\" AUTOINCREMENT)\n)",
+		"type": "table",
+		"row_array": [
+			{
+				"id": 1,
+				"name": "GK"
+			},
+			{
+				"id": 2,
+				"name": "CB"
+			},
+			{
+				"id": 3,
+				"name": "LB"
+			},
+			{
+				"id": 4,
+				"name": "RB"
+			},
+			{
+				"id": 5,
+				"name": "CDM"
+			},
+			{
+				"id": 6,
+				"name": "CMF"
+			},
+			{
+				"id": 7,
+				"name": "LMF"
+			},
+			{
+				"id": 8,
+				"name": "RMF"
+			},
+			{
+				"id": 9,
+				"name": "AMF"
+			},
+			{
+				"id": 10,
+				"name": "LWF"
+			},
+			{
+				"id": 11,
+				"name": "RWF"
+			},
+			{
+				"id": 12,
+				"name": "SS"
+			},
+			{
+				"id": 13,
+				"name": "CF"
+			}
+		]
+	},
+	{
+		"name": "Country",
+		"sql": "CREATE TABLE \"Country\" (\n\t\"id\"\tINTEGER NOT NULL UNIQUE,\n\t\"name\"\tTEXT NOT NULL UNIQUE,\n\tPRIMARY KEY(\"id\" AUTOINCREMENT)\n)",
+		"type": "table",
+		"row_array": [
+			{
+				"id": 1,
+				"name": "America"
+			},
+			{
+				"id": 2,
+				"name": "Nigeria"
+			}
+		]
+	},
+	{
+		"name": "Tactics",
+		"sql": "CREATE TABLE \"Tactics\" (\n\t\"ID\"\tINTEGER NOT NULL UNIQUE,\n\t\"Club ID\"\tINTEGER NOT NULL UNIQUE,\n\tPRIMARY KEY(\"ID\" AUTOINCREMENT),\n\tFOREIGN KEY(\"Club ID\") REFERENCES \"Club\"(\"id\") ON DELETE SET NULL\n)",
+		"type": "table",
+		"row_array": [
+
+		]
+	},
+	{
+		"name": "Formation",
+		"sql": "CREATE TABLE \"Formation\" (\n\t\"id\"\tINTEGER NOT NULL,\n\t\"formation\"\tTEXT NOT NULL UNIQUE,\n\t\"gk\"\tINTEGER NOT NULL,\n\t\"cb\"\tINTEGER NOT NULL,\n\t\"lb\"\tINTEGER,\n\t\"rb\"\tINTEGER,\n\t\"cdm\"\tINTEGER,\n\t\"amf\"\tINTEGER,\n\t\"lmf\"\tINTEGER,\n\t\"rmf\"\tINTEGER,\n\t\"rwf\"\tINTEGER,\n\t\"lwf\"\tINTEGER,\n\t\"ss\"\tINTEGER,\n\t\"cf\"\tINTEGER,\n\tPRIMARY KEY(\"id\" AUTOINCREMENT)\n)",
+		"type": "table",
+		"row_array": [
+
+		]
+	},
+	{
+		"name": "Team",
+		"sql": "CREATE TABLE \"Team\" (\n\t\"id\"\tINTEGER NOT NULL UNIQUE,\n\t\"name\"\tTEXT NOT NULL UNIQUE,\n\t\"managerid\"\tINTEGER NOT NULL UNIQUE,\n\tPRIMARY KEY(\"id\" AUTOINCREMENT)\n)",
+		"type": "table",
+		"row_array": [
+			{
+				"id": 1,
+				"name": "ROTEX-FC",
+				"managerid": 1
+			},
+			{
+				"id": 2,
+				"name": "TOMI-FC",
+				"managerid": 2
+			}
+		]
+	},
+	{
+		"name": "manager",
+		"sql": "CREATE TABLE \"manager\" (\n\t\"id\"\tINTEGER NOT NULL,\n\t\"name\"\tTEXT NOT NULL,\n\t\"wins\"\tINTEGER,\n\t\"loses\"\tINTEGER,\n\t\"draws\"\tINTEGER,\n\t\"cups\"\tINTEGER,\n\t\"best formation\"\tTEXT,\n\tPRIMARY KEY(\"id\" AUTOINCREMENT)\n)",
+		"type": "table",
+		"row_array": [
+			{
+				"id": 1,
+				"name": "ROTIMI",
+				"wins": null,
+				"loses": null,
+				"draws": null,
+				"cups": null,
+				"best formation": null
+			},
+			{
+				"id": 2,
+				"name": "TOMI",
+				"wins": null,
+				"loses": null,
+				"draws": null,
+				"cups": null,
+				"best formation": null
+			}
+		]
+	},
+	{
+		"name": "Players",
+		"sql": "CREATE TABLE \"Players\" (\n\t\"id\"\tINTEGER NOT NULL UNIQUE,\n\t\"name\"\tTEXT NOT NULL,\n\t\"countryid\"\tINTEGER NOT NULL,\n\t\"age\"\tINTEGER NOT NULL,\n\t\"roleid\"\tINTEGER NOT NULL,\n\t\"attack\"\tINTEGER NOT NULL,\n\t\"defence\"\tINTEGER NOT NULL,\n\t\"pass\"\tINTEGER NOT NULL,\n\t\"cross\"\tINTEGER NOT NULL,\n\t\"curve\"\tINTEGER NOT NULL,\n\t\"physique\"\tINTEGER NOT NULL,\n\t\"form\"\tINTEGER NOT NULL,\n\t\"attackbias\"\tINTEGER NOT NULL,\n\t\"defensebias\"\tREAL NOT NULL,\n\t\"club\"\tINTEGER,\n\tFOREIGN KEY(\"countryid\") REFERENCES \"Country\"(\"id\") ON DELETE CASCADE,\n\tPRIMARY KEY(\"id\" AUTOINCREMENT)\n)",
+		"type": "table",
+		"row_array": [
+			{
+				"id": 1,
+				"name": "rotimi",
+				"countryid": 1,
+				"age": 27,
+				"roleid": 3,
+				"attack": 90,
+				"defence": 67,
+				"pass": 56,
+				"cross": 56,
+				"curve": 78,
+				"physique": 78,
+				"form": 76,
+				"attackbias": 0.5,
+				"defensebias": 0.5,
+				"club": 1
+			},
+			{
+				"id": 2,
+				"name": "moham",
+				"countryid": 2,
+				"age": 20,
+				"roleid": 2,
+				"attack": 45,
+				"defence": 59,
+				"pass": 67,
+				"cross": 89,
+				"curve": 78,
+				"physique": 87,
+				"form": 56,
+				"attackbias": 0.3,
+				"defensebias": 0.6,
+				"club": 1
+			},
+			{
+				"id": 3,
+				"name": "gad",
+				"countryid": 1,
+				"age": 23,
+				"roleid": 1,
+				"attack": 67,
+				"defence": 67,
+				"pass": 67,
+				"cross": 67,
+				"curve": 67,
+				"physique": 67,
+				"form": 67,
+				"attackbias": 0.4,
+				"defensebias": 0.7,
+				"club": 1
+			},
+			{
+				"id": 4,
+				"name": "amos",
+				"countryid": 1,
+				"age": 24,
+				"roleid": 4,
+				"attack": 67,
+				"defence": 67,
+				"pass": 67,
+				"cross": 67,
+				"curve": 67,
+				"physique": 67,
+				"form": 76,
+				"attackbias": 0.5,
+				"defensebias": 0.7,
+				"club": 1
+			},
+			{
+				"id": 5,
+				"name": "khalid",
+				"countryid": 2,
+				"age": 24,
+				"roleid": 2,
+				"attack": 67,
+				"defence": 76,
+				"pass": 67,
+				"cross": 67,
+				"curve": 67,
+				"physique": 67,
+				"form": 67,
+				"attackbias": 0.3,
+				"defensebias": 0.6,
+				"club": 1
+			},
+			{
+				"id": 6,
+				"name": "may",
+				"countryid": 2,
+				"age": 19,
+				"roleid": 13,
+				"attack": 67,
+				"defence": 67,
+				"pass": 67,
+				"cross": 67,
+				"curve": 67,
+				"physique": 67,
+				"form": 67,
+				"attackbias": 0.6,
+				"defensebias": 0.3,
+				"club": 1
+			},
+			{
+				"id": 7,
+				"name": "ray",
+				"countryid": 2,
+				"age": 25,
+				"roleid": 11,
+				"attack": 67,
+				"defence": 67,
+				"pass": 67,
+				"cross": 67,
+				"curve": 67,
+				"physique": 67,
+				"form": 67,
+				"attackbias": 0.7,
+				"defensebias": 0.4,
+				"club": 1
+			},
+			{
+				"id": 8,
+				"name": "kevwe",
+				"countryid": 2,
+				"age": 26,
+				"roleid": 10,
+				"attack": 67,
+				"defence": 67,
+				"pass": 67,
+				"cross": 67,
+				"curve": 67,
+				"physique": 67,
+				"form": 67,
+				"attackbias": 0.6,
+				"defensebias": 0.5,
+				"club": 1
+			},
+			{
+				"id": 9,
+				"name": "tobi",
+				"countryid": 1,
+				"age": 27,
+				"roleid": 6,
+				"attack": 67,
+				"defence": 67,
+				"pass": 67,
+				"cross": 67,
+				"curve": 67,
+				"physique": 67,
+				"form": 76,
+				"attackbias": 0.5,
+				"defensebias": 0.4,
+				"club": 1
+			},
+			{
+				"id": 10,
+				"name": "sim",
+				"countryid": 1,
+				"age": 28,
+				"roleid": 6,
+				"attack": 67,
+				"defence": 67,
+				"pass": 67,
+				"cross": 67,
+				"curve": 67,
+				"physique": 67,
+				"form": 67,
+				"attackbias": 0.5,
+				"defensebias": 0.3,
+				"club": 1
+			},
+			{
+				"id": 11,
+				"name": "tet",
+				"countryid": 2,
+				"age": 30,
+				"roleid": 5,
+				"attack": 67,
+				"defence": 67,
+				"pass": 67,
+				"cross": 67,
+				"curve": 67,
+				"physique": 67,
+				"form": 67,
+				"attackbias": 0.7,
+				"defensebias": 0.5,
+				"club": 1
+			}
+		]
+	}
+>>>>>>> cd3bdc3164f2d96797ac4f38e9add5d70e4475d3
 ]

@@ -51,6 +51,7 @@ var Kickoffplayer
 var array:Array
 
 #Giving Home Players their stats
+<<<<<<< HEAD
 #func setHomePlayers(playerarray):
 #	hCBposition = homePlayerPositions["CB"]
 #	hCDMposition =  homePlayerPositions["CDM"]
@@ -92,6 +93,49 @@ var array:Array
 #		x.physique = playerdata["physique"]
 #		x.country = playerdata["country"]
 #		no += 1
+=======
+func setHomePlayers(playerarray):
+	hCBposition = homePlayerPositions["CB"]
+	hCDMposition =  homePlayerPositions["CDM"]
+	var number = Team.TeamNum
+	var no = 1
+	var playerdata
+	Database.arrayforplayers(number)
+	for x in playerarray:
+		playerdata = Database.playerinfoarray[no]
+		x.role = playerdata["role"]
+		x.attackStat = playerdata["attack"]
+		x.Name = playerdata["name"]
+		x.crossStat = playerdata["cross"]
+		x.passStat = playerdata["pass"]
+		x.age = playerdata["age"]
+		x.defenceStat = playerdata["defence"]
+		x.form = playerdata["form"]
+		x.physique = playerdata["physique"]
+		x.country = playerdata["country"]
+		no += 1
+
+func setAwayPlayers(playerarray):
+	aCBposition = awayPlayerPositions["CB"]
+	aCDMposition = awayPlayerPositions["CDM"]
+	var number = Team.TeamNum
+	var no = 1
+	var playerdata
+	Database.arrayforplayers(number)
+	for x in playerarray:
+		playerdata = Database.playerinfoarray[no]
+		x.role = playerdata["role"]
+		x.attackStat = playerdata["attack"]
+		x.Name = playerdata["name"]
+		x.crossStat = playerdata["cross"]
+		x.passStat = playerdata["pass"]
+		x.age = playerdata["age"]
+		x.defenceStat = playerdata["defence"]
+		x.form = playerdata["form"]
+		x.physique = playerdata["physique"]
+		x.country = playerdata["country"]
+		no += 1
+>>>>>>> cd3bdc3164f2d96797ac4f38e9add5d70e4475d3
 
 
 func setAwaypositions(playerarray):

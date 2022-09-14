@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+<<<<<<< HEAD
 var speed
 var role
 
@@ -45,6 +46,93 @@ var teampossesion: bool = false
 var homeside: bool
 var awayside: bool
 
+=======
+enum playerroles{
+	GK
+	CB
+	RB
+	LB
+	CDM
+	CMF
+	RMF
+	LMF
+	AMF
+	SS
+	LWF
+	RWF
+	CF
+}
+
+#PLayer Stats
+export(int) var speed = 100
+export(String) var Name
+export(String) var country
+export(int) var age
+export(playerroles) var role
+export(int) var attackStat
+export(int) var dribbleStat
+export(int) var passStat
+export(int) var crossStat
+export(int) var curveStat
+export(int) var defenceStat
+export(int) var shotPower
+export(int) var maxSpeed
+export(int) var minSpeed
+export(int) var physique
+export(int) var form
+export(int) var stamina
+#...............................
+
+#team instruction familiarity
+var counterattack: int = 1 # player tendency to progress play faster
+var possession: int = 1 # player tendency to keep the ball and pick the best pass
+var longPass: int = 1 #player tendency to play the ball long
+var shortPass:int = 1 #player tendency to play short passes
+var widePlay:int = 1 #player tendency to stay wide
+var centerPlay:int = 1 #player tendency to play center
+var maintainFormation:int = 1 #player tendency to keep his position
+var flexible:int = 1 #player tendency to be flexible covering other positions
+#.................................
+
+#Bias
+var pressureBias:float = 0.3 # player tendency to move forward from 0 to 1
+var defenseBias:float = 0.4 #player tendency to track back
+var linebiasGK:float = 0.6
+var linebiasCB:float = 0.8
+var linebiasCDM:float = 0.9
+var linebiasCMF:float = 0.95
+var AlinebiasGK:float = 1.5
+var AlinebiasCB:float = 1.25
+var AlinebiasCDM:float = 1.2
+var AlinebiasCMF:float = 1.1
+var defensivebias:float = 0.5
+var hCBpos
+var hCDMpos
+#..................................
+
+#movement variables
+var running:bool
+var sprint:bool
+var press:bool
+#..............................
+
+var player = self
+
+var ballResource = WorldSpace.ballResource
+
+var velocity = Vector2.ZERO
+
+var homeposition # original starting player position
+var ballpos
+
+var ballholder:bool = true
+
+var teampossesion: bool = false
+
+var homeside: bool
+var awayside: bool
+
+>>>>>>> cd3bdc3164f2d96797ac4f38e9add5d70e4475d3
 var movePosition
 
 
@@ -65,6 +153,10 @@ func _physics_process(_delta):
 	defenseBias = Tactics.defensebias
 	ballpos = Team.ballPos
 	LookAtBall()
+<<<<<<< HEAD
+=======
+	press()
+>>>>>>> cd3bdc3164f2d96797ac4f38e9add5d70e4475d3
 	velocity = move_and_slide(velocity)
 
 #..........................................................................
@@ -279,9 +371,16 @@ func ballpassed(passer,object):
 		pass
 	pass
 
+<<<<<<< HEAD
 #func press():
 #	if WorldSpace.closestToPress() == self:
 #		press = true
 #
+=======
+func press():
+	if WorldSpace.closestToPress() == self:
+		press = true
+
+>>>>>>> cd3bdc3164f2d96797ac4f38e9add5d70e4475d3
 
 
