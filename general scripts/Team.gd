@@ -5,51 +5,46 @@ extends Node
 
 enum TeamSide {
 	HomeSide
-	OtherSide
+	AwaySide
 }
-
-var team 
-
-var TeamNum = 11
-var TotalPlayers = TeamNum * 2
 
 var fieldPlayers = Array();
 
 var teamPositionsHome = Array()
 var teamPositionsAway = Array()
 
+var hometeampossesion: bool
+var awayteampossesion: bool
+
+var TeamNum = 11
+var TotalPlayers = TeamNum * 2
+
 var ClosestToBall
 var ClosestPlayer
 
-#............................................................................
+var playerwithball
 
-func _ready():
-	pass
-	
-
-func _process(_delta):
-	GetClosesttoBall()
-	GetClosestPlayer()
-	pass
+var team 
 
 #...........................................
 
-var HomeTeam
-var OppositionTeam
+var HomeTeam: Array
+var AwayTeam: Array
+
+var allPlayers: Array
 
 var ballPos
 
 var HomeBase
 
 
-# this function creates and loads pitchs into the field 
-#based on the side or color
+#create players to play according to team side and team color
 func CreatePlayers(pitch):
 	var Player_resource = load("res://player/player.tscn")
 	var playerArray = Array()
 	fieldPlayers.resize(TeamNum)
 	#This creates the pitchs for the loading
-	for x in range(fieldPlayers.size()):
+	for _x in range(fieldPlayers.size()):
 		var Player = Player_resource.instance()
 		playerArray.append(Player)
 	
@@ -57,46 +52,29 @@ func CreatePlayers(pitch):
 	match team :
 		TeamSide.HomeSide:
 			Home(pitch,playerArray)
-		TeamSide.OtherSide:
-			OtherSide(pitch,playerArray)
+		TeamSide.AwaySide:
+			Away(pitch,playerArray)
 	
 	pass
 
 
-# this function creates the pitchs for the heam team
+# Create players for the Home Team
 func Home(pitch,playerArray):
 	for x in range(TeamNum):
-		playerArray[x].global_position = teamPositionsHome[x]
 		var append = playerArray[x]
+		Playerbase.setHomePlayers(playerArray)
+		Playerbase.setHomepositions(playerArray)
+		Playerbase.setkickoff()
 		pitch.add_child(append)
 
-# this function creates the pitchs for the opposition team
-func OtherSide(pitch,playerArray):
+#Create players for the Away Team
+func Away(pitch,playerArray):
 	for x in range(TeamNum):
-		playerArray[x].global_position = teamPositionsAway[x]
 		var append = playerArray[x]
+		Playerbase.setAwayPlayers(playerArray)
+		Playerbase.setAwaypositions(playerArray)
 		pitch.add_child(append)
-	
 	pass
-
-func GetClosesttoBall():
-	ClosestToBall = HomeTeam[0]
-	for x in HomeTeam:
-		if x.global_position.distance_to(ballPos) < ClosestToBall.global_position.distance_to(ballPos):
-			ClosestToBall = x
-	pass
-
-func GetClosestPlayer():
-	ClosestPlayer = HomeTeam[0]
-	for x in HomeTeam:
-			if x.global_position.distance_to(ClosestToBall.global_position) < ClosestPlayer.global_position.distance_to(ClosestToBall.global_position):
-				if x.global_position.distance_to(ClosestToBall.global_position) > 1:
-					ClosestPlayer = x
-
-
-
-
-
 
 
 
