@@ -140,45 +140,36 @@ _global_script_class_icons={
 "HistoryRow": "",
 "InvitationItem": "",
 "Player": "",
-<<<<<<< HEAD
 "RepositoryItem": "",
 "Stats": ""
-=======
-"RepositoryItem": ""
->>>>>>> cd3bdc3164f2d96797ac4f38e9add5d70e4475d3
 }
 
 [application]
 
-config/name="project-FM"
-run/main_scene="res://world/Home Screen.tscn"
+config/name="Project_FM"
+run/main_scene="res://UI/Scene Manager.tscn"
+boot_splash/image="res://Assets/UI Assets/Pages/Black-screen.png"
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 
 [autoload]
 
-Team="*res://general scripts/Team.gd"
-Database="*res://general scripts/Database.gd"
-BTDebugServer="*res://addons/btree/script/bt_debug_server.gd"
-MatchPlay="*res://general scripts/matchPlay.gd"
-Playerbase="*res://general scripts/Playerbase.gd"
-WorldSpace="*res://general scripts/worldSpace.gd"
-Tactics="*res://general scripts/Tactics.gd"
-Astar="*res://general scripts/A-star Path.gd"
-<<<<<<< HEAD
-PlayerStats="*res://player/Player Stats.gd"
-=======
->>>>>>> cd3bdc3164f2d96797ac4f38e9add5d70e4475d3
+Globals="*res://Globals.gd"
 PluginSettings="*res://addons/github-integration/scripts/PluginSettings.gd"
 IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
 UserData="*res://addons/github-integration/scripts/user_data.gd"
 RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
+BTDebugServer="*res://addons/btree/script/bt_debug_server.gd"
+
+[debug]
+
+gdscript/completion/autocomplete_setters_and_getters=true
 
 [display]
 
-window/size/width=926
-window/size/height=428
-window/stretch/mode="2d"
-window/stretch/aspect="keep"
+window/size/width=1440
+window/size/height=1024
+window/stretch/mode="viewport"
 
 [editor_plugins]
 
@@ -208,16 +199,32 @@ texture={
 "svg/scale": 1.0
 }
 
-[layer_names]
+[input]
 
-2d_physics/layer_1="player"
-2d_physics/layer_2="world"
-2d_physics/layer_3="ball"
+ball={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+fire={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":70,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+jump={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [network]
 
 limits/websocket_server/max_in_buffer_kb=4096
 limits/websocket_server/max_out_buffer_kb=4096
+
+[physics]
+
+common/enable_pause_aware_picking=true
 
 [rendering]
 
