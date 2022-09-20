@@ -86,38 +86,6 @@ func grid(fieldExtents,fieldPosition):
 	var grid = $"Path Grid".gridArray 
 	var pathgrid = $"Path Grid".pathArray
 	var run = false
-<<<<<<< HEAD
-=======
-	
-#	if !run:
-#		for x in $"Path Grid".gridArray:
-#			var rect = ColorRect.new()
-#			self.add_child(rect)
-#			rect.rect_global_position = x
-#			rect.rect_size.x = $"Path Grid".colNum
-#			rect.rect_size.y = $"Path Grid".rowNum
-#			run = true
-#			pass
-
-#	if !run:
-#		if Astar.pathGotten != null:
-#			for a in Astar.pathGotten:
-#				var x = a.worldposition
-#				var rect = ColorRect.new()
-#				self.add_child(rect)
-#				rect.rect_global_position = x
-#				rect.rect_size.x = $"Path Grid".colNum
-#				rect.rect_size.y = $"Path Grid".rowNum
-#				run = true
-#				pass
-	
->>>>>>> cd3bdc3164f2d96797ac4f38e9add5d70e4475d3
-	$"Path Grid".sortedGrid(grid)
-	Astar.grid = pathgrid
-	$"Path Grid".normNode()
-	Astar.nodeGrid = $"Path Grid".normNode
-	
-
 
 
 
