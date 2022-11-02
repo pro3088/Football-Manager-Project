@@ -3,6 +3,8 @@ extends Node
 var pitchWidth:float = 0.1 #width of the center line of the pitch #horizontal
 var defenseWidth:float = 0.1 #width of the defense (of each player) between counter 
 
+var touchline:float = 0.1
+
 var defenseLine:float = 0.1 #length from the center line of the pitch #vertical
 
 var pressurebias: float = 0.3

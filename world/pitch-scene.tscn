@@ -20,7 +20,7 @@ extents = Vector2( 381.272, 17.3808 )
 extents = Vector2( 13.097, 61.9803 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 323.52, 151.929 )
+extents = Vector2( 325, 150 )
 
 [node name="pitch-scene" type="Node2D"]
 script = ExtResource( 3 )
@@ -30,7 +30,7 @@ __meta__ = {
 }
 
 [node name="football pitch" type="Sprite" parent="."]
-position = Vector2( -0.310241, 0 )
+scale = Vector2( 1.005, 0.99 )
 texture = ExtResource( 1 )
 offset = Vector2( 380.567, 189.181 )
 
@@ -113,7 +113,7 @@ position = Vector2( 506.564, 188.871 )
 [node name="pitch-positions" type="Node2D" parent="."]
 
 [node name="centre-line" type="Position2D" parent="pitch-positions"]
-position = Vector2( 380.704, 188.525 )
+position = Vector2( 383, 188.871 )
 
 [node name="cross-home-left" type="Position2D" parent="pitch-positions"]
 position = Vector2( 71.2813, 49.7353 )
@@ -128,6 +128,7 @@ position = Vector2( 687.281, 49.7353 )
 position = Vector2( 687.281, 324.735 )
 
 [node name="shot-area-left" parent="." instance=ExtResource( 2 )]
+visible = false
 position = Vector2( 3.17838, 2.11893 )
 
 [node name="CollisionShape2D" parent="shot-area-left/long-range-shot" index="0"]
@@ -137,10 +138,8 @@ position = Vector2( 211.141, 186.132 )
 position = Vector2( 123.113, 187.257 )
 
 [node name="shot-area-left2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 3.17838, 2.11893 )
-
-[node name="long-range-shot" parent="shot-area-left2" index="0"]
 visible = false
+position = Vector2( 3.17838, 2.11893 )
 
 [node name="CollisionShape2D" parent="shot-area-left2/long-range-shot" index="0"]
 position = Vector2( 545.631, 185.549 )
@@ -155,11 +154,11 @@ position = Vector2( 19.5998, 189.762 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="borders-home"]
-position = Vector2( 38.7136, 225.576 )
+position = Vector2( 38.7136, 219.576 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="borders-home"]
-position = Vector2( 38.7136, 152.576 )
+position = Vector2( 38.7136, 154.576 )
 shape = SubResource( 2 )
 
 [node name="borders-home2" type="StaticBody2D" parent="."]
@@ -171,11 +170,11 @@ position = Vector2( 19.5998, 189.762 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="borders-home2"]
-position = Vector2( 38.7136, 225.576 )
+position = Vector2( 38.7136, 223.576 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="borders-home2"]
-position = Vector2( 38.7136, 152.576 )
+position = Vector2( 38.7136, 158.576 )
 shape = SubResource( 2 )
 
 [node name="throw-area" type="Area2D" parent="."]
@@ -193,7 +192,7 @@ collision_mask = 4
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="throw-area2"]
-position = Vector2( 380.759, 360.927 )
+position = Vector2( 380.759, 354.927 )
 shape = SubResource( 3 )
 
 [node name="goal-kick-area" type="Area2D" parent="."]
@@ -250,8 +249,9 @@ position = Vector2( 57, 38 )
 position = Vector2( 717.179, 188.484 )
 
 [node name="field-size" type="CollisionShape2D" parent="."]
+visible = false
 modulate = Color( 0.0705882, 0.364706, 0.945098, 1 )
-position = Vector2( 380.207, 189.446 )
+position = Vector2( 383, 187 )
 shape = SubResource( 5 )
 
 [node name="Path Grid" parent="." instance=ExtResource( 6 )]

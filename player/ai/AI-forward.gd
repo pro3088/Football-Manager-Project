@@ -8,7 +8,7 @@ var forwardplayers = ["CF","LWF","RWF","AMF"]
 
 func task_passBall(task):
 	var passTarget
-	if !MatchPlay.matchstart:
+	if !WorldSpace.matchstart:
 		if get_parent().homeside:
 			for x in Team.HomeTeam:
 				if x.role == 'SS':
@@ -29,9 +29,6 @@ func task_passBall(task):
 		ballResource.passball(passTarget.global_position, 3 * get_process_delta_time())
 		MatchPlay.matchstart = true
 		task.succeed()
-	elif MatchPlay.matchstart:
-		pass
-	pass
 
 func task_shootBall(task):
 	pass
@@ -40,7 +37,6 @@ func task_shootBall(task):
 func task_withBall(task):
 	if get_parent().withBall():                            
 		task.succeed()
-		print("with ball")
 	else:
 		task.failed()
 
@@ -65,12 +61,12 @@ func task_matchstart(task):
 	else:
 		task.failed()
 
-#func task_detectopponent(task):
-#	if playerscript.Detectplayer():
-#		task.succeed()
-#	else:
-#		task.failed()
-#	pass
+func task_detectopponent(task):
+	if playerscript.Detectplayer():
+		task.succeed()
+	else:
+		task.failed()
+	pass
 
 func task_training(task):
 	if WorldSpace.training:
@@ -100,6 +96,13 @@ func task_moveball(task):
 		pass
 	pass
 
+func task_withball(task):
+	if get_parent().withBall():
+		print("with balll")
+		task.succeed()
+	else:
+		task.failed()
+	pass
 
 func task_moveToPosition(_task):
 	if get_parent().homeside:

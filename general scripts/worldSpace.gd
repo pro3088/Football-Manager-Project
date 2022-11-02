@@ -2,6 +2,8 @@ extends Node
 
 var goalDetected: bool
 
+var matchstart:bool
+
 var centerpos # from pitch scene
 
 var ballResource = preload("res://world/Ball.tscn").instance()
@@ -13,11 +15,6 @@ var training:bool = true
 
 var ballposition setget setposition, getposition
 var ballforce setget setforce, getforce
-
-var fieldExtents
-var fieldPosition
-
-var grid
 
 func setposition(position):
 	ballposition = position

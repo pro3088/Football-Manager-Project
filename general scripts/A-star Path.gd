@@ -1,6 +1,6 @@
 extends Node2D
 
-# This takes in a grid layout and looks for walkable paths
+# This creates an object for the A-star path algorithm and implementation
 class ArrayNode:
 	
 	var walkable:bool
@@ -21,6 +21,9 @@ class ArrayNode:
 	func fCost():
 		return gCost + hCost
 
+##..................................................................................
+var pathGotten
+
 var grid:Array
 var nodeGrid:Array
 
@@ -30,17 +33,14 @@ var target:Vector2
 var startNode: ArrayNode
 var targetNode: ArrayNode 
 
-var patht:Array
 
-var rowNUm
-var colNum
+var rowNum = 20
+var colNum = 25
 
 func _process(delta):
 	normalizeNode()
-	seeker = Vector2(137,188)
-	target = Vector2(621,188)
-	path(seeker,target)
 
+#All grid position generated are normalized to walkable and non-walkable nodes
 func normalizeNode():
 	var num1 = 0
 	var num2 = 0
@@ -67,6 +67,7 @@ func normalizeNode():
 				num2 += 1
 			num1 += 1
 
+# Stores nodes around the parent node and returns array
 func GetNeighbour(node: ArrayNode):
 	var neighbour:Array
 	for y in range(-1,2):
@@ -75,10 +76,14 @@ func GetNeighbour(node: ArrayNode):
 				continue
 			var checkX = node.gridX + x
 			var checkY = node.gridY + y
+			if checkX < 0 or checkX > 20-1:
+				continue
+			if checkY < 0 or checkY > 25-1:
+				continue
 			neighbour.append(nodeGrid[checkX][checkY])
 	return neighbour
 
-
+# returns an object Arraynode from a vector2 world position input
 func positiontogrid(_position):
 	var nearest = grid[0][0]
 	var node: ArrayNode
@@ -94,6 +99,7 @@ func positiontogrid(_position):
 		num1 += 1
 	return node
 
+# Generates a path from source to destination
 func path(start,end):
 	startNode = positiontogrid(start)
 	targetNode = positiontogrid(end)
@@ -136,28 +142,17 @@ func GetDistance(nodeA:ArrayNode, nodeB: ArrayNode):
 		return (14+dstY + 10*(dstX-dstY))
 	return (14+dstX + 10*(dstY-dstX))
 
+# After path is generated, this functions retraces the steps taken by the Astar algorithm 
+# and stores the objects in an array
 func RetracePath(startNode:ArrayNode, endNode:ArrayNode):
 	var currentNode: ArrayNode = endNode
+	var patht:Array
 	
 	while (currentNode != startNode):
 		patht.append(currentNode)
 		currentNode = currentNode.parent
 	patht.invert()
-	var currentp
-	if currentp != patht:
-		currentp = patht
-		for x in currentp:
-			print(x.worldposition)
-		print("......................")
-
-func _draw():
-	var array: Array
-	var color: Color = Color.brown
-	for x in patht:
-		array.append(x.worldposition)
-	if array.size() > 2:
-		draw_multiline(array,color,2.0)
-		print(true)
-	pass
 	
+	if pathGotten != patht:
+		pathGotten = patht
 

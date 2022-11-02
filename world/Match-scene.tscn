@@ -6,9 +6,18 @@
 [node name="Match" type="Node2D"]
 script = ExtResource( 2 )
 
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+margin_right = 972.0
+margin_bottom = 478.0
+color = Color( 0.0470588, 0.231373, 0.117647, 1 )
+
 [node name="pitch-scene" parent="." instance=ExtResource( 1 )]
 position = Vector2( 58, 40 )
 
-[node name="HomeTeam" type="Node2D" parent="."]
-
 [node name="AwayTeam" type="Node2D" parent="."]
+
+[node name="HomeTeam" type="Node2D" parent="."]
