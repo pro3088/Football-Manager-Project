@@ -8,50 +8,59 @@ var playerinfoarray:Array
 
 
 var playerstats:Array
-
+var clubTeam:Array
 
 
 func _ready():
 	if OS.get_name() in ["Windows"] or OS.get_name() in ["Android"]:
 		copyPath()
 		db_name = "user://fm_db"
-
-	getStats()
+	db = sqlite.new()
+	db.path = db_name
+	db.open_db()
+#	getAllPlayers()
+	getClubTeam()
+	db.close_db()
 
 func copyPath():
 	var dir = Directory.new()
 	dir.copy("res://DataStore/fm_db.db", "user://fm_db.db")
 
-func getStats():
+func getAllPlayers():
 	db = sqlite.new()
 	db.path = db_name
 	db.open_db()
 	db.query("SELECT Players.name, Players.age, Players.attack, Players.speed,Players.defence, Players.cross, Players.pass, Players.curve, Players.physique, Players.form, Players.stamina, Players.dribble, Players.shot, Role.name as role, Country.name as country FROM Players LEFT JOIN Role on Players.roleid = role.id JOIN Country on Players.countryid = Country.id ")
-	var dic 
+	print(" Getting Query Results ")
+	print_debug(db.error_message)
 	for stat in db.query_result:
-		dic = stat
-		playerstats.append(load("res://player/Player Stats.gd").new(stat.name, stat.country, stat.age, stat.shot, stat.pass, stat.cross, stat.curve, stat.form, stat.attack, stat.physique, stat.stamina, stat.defence, stat.dribble, stat.speed))
+		playerstats.append(preload("res://player/Player Stats.gd").new(stat.name, stat.country, stat.age, stat.role, stat.shot, stat.pass, stat.cross, stat.curve, stat.form, stat.attack, stat.physique, stat.stamina, stat.defence, stat.dribble, stat.speed))
 
-func getclub():
-	pass
+func getClubTeam():
+	db.path = db_name
+	var userName = User.userName
+	var teamName
+	var managerName
+	db.query("SELECT Players.name, Players.age, Players.attack, Players.speed,Players.defence, Players.cross, Players.pass, Players.curve, Players.physique, Players.form, Players.stamina, Players.dribble, Players.shot, Role.name as role, Country.name as country, user.club as club, user.name as manager FROM Players LEFT JOIN Role on Players.roleid = role.id JOIN Country on Players.countryid = Country.id JOIN user on Players.club = user.id WHERE manager = '" + userName + "'")
+	print(" Getting Query Results for club Team ")
+	print_debug(db.error_message)
+	for stat in db.query_result:
+		clubTeam.append(preload("res://player/Player Stats.gd").new(stat.name, stat.country, stat.age, stat.role, stat.shot, stat.pass, stat.cross, stat.curve, stat.form, stat.attack, stat.physique, stat.stamina, stat.defence, stat.dribble, stat.speed))
 
 
-#
-#
-## get players from database
-#func getplayersinfo(id:int):
-#	var dict: Dictionary
-#	db.query("SELECT Players.name, Players.age, Players.attack, Players.defence, Players.cross, Players.pass, Players.curve, Players.physique, Players.form, Role.name as role, Country.name as country FROM Players LEFT JOIN Role on Players.roleid = role.id JOIN Country on Players.countryid = Country.id WHERE Players.id = "+ str(id))
-#	for x in db.query_result:
-#		dict = x
-#	return dict
-#
-#func arrayforplayers(number):
-#	db = sqlite.new()
-#	db.path = db_name
-#	db.open_db()
-#	for x in range(number+1):
-#		playerinfoarray.append(getplayersinfo(x))
-#	db.close_db()
 
-	pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

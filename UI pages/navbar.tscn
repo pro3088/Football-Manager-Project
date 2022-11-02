@@ -1,0 +1,117 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/home page/page title rec.png" type="Texture" id=1]
+[ext_resource path="res://Assets/home page/nav bar rec.png" type="Texture" id=2]
+[ext_resource path="res://Assets/home page/team spirit icon.png" type="Texture" id=3]
+[ext_resource path="res://Assets/home page/team rating icon.png" type="Texture" id=4]
+[ext_resource path="res://Assets/home page/energy drink icon.png" type="Texture" id=5]
+[ext_resource path="res://Assets/home page/money icon.png" type="Texture" id=6]
+
+[node name="navbar" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 926.0
+margin_bottom = 36.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect"]
+anchor_left = 0.302
+anchor_right = 0.913
+anchor_bottom = 0.159
+margin_left = 71.0
+margin_top = 10.0
+margin_right = 71.0
+margin_bottom = 23.276
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 70
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/HBoxContainer"]
+margin_left = 71.0
+margin_right = 172.0
+margin_bottom = 19.0
+
+[node name="TextureRect4" type="TextureRect" parent="TextureRect/HBoxContainer/HBoxContainer"]
+margin_right = 13.0
+margin_bottom = 19.0
+texture = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="TextureRect/HBoxContainer/HBoxContainer"]
+margin_left = 17.0
+margin_top = 2.0
+margin_right = 101.0
+margin_bottom = 16.0
+text = "3,000,000.00"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TextureRect/HBoxContainer"]
+margin_left = 242.0
+margin_right = 281.0
+margin_bottom = 19.0
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect/HBoxContainer/HBoxContainer2"]
+margin_right = 19.0
+margin_bottom = 19.0
+texture = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="TextureRect/HBoxContainer/HBoxContainer2"]
+margin_left = 23.0
+margin_top = 2.0
+margin_right = 39.0
+margin_bottom = 16.0
+text = "56"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="TextureRect/HBoxContainer"]
+margin_left = 351.0
+margin_right = 389.0
+margin_bottom = 19.0
+
+[node name="TextureRect3" type="TextureRect" parent="TextureRect/HBoxContainer/HBoxContainer3"]
+margin_right = 18.0
+margin_bottom = 19.0
+texture = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="TextureRect/HBoxContainer/HBoxContainer3"]
+margin_left = 22.0
+margin_top = 2.0
+margin_right = 38.0
+margin_bottom = 16.0
+text = "46"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="TextureRect/HBoxContainer"]
+margin_left = 459.0
+margin_right = 493.0
+margin_bottom = 19.0
+
+[node name="TextureRect5" type="TextureRect" parent="TextureRect/HBoxContainer/HBoxContainer4"]
+margin_right = 14.0
+margin_bottom = 19.0
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="TextureRect/HBoxContainer/HBoxContainer4"]
+margin_left = 18.0
+margin_top = 2.0
+margin_right = 34.0
+margin_bottom = 16.0
+text = "76"
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_top = 36.0
+margin_right = 926.0
+margin_bottom = 70.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

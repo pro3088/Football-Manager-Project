@@ -1,34 +1,54 @@
-# Football Manager Project
+<p align="right">
+<a href="https://discord.gg/KnJGY9S">
+  <img src="https://github.com/fenix-hub/ColoredBadges/blob/master/svg/social/discord.svg" alt="react" style="vertical-align:top; margin:6px 4px">
+</a>
+</p>
+
+This plugin is now supported in [Godot Extended Library Discord](https://discord.gg/JNrcucg), check out the [Godot Extended Library Project](https://github.com/godot-extended-libraries)!
+
+<img src="addons/github-integration/github-logo.png" align="left" width="64" height="64">
+
+# GitHub Integration
+A complete GitHub integration for your Godot Editor! Manage your project without even opening your browser.
+
+Author: *"Nicolo (fenix) Santilio"*  
+Version: *1.4.3*  
+Godot Version: *3.2.4-rc3*  
+Wiki: *[supported](https://github.com/fenix-hub/godot-engine.github-integration/wiki)*  
+
+<img align="center" src="addons/github-integration/screenshots/banner.png">
+
+## What is this?
+*GitHub Integration* is a addon for Godot Engine that I've created mainly for a personal purpose.  
+Pushing and Pulling repositories while I'm working on Godot (especially if I'm under a GameJam) could take some time and force me to save the project, open the brwoser/git bash/git gui, and do all the stuff.  
+With this little addon which works directly in the editor, managing all your repositories will be very easy.  
+
+## What can it do?
+*Github Integration* offers the main functionalities provided by GitHub (and git itself), in a more accessible way.  
+Currenlty, you can:
+- Manage all of your public and private **repositories**, *including* the ones you share with organizations and the ones in which you are a collaborator (with proper permissions): create, delete, push and clone repositories within your Godot project
+- Manage all of your public and private **gists**: delete, edit and create gists with a functional text editor
+- Manage collaboration invitations, inviting user to your repositories or accept/decline invitations you have received
+
+## How does it work?
+I'm currently working on a [Wiki](https://github.com/fenix-hub/godot-engine.github-integration/wiki) for this plugin. It is a process that will take some time to complete since I want to provide a well-organized wiki with some basic explanations about GitHub itself. Anyway, I'm working on a user-friendly plugin, so everything should be the very ease to use for GitHub experienced users, and a little intuitive for people who never used GitHub or are not so experienced.
+If you want to see some screenshots you can find them here `addons/github-integration/screenshots`
+
+## Supporters page
+<table>
+  <tr>
+    <th><img src='https://avatars0.githubusercontent.com/u/9788627?s=64&v=4' alt='@masterworm2' width="64"/><br/><a href="https://github.com/masterworm2">masterworm2</a></th>
+    <th><img src='https://avatars0.githubusercontent.com/u/48778172?s=64&v=4' alt='@auctru' width="64"/><br/><a href="https://github.com/autcru">autcru</a></th> 
+  </tr>
+</table>
+
+## :warning: Disclaimer  
+As a "work in progress" project, there is *no warranty* for any eventual issue and bug that may broke your project.  
+I don't assume any responsibility for possible corruptions of your project. It is always advisable to keep a copy of your project and check any changes you make in your Github repository.  
+
+-----------------
+> This text file was created via [TextEditor Integration](https://github.com/fenix-hub/godot-engine.text-editor) inside Godot Engine's Editor.
 
 
-## Brief Description
 
-This project is a football manager game inspired by PES 2017 and Top Eleven. The project is meant to feature the tactics put in place to make a football manager game. This article will feature Artificial intelligence techniques such as Behaviour trees and state machines. It will also feature data structures and algorithm including SQL basics. All these were implemented to the project’s current stage.
 
-### Class Diagram
-
-![Football Manager Class Diagram ](https://user-images.githubusercontent.com/53413092/189932003-d277cfec-d8dd-4fdf-8d73-eaae94975af2.png)
-
-### Behaviour Tree
-
-![FM_clone - bT](https://user-images.githubusercontent.com/53413092/185654892-f1060bd6-4dc5-44bd-938f-37da3f4d1508.png)
-
-### SQLITE
-
-![FM_clone - sqlite](https://user-images.githubusercontent.com/53413092/185654907-b0ade895-76b8-4dcb-bb3a-1d5716a3bc65.png)
-
-### Implementation
-
-![FM_clone 1](https://user-images.githubusercontent.com/53413092/185654922-0fcbe708-369c-4d9d-8a11-b3a5ad2315dc.png)
-
-![FM_clone 2](https://user-images.githubusercontent.com/53413092/185654927-42254970-b5a2-458d-8544-09159da6dc43.png)
-
-![FM_clone 3](https://user-images.githubusercontent.com/53413092/185654931-768cdde2-fe9a-4311-b6b5-1f57d050bbed.png)
-
-### Process
-
-To see my thought process, look through this article on medium -> https://rotimia.medium.com/my-process-on-making-a-football-manager-clone-93e05903a843
-
-### Youtube Video
-
-https://youtu.be/QHi0OK6mLyc
