@@ -39,75 +39,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/github-integration/scripts/ContributorClass.gd"
 }, {
-"base": "Reference",
-"class": "DTS",
-"language": "GDScript",
-"path": "res://addons/dialogic/Localization/translation_service.gd"
-}, {
-"base": "Node",
-"class": "Dialogic",
-"language": "GDScript",
-"path": "res://addons/dialogic/Other/DialogicClass.gd"
-}, {
-"base": "Reference",
-"class": "DialogicAnimaPropertiesHelper",
-"language": "GDScript",
-"path": "res://addons/dialogic/Nodes/Anima/DialogicAnimaPropertiesHelper.gd"
-}, {
-"base": "Node",
-"class": "DialogicAnimaResources",
-"language": "GDScript",
-"path": "res://addons/dialogic/Nodes/Anima/DialogicAnimaResources.gd"
-}, {
-"base": "Control",
-"class": "DialogicBackgroundMusic",
-"language": "GDScript",
-"path": "res://addons/dialogic/Nodes/BackgroundMusic.gd"
-}, {
-"base": "Node",
-"class": "DialogicCustomEvents",
-"language": "GDScript",
-"path": "res://addons/dialogic/Nodes/DialogicCustomEvents.gd"
-}, {
-"base": "Node",
-"class": "DialogicDefinitionsUtil",
-"language": "GDScript",
-"path": "res://addons/dialogic/Other/DialogicDefinitionsUtil.gd"
-}, {
-"base": "Node",
-"class": "DialogicParser",
-"language": "GDScript",
-"path": "res://addons/dialogic/Parser/DialogicParser.gd"
-}, {
-"base": "Reference",
-"class": "DialogicResources",
-"language": "GDScript",
-"path": "res://addons/dialogic/Other/DialogicResources.gd"
-}, {
-"base": "Reference",
-"class": "DialogicUtil",
-"language": "GDScript",
-"path": "res://addons/dialogic/Other/DialogicUtil.gd"
-}, {
 "base": "PanelContainer",
 "class": "GistItem",
 "language": "GDScript",
 "path": "res://addons/github-integration/scripts/GistItem.gd"
-}, {
-"base": "PanelContainer",
-"class": "HistoryRow",
-"language": "GDScript",
-"path": "res://addons/dialogic/Example Assets/History/HistoryRow.gd"
 }, {
 "base": "HBoxContainer",
 "class": "InvitationItem",
 "language": "GDScript",
 "path": "res://addons/github-integration/scripts/InvitationItem.gd"
 }, {
-"base": "KinematicBody2D",
-"class": "Player",
+"base": "Reference",
+"class": "LinkedList",
 "language": "GDScript",
-"path": "res://general scripts/Playerbase.gd"
+"path": "res://Structure/LinkedList.gd"
 }, {
 "base": "PanelContainer",
 "class": "RepositoryItem",
@@ -115,9 +60,14 @@ _global_script_classes=[ {
 "path": "res://addons/github-integration/scripts/RepositoryItem.gd"
 }, {
 "base": "Node",
-"class": "Stats",
+"class": "formation",
 "language": "GDScript",
-"path": "res://player/Player Stats.gd"
+"path": "res://Data/TeamData/FormationData.gd"
+}, {
+"base": "Reference",
+"class": "stats",
+"language": "GDScript",
+"path": "res://Data/TeamData/PlayerData/PlayerData.gd"
 } ]
 _global_script_class_icons={
 "AnimaEasing": "",
@@ -126,22 +76,12 @@ _global_script_class_icons={
 "AnimaStrings": "",
 "AnimaTween": "",
 "ContributorClass": "",
-"DTS": "",
-"Dialogic": "",
-"DialogicAnimaPropertiesHelper": "",
-"DialogicAnimaResources": "",
-"DialogicBackgroundMusic": "",
-"DialogicCustomEvents": "",
-"DialogicDefinitionsUtil": "",
-"DialogicParser": "",
-"DialogicResources": "",
-"DialogicUtil": "",
 "GistItem": "",
-"HistoryRow": "",
 "InvitationItem": "",
-"Player": "",
+"LinkedList": "",
 "RepositoryItem": "",
-"Stats": ""
+"formation": "",
+"stats": ""
 }
 
 [application]
@@ -152,14 +92,21 @@ config/icon="res://icon.png"
 
 [autoload]
 
-BTDebugServer="*res://addons/btree/script/bt_debug_server.gd"
-WorldSpace="*res://general scripts/worldSpace.gd"
-Team="*res://general scripts/team.gd"
-Tactics="*res://general scripts/Tactics.gd"
-Astar="*res://general scripts/A-star Path.gd"
-Database="*res://general scripts/Database.gd"
+User="*res://Data/UserData/User.gd"
+Database="*res://Data/Database.gd"
 Playerbase="*res://general scripts/Playerbase.gd"
+WorldSpace="*res://general scripts/worldSpace.gd"
+Team="*res://general scripts/TeamCreator.gd"
+Formation="*res://Data/TeamData/FormationData.gd"
+Tactics="*res://Structure/Tactics.gd"
+Astar="*res://general scripts/A-star Path.gd"
 MatchPlay="*res://general scripts/matchPlay.gd"
+FieldVariables="*res://general scripts/world/FieldVariables.gd"
+BTDebugServer="*res://addons/btree/script/bt_debug_server.gd"
+PluginSettings="*res://addons/github-integration/scripts/PluginSettings.gd"
+IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
+UserData="*res://addons/github-integration/scripts/user_data.gd"
+RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
 
 [debug]
 
@@ -216,6 +163,11 @@ jump={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[network]
+
+limits/websocket_server/max_in_buffer_kb=4096
+limits/websocket_server/max_out_buffer_kb=4096
 
 [physics]
 

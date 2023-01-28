@@ -1,15 +1,12 @@
 extends Node2D
 
-# all players need match start to move. this is a problem
-# maybe a signal should be sent
-# or a global script will be sent to the player and then match can start
-
+var playerscript = load("res://player/player.gd")
 
 var ballResource = WorldSpace.ballResource
 
 var forwardplayers = ["CF","LWF","RWF","AMF"]
 
-func task_kickoffpass(task):
+func task_passBall(task):
 	var passTarget
 	if !WorldSpace.matchstart:
 		if get_parent().homeside:
@@ -23,17 +20,15 @@ func task_kickoffpass(task):
 		elif get_parent().awayside:
 			for x in Team.AwayTeam:
 				if x.role == 'SS':
-					passTarget = x
+					passTarget = x.global_position
 				elif x.role == 'AMF':
-					passTarget = x
+					passTarget = x.global_position
 				elif x.role == 'CMF':
-					passTarget = x
+					passTarget = x.global_position
 		get_parent().ballpassed(get_parent(),passTarget)
-		ballResource.moveBall(passTarget.global_position, 3 * get_process_delta_time())
-		WorldSpace.matchstart = true
+		ballResource.passball(passTarget.global_position, 3 * get_process_delta_time())
+		MatchPlay.matchstart = true
 		task.succeed()
-	else:
-		task.failed()
 
 func task_shootBall(task):
 	pass
@@ -45,45 +40,13 @@ func task_withBall(task):
 	else:
 		task.failed()
 
-func task_homepossession(task):
-	if get_parent().homeside:
-		if WorldSpace.homeTeamPossession:
-			task.succeed()
-		else:
-			task.failed()
-
-func task_awaypossession(task):
-	if get_parent().awayside:
-		if WorldSpace.awayTeamPossession:
-			task.succeed()
-		else:
-			task.failed()
-
-func possession():
-	var poss: bool = false
-	if get_parent().homeside:
-		if WorldSpace.homeTeamPossession:
-			poss = true
-		else:
-			poss = false
-	elif get_parent().awayside:
-		if WorldSpace.awayTeamPossession:
-			poss = true
-		else:
-			poss = false
-	return poss
-
-func task_teampossession(task):
-	if possession():
-		task.succeed()
-	else:
-		task.failed()
-
-func task_press(task):
-	if get_parent() == WorldSpace.closestToPress():
-		task.succeed()
-	else:
-		task.failed()
+#func task_teamPossession(task):
+#	if get_parent().teampossesion:
+#		print("Team have possession")
+#		task.succeed()
+#	else:
+#		task.failed()
+#	pass
 
 func task_goalAreaDetect(task):
 	if WorldSpace.goalDetected :
@@ -93,11 +56,17 @@ func task_goalAreaDetect(task):
 	pass
 
 func task_matchstart(task):
-	if WorldSpace.matchstart:
+	if MatchPlay.matchstart:
 		task.succeed()
 	else:
 		task.failed()
 
+func task_detectopponent(task):
+	if playerscript.Detectplayer():
+		task.succeed()
+	else:
+		task.failed()
+	pass
 
 func task_training(task):
 	if WorldSpace.training:
@@ -119,12 +88,30 @@ func task_startgameplayer(task):
 		task.failed()
 	pass
 
-func task_moveball(_task):
+func task_moveball(task):
+	if get_parent().homeside: 
+		if get_parent().ballholder:
+			ballResource.pushball(get_parent().position + Vector2(100,0), 3 * get_process_delta_time() )
+			print("working...............")
+		pass
+	pass
+
+func task_withball(task):
+	if get_parent().withBall():
+		print("with balll")
+		task.succeed()
+	else:
+		task.failed()
+	pass
+
+func task_moveToPosition(_task):
 	if get_parent().homeside:
-		Astar.path(get_parent().global_position, Vector2(717,188))
-		ballResource.moveBall(Vector2(717,188), 3 * get_process_delta_time())
+		var position = get_parent().calculate_Move_Position()
+		get_parent().move(position)
+	elif get_parent().awayside:
+		var position = get_parent().calculate_Move_Position()
+		get_parent().move(position)
+		pass
 	pass
 
 
-func task_moveToPosition(task):
-	get_parent().move(get_parent().calculate_Move_Position())

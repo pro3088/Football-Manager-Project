@@ -1,0 +1,103 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/football pitch.png" type="Texture" id=1]
+
+[node name="Squad" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [ 188.763 ],
+"_edit_vertical_guides_": [ 380.942 ]
+}
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer"]
+margin_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control/HBoxContainer/VBoxContainer"]
+margin_left = 1.0
+margin_right = 927.0
+margin_bottom = 428.0
+color = Color( 0, 0.552941, 0.027451, 1 )
+
+[node name="VBar" type="ColorRect" parent="Control/HBoxContainer/VBoxContainer/ColorRect"]
+margin_left = 765.0
+margin_right = 770.0
+margin_bottom = 428.0
+color = Color( 0, 0.133333, 0.054902, 1 )
+
+[node name="HBar" type="ColorRect" parent="Control/HBoxContainer/VBoxContainer/ColorRect"]
+margin_top = 378.0
+margin_right = 765.0
+margin_bottom = 383.0
+color = Color( 0, 0.133333, 0.054902, 1 )
+
+[node name="football pitch" type="Sprite" parent="Control/HBoxContainer/VBoxContainer"]
+scale = Vector2( 1.005, 0.99 )
+texture = ExtResource( 1 )
+offset = Vector2( 380.567, 189.181 )
+
+[node name="home-match-pos" type="Node2D" parent="Control/HBoxContainer/VBoxContainer/football pitch"]
+scale = Vector2( 0.995025, 1.0101 )
+
+[node name="GK" type="Position2D" parent="Control/HBoxContainer/VBoxContainer/football pitch/home-match-pos"]
+position = Vector2( 87, 188.871 )
+
+[node name="AMF" type="Position2D" parent="Control/HBoxContainer/VBoxContainer/football pitch/home-match-pos"]
+position = Vector2( 498.564, 188.871 )
+
+[node name="CF" type="Position2D" parent="Control/HBoxContainer/VBoxContainer/football pitch/home-match-pos"]
+position = Vector2( 613.564, 189.578 )
+
+[node name="LWF" type="Position2D" parent="Control/HBoxContainer/VBoxContainer/football pitch/home-match-pos"]
+position = Vector2( 574.564, 65.8705 )
+
+[node name="LMF" type="Position2D" parent="Control/HBoxContainer/VBoxContainer/football pitch/home-match-pos"]
+position = Vector2( 378.564, 65.8705 )
+
+[node name="RMF" type="Position2D" parent="Control/HBoxContainer/VBoxContainer/football pitch/home-match-pos"]
+position = Vector2( 378.564, 310.871 )
+
+[node name="LB" type="Position2D" parent="Control/HBoxContainer/VBoxContainer/football pitch/home-match-pos"]
+position = Vector2( 162.564, 65.8705 )
+
+[node name="RB" type="Position2D" parent="Control/HBoxContainer/VBoxContainer/football pitch/home-match-pos"]
+position = Vector2( 162.564, 310.871 )
+
+[node name="RWF" type="Position2D" parent="Control/HBoxContainer/VBoxContainer/football pitch/home-match-pos"]
+position = Vector2( 574.564, 310.871 )
+
+[node name="CMF" type="Position2D" parent="Control/HBoxContainer/VBoxContainer/football pitch/home-match-pos"]
+position = Vector2( 378.564, 188.871 )
+
+[node name="CB" type="Node2D" parent="Control/HBoxContainer/VBoxContainer/football pitch/home-match-pos"]
+
+[node name="CB-mid" type="Position2D" parent="Control/HBoxContainer/VBoxContainer/football pitch/home-match-pos/CB"]
+position = Vector2( 161.564, 188.871 )
+
+[node name="CB-right" type="Position2D" parent="Control/HBoxContainer/VBoxContainer/football pitch/home-match-pos/CB"]
+position = Vector2( 161.564, 252.871 )
+
+[node name="CB-left" type="Position2D" parent="Control/HBoxContainer/VBoxContainer/football pitch/home-match-pos/CB"]
+position = Vector2( 161.564, 124.871 )
+
+[node name="CDM" type="Node2D" parent="Control/HBoxContainer/VBoxContainer/football pitch/home-match-pos"]
+
+[node name="CDM-mid" type="Position2D" parent="Control/HBoxContainer/VBoxContainer/football pitch/home-match-pos/CDM"]
+position = Vector2( 266.564, 188.871 )
+
+[node name="CDM-left" type="Position2D" parent="Control/HBoxContainer/VBoxContainer/football pitch/home-match-pos/CDM"]
+position = Vector2( 266.564, 252.871 )
+
+[node name="CDM-right" type="Position2D" parent="Control/HBoxContainer/VBoxContainer/football pitch/home-match-pos/CDM"]
+position = Vector2( 266.564, 124.871 )
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/HBoxContainer"]
+margin_left = 4.0
+margin_right = 4.0
+margin_bottom = 40.0
