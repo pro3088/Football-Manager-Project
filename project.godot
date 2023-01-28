@@ -172,7 +172,3 @@ limits/websocket_server/max_out_buffer_kb=4096
 [physics]
 
 common/enable_pause_aware_picking=true
-
-[rendering]
-
-environment/default_environment="res://default_env.tres"
