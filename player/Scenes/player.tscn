@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/player sprite.png" type="Texture" id=1]
+[ext_resource path="res://player/player.gd" type="Script" id=2]
+[ext_resource path="res://player/Auxiliary/Ballholder.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 7.15517
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 7.0
+
+[node name="player" type="KinematicBody2D"]
+collision_mask = 7
+script = ExtResource( 2 )
+
+[node name="FOOTBALL_PLAYER SPRITE" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 25, 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -5.52806, -0.23597 )
+shape = SubResource( 1 )
+
+[node name="Contact" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Contact"]
+position = Vector2( 6, 0 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="Contact" to="Contact" method="_on_Ballholder_body_entered"]
+[connection signal="body_exited" from="Contact" to="Contact" method="_on_Ballholder_body_exited"]

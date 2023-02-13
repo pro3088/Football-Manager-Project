@@ -7,13 +7,19 @@ var squadPlayers:Array
 
 var teamPlayers = Database.clubTeam
 
+var tactics:Tactics setget setTactics
 
 func _ready():
 	sortTopEleven()
 	setSquadPlayers()
 
+func createOppData(team:Array):
+	teamPlayers = team
+	sortTopEleven()
+	setSquadPlayers()
+	return squadPlayers
+
 func sortTopEleven():
-	
 	print("initializing rating list with LinkedList")
 	ratingLinkedList = {
 		"GK" : LinkedList.new(),
@@ -52,57 +58,60 @@ func sortTopEleven():
 
 func setSquadPlayers():
 	print_debug("initializing formation data")
-	var formation = formation.new()
+	var formation = Formation.new()
+	var position = TeamCreator.positionSpecs
 	
 	print("adding players to squad i.e top eleven")
 	#adding GK to squad
-	squadPlayers.append(ratingArray.get("GK")[0])
+	var gk = ratingArray.get("GK")[0]
+	gk.position = position.DEFAULT
+	squadPlayers.append(gk)
 	
 	#adding other players
-	print_debug("getting roles from player stats class")
-	var roles:Array = stats.roleSpecs.values().pop_front()
+	print_debug("getting roles from player Stats class")
+	var roles:Array = Stats.roleSpecs.keys()
+	roles.pop_front()
 	for val in roles:
 		var role:String = val
 		role = role.to_upper()
 		var num = formation.getRoleNumber(role)
-		print("adding players in " + role + " to squad ")
-		print("adding " + num + " players from " + role)
+		print_debug("adding players in " + role + " to squad ")
+		print("adding " + String(num) + " players from " + role)
 		if num > 1:
 			var no = 0
-			while (no + 1) < formation.role:
-				print_debug("getting player stats")
-				var player:stats = ratingArray.get(role)[no]
-				var specs = player.positionSpecs
+			while (no + 1) <= formation.getRoleNumber(role) :
+				print_debug("getting player Stats")
+				var player:Stats = ratingArray.get(role)[no]
 				if no == 0:
-					player.position = specs.LEFT
+					player.position = position.LEFT
 					print("player position is left")
 				elif no ==1:
-					player.position = specs.RIGHT
+					player.position = position.RIGHT
 					print("player position is right")
 				else:
-					player.position = specs.DEFAULT
+					player.position = position.DEFAULT
 					print("player takes a central/default position")
 				squadPlayers.append(player)
 				no += 1
 		elif formation.getRoleNumber(role) == 0:
-			pass
+			continue
 		else:
-			print_debug("getting player stats")
-			var player:stats = ratingArray.get(role)[0]
-			player.position = player.positionspecs.DEFAULT
+			print_debug("getting player Stats")
+			var player:Stats = ratingArray.get(role)[0]
+			player.position = TeamCreator.positionSpecs.DEFAULT
 			print("player takes a central/default position")
 			squadPlayers.append(player)
 	
 func setLinkedListRoles():
 	print("setting players to LinkedList")
 	for player in teamPlayers:
-		print_debug("getting roles from player stats class")
-		var roles:Array = stats.roleSpecs.values()
+		print_debug("getting roles from player Stats class")
+		var roles:Array = Stats.roleSpecs.keys()
 		for val in roles:
 			var role:String = val
 			role = role.to_upper()
-			print("adding " + player + " to " + role + " linkedlist")
 			if player.role == role:
+				print("adding player to " + role + " linkedlist")
 				ratingLinkedList[role] = setLinkedList(ratingLinkedList.get(role),player)
 				print("player added")
 
@@ -114,22 +123,24 @@ func setLinkedList(list:LinkedList, player):
 		print("player added")
 	else:
 		print_debug("adding data to existing list")
-		print("running through " + list.size() + "elements")
-		while current.data.rating > player.rating or current.next != null:
+		print("running through " + String(list.size()) + "elements")
+		while current.data.rating > player.rating and current.next != null:
 			print("moving to next element")
 			current = current.next
 		if current.data.rating > player.rating and current.next == null:
 			print_debug("adding player to end of linkedlist")
 			list.addLast(player)
-		elif current.data.rating < player.rating:
+		elif current.data.rating < player.rating and current.prevous != null:
 			print_debug(" inserting player into list")
 			list.insertBefore(current,player)
+		else:
+			list.addFirst(player)
 		print("player added")
 	return list 
 
 func setArrayRoles():
-	print_debug("getting roles from player stats class")
-	var roles:Array = stats.roleSpecs.values()
+	print_debug("getting roles from player Stats class")
+	var roles:Array = Stats.roleSpecs.keys()
 	for val in roles:
 		var role:String = val
 		role = role.to_upper()
@@ -137,7 +148,9 @@ func setArrayRoles():
 		ratingArray[role] = ratingLinkedList.get(role).converttoArray()
 		print("list converted")
 
-
+func setTactics(val):
+	tactics = Tactics.new()
+	pass
 
 
 

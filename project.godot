@@ -34,40 +34,40 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/anima/core/tween.gd"
 }, {
-"base": "HBoxContainer",
-"class": "ContributorClass",
+"base": "Node2D",
+"class": "AstarNode",
 "language": "GDScript",
-"path": "res://addons/github-integration/scripts/ContributorClass.gd"
+"path": "res://Structure/AI/A-star Path.gd"
 }, {
-"base": "PanelContainer",
-"class": "GistItem",
+"base": "Node",
+"class": "Formation",
 "language": "GDScript",
-"path": "res://addons/github-integration/scripts/GistItem.gd"
+"path": "res://Data/TeamData/FormationData.gd"
 }, {
-"base": "HBoxContainer",
-"class": "InvitationItem",
+"base": "Node",
+"class": "Grid",
 "language": "GDScript",
-"path": "res://addons/github-integration/scripts/InvitationItem.gd"
+"path": "res://Structure/Grid.gd"
 }, {
 "base": "Reference",
 "class": "LinkedList",
 "language": "GDScript",
 "path": "res://Structure/LinkedList.gd"
 }, {
-"base": "PanelContainer",
-"class": "RepositoryItem",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/RepositoryItem.gd"
-}, {
 "base": "Node",
-"class": "formation",
-"language": "GDScript",
-"path": "res://Data/TeamData/FormationData.gd"
-}, {
-"base": "Reference",
-"class": "stats",
+"class": "Stats",
 "language": "GDScript",
 "path": "res://Data/TeamData/PlayerData/PlayerData.gd"
+}, {
+"base": "Node",
+"class": "Tactics",
+"language": "GDScript",
+"path": "res://Structure/Tactics.gd"
+}, {
+"base": "Node",
+"class": "TeamCreator",
+"language": "GDScript",
+"path": "res://Structure/Create/TeamCreator.gd"
 } ]
 _global_script_class_icons={
 "AnimaEasing": "",
@@ -75,13 +75,13 @@ _global_script_class_icons={
 "AnimaNodesProperties": "",
 "AnimaStrings": "",
 "AnimaTween": "",
-"ContributorClass": "",
-"GistItem": "",
-"InvitationItem": "",
+"AstarNode": "",
+"Formation": "",
+"Grid": "",
 "LinkedList": "",
-"RepositoryItem": "",
-"formation": "",
-"stats": ""
+"Stats": "",
+"Tactics": "",
+"TeamCreator": ""
 }
 
 [application]
@@ -94,19 +94,8 @@ config/icon="res://icon.png"
 
 User="*res://Data/UserData/User.gd"
 Database="*res://Data/Database.gd"
-Playerbase="*res://general scripts/Playerbase.gd"
-WorldSpace="*res://general scripts/worldSpace.gd"
-Team="*res://general scripts/TeamCreator.gd"
-Formation="*res://Data/TeamData/FormationData.gd"
-Tactics="*res://Structure/Tactics.gd"
-Astar="*res://general scripts/A-star Path.gd"
-MatchPlay="*res://general scripts/matchPlay.gd"
-FieldVariables="*res://general scripts/world/FieldVariables.gd"
 BTDebugServer="*res://addons/btree/script/bt_debug_server.gd"
-PluginSettings="*res://addons/github-integration/scripts/PluginSettings.gd"
-IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
-UserData="*res://addons/github-integration/scripts/user_data.gd"
-RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
+TeamData="*res://Data/TeamData/TeamData.gd"
 
 [debug]
 
@@ -120,7 +109,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/btree/plugin.cfg", "res://addons/github-integration/plugin.cfg", "res://addons/godot-sqlite/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/btree/plugin.cfg", "res://addons/godot-sqlite/plugin.cfg" )
 
 [importer_defaults]
 

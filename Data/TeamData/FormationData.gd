@@ -1,6 +1,6 @@
 extends Node
 
-class_name formation
+class_name Formation
 
 #var formation = "F433"
 var formation
@@ -33,7 +33,7 @@ enum formations {
 	F541
 }
 
-func _ready():
+func _init():
 	setRoleNumber()
 
 func setRoleNumber():

@@ -1,6 +1,6 @@
-extends Reference
+extends Node
 
-class_name stats
+class_name Stats
 
 enum roleSpecs{
 	GK,
@@ -17,14 +17,6 @@ enum roleSpecs{
 	SS,
 	CF
 }
-
-enum positionSpecs{
-	LEFT,
-	RIGHT,
-	DEFAULT
-}
-
-
 
 
 export(int) var speed = 100
@@ -45,8 +37,6 @@ export(int) var stamina
 export(int) var rating:int
 
 var position
-
-var fieldPosition
 
 #team instruction familiarity
 var passBias

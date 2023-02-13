@@ -26,7 +26,12 @@ func addFirst(val):
 	else:
 		var new_head = LinkedListNode.new(val)
 		head.prevous = new_head
+		new_head.next = head
+		tail = head
 		head = new_head
+		
+		
+		
 		print("data added")
 	size += 1
 
@@ -39,6 +44,8 @@ func addLast(val):
 	else:
 		var new_tail = LinkedListNode.new(val)
 		tail.next = new_tail
+		new_tail.prevous = tail
+		head = tail
 		tail = new_tail
 		print("data added")
 	size += 1
@@ -60,7 +67,7 @@ func converttoArray():
 	while current != null:
 		array.append(current.data)
 		current = current.next
-	print("data converting")
+	print("data converted")
 	return array
 
 

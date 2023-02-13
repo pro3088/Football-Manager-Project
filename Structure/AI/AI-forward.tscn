@@ -1,0 +1,1437 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Structure/AI/AI-forward.gd" type="Script" id=1]
+[ext_resource path="res://addons/btree/script/btree.gd" type="Script" id=2]
+
+
+[node name="AI-forward" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Kick-off" type="Node" parent="."]
+script = ExtResource( 2 )
+tree = {
+"connection": [ {
+"from": "root",
+"from_port": 0,
+"to": "sequence",
+"to_port": 0
+}, {
+"from": "sequence",
+"from_port": 0,
+"to": "selector",
+"to_port": 0
+}, {
+"from": "selector",
+"from_port": 0,
+"to": "minim_node",
+"to_port": 0
+}, {
+"from": "sequence2",
+"from_port": 0,
+"to": "task",
+"to_port": 0
+}, {
+"from": "sequence2",
+"from_port": 1,
+"to": "task3",
+"to_port": 0
+}, {
+"from": "sequence",
+"from_port": 1,
+"to": "sequence2",
+"to_port": 0
+}, {
+"from": "sequence2",
+"from_port": 2,
+"to": "task2",
+"to_port": 0
+}, {
+"from": "selector",
+"from_port": 1,
+"to": "minim_node2",
+"to_port": 0
+} ],
+"nodes": [ {
+"child": [ {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"data": {
+"connection": [ {
+"from": "sequence3",
+"from_port": 2,
+"to": "task7",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 1,
+"to": "task6",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 0,
+"to": "inverter",
+"to_port": 0
+}, {
+"from": "inverter",
+"from_port": 0,
+"to": "task5",
+"to_port": 0
+} ],
+"nodes": [ {
+"child": [  ],
+"data": {
+"count": 3,
+"offset": Vector2( -400, 660 ),
+"size": Vector2( 106, 101.75 )
+},
+"name": "sequence3",
+"type": 2
+}, {
+"child": [  ],
+"data": {
+"offset": Vector2( -300, 520 ),
+"size": Vector2( 92, 43 )
+},
+"name": "inverter",
+"type": 14
+}, {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -120, 500 ),
+"params": [  ],
+"size": Vector2( 277, 85 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_startgameplayer",
+"offset": Vector2( -180, 600 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task6",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_passBall",
+"offset": Vector2( -160, 720 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task7",
+"type": 1
+} ],
+"root": {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -120, 500 ),
+"params": [  ],
+"size": Vector2( 277, 85 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+} ],
+"data": {
+"offset": Vector2( -300, 520 ),
+"size": Vector2( 92, 43 )
+},
+"name": "inverter",
+"type": 14
+}, {
+"child": [  ],
+"data": {
+"fn": "task_startgameplayer",
+"offset": Vector2( -180, 600 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task6",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_passBall",
+"offset": Vector2( -160, 720 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task7",
+"type": 1
+} ],
+"data": {
+"count": 3,
+"offset": Vector2( -400, 660 ),
+"size": Vector2( 106, 101.75 )
+},
+"name": "sequence3",
+"type": 2
+}
+},
+"label": "",
+"offset": Vector2( -400, 660 ),
+"size": Vector2( 236, 80 )
+},
+"name": "minim_node",
+"type": 99
+}, {
+"child": [  ],
+"data": {
+"data": {
+"connection": [ {
+"from": "sequence3",
+"from_port": 0,
+"to": "task5",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 1,
+"to": "task4",
+"to_port": 0
+} ],
+"nodes": [ {
+"child": [  ],
+"data": {
+"count": 2,
+"offset": Vector2( -400, 780 ),
+"size": Vector2( 106, 81.75 )
+},
+"name": "sequence3",
+"type": 2
+}, {
+"child": [  ],
+"data": {
+"fn": "task_training",
+"offset": Vector2( -200, 720 ),
+"params": [  ],
+"size": Vector2( 218, 85 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_moveToPosition",
+"offset": Vector2( -200, 860 ),
+"params": [  ],
+"size": Vector2( 255, 85 ),
+"values": [  ]
+},
+"name": "task4",
+"type": 1
+} ],
+"root": {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_training",
+"offset": Vector2( -200, 720 ),
+"params": [  ],
+"size": Vector2( 218, 85 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_moveToPosition",
+"offset": Vector2( -200, 860 ),
+"params": [  ],
+"size": Vector2( 255, 85 ),
+"values": [  ]
+},
+"name": "task4",
+"type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( -400, 780 ),
+"size": Vector2( 106, 81.75 )
+},
+"name": "sequence3",
+"type": 2
+}
+},
+"label": "training ",
+"offset": Vector2( -400, 780 ),
+"size": Vector2( 236, 80 )
+},
+"name": "minim_node2",
+"type": 99
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( -540, 760 ),
+"size": Vector2( 93, 81.75 )
+},
+"name": "selector",
+"type": 3
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -340, 900 ),
+"params": [  ],
+"size": Vector2( 231, 85 ),
+"values": [  ]
+},
+"name": "task",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_withBall",
+"offset": Vector2( -340, 1000 ),
+"params": [  ],
+"size": Vector2( 219, 85 ),
+"values": [  ]
+},
+"name": "task3",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_moveball",
+"offset": Vector2( -340, 1100 ),
+"params": [  ],
+"size": Vector2( 224, 85 ),
+"values": [  ]
+},
+"name": "task2",
+"type": 1
+} ],
+"data": {
+"count": 3,
+"offset": Vector2( -540, 920 ),
+"size": Vector2( 106, 101.75 )
+},
+"name": "sequence2",
+"type": 2
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( -700, 840 ),
+"size": Vector2( 100, 81.75 )
+},
+"name": "sequence",
+"type": 2
+} ],
+"data": {
+"offset": Vector2( -840, 840 ),
+"size": Vector2( 62, 60.0198 )
+},
+"name": "root",
+"type": 0
+}, {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"data": {
+"connection": [ {
+"from": "sequence3",
+"from_port": 2,
+"to": "task7",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 1,
+"to": "task6",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 0,
+"to": "inverter",
+"to_port": 0
+}, {
+"from": "inverter",
+"from_port": 0,
+"to": "task5",
+"to_port": 0
+} ],
+"nodes": [ {
+"child": [  ],
+"data": {
+"count": 3,
+"offset": Vector2( -400, 660 ),
+"size": Vector2( 106, 101.75 )
+},
+"name": "sequence3",
+"type": 2
+}, {
+"child": [  ],
+"data": {
+"offset": Vector2( -300, 520 ),
+"size": Vector2( 92, 43 )
+},
+"name": "inverter",
+"type": 14
+}, {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -120, 500 ),
+"params": [  ],
+"size": Vector2( 277, 85 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_startgameplayer",
+"offset": Vector2( -180, 600 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task6",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_passBall",
+"offset": Vector2( -160, 720 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task7",
+"type": 1
+} ],
+"root": {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -120, 500 ),
+"params": [  ],
+"size": Vector2( 277, 85 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+} ],
+"data": {
+"offset": Vector2( -300, 520 ),
+"size": Vector2( 92, 43 )
+},
+"name": "inverter",
+"type": 14
+}, {
+"child": [  ],
+"data": {
+"fn": "task_startgameplayer",
+"offset": Vector2( -180, 600 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task6",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_passBall",
+"offset": Vector2( -160, 720 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task7",
+"type": 1
+} ],
+"data": {
+"count": 3,
+"offset": Vector2( -400, 660 ),
+"size": Vector2( 106, 101.75 )
+},
+"name": "sequence3",
+"type": 2
+}
+},
+"label": "",
+"offset": Vector2( -400, 660 ),
+"size": Vector2( 236, 80 )
+},
+"name": "minim_node",
+"type": 99
+}, {
+"child": [  ],
+"data": {
+"data": {
+"connection": [ {
+"from": "sequence3",
+"from_port": 0,
+"to": "task5",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 1,
+"to": "task4",
+"to_port": 0
+} ],
+"nodes": [ {
+"child": [  ],
+"data": {
+"count": 2,
+"offset": Vector2( -400, 780 ),
+"size": Vector2( 106, 81.75 )
+},
+"name": "sequence3",
+"type": 2
+}, {
+"child": [  ],
+"data": {
+"fn": "task_training",
+"offset": Vector2( -200, 720 ),
+"params": [  ],
+"size": Vector2( 218, 85 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_moveToPosition",
+"offset": Vector2( -200, 860 ),
+"params": [  ],
+"size": Vector2( 255, 85 ),
+"values": [  ]
+},
+"name": "task4",
+"type": 1
+} ],
+"root": {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_training",
+"offset": Vector2( -200, 720 ),
+"params": [  ],
+"size": Vector2( 218, 85 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_moveToPosition",
+"offset": Vector2( -200, 860 ),
+"params": [  ],
+"size": Vector2( 255, 85 ),
+"values": [  ]
+},
+"name": "task4",
+"type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( -400, 780 ),
+"size": Vector2( 106, 81.75 )
+},
+"name": "sequence3",
+"type": 2
+}
+},
+"label": "training ",
+"offset": Vector2( -400, 780 ),
+"size": Vector2( 236, 80 )
+},
+"name": "minim_node2",
+"type": 99
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( -540, 760 ),
+"size": Vector2( 93, 81.75 )
+},
+"name": "selector",
+"type": 3
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -340, 900 ),
+"params": [  ],
+"size": Vector2( 231, 85 ),
+"values": [  ]
+},
+"name": "task",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_withBall",
+"offset": Vector2( -340, 1000 ),
+"params": [  ],
+"size": Vector2( 219, 85 ),
+"values": [  ]
+},
+"name": "task3",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_moveball",
+"offset": Vector2( -340, 1100 ),
+"params": [  ],
+"size": Vector2( 224, 85 ),
+"values": [  ]
+},
+"name": "task2",
+"type": 1
+} ],
+"data": {
+"count": 3,
+"offset": Vector2( -540, 920 ),
+"size": Vector2( 106, 101.75 )
+},
+"name": "sequence2",
+"type": 2
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( -700, 840 ),
+"size": Vector2( 100, 81.75 )
+},
+"name": "sequence",
+"type": 2
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -340, 900 ),
+"params": [  ],
+"size": Vector2( 231, 85 ),
+"values": [  ]
+},
+"name": "task",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_withBall",
+"offset": Vector2( -340, 1000 ),
+"params": [  ],
+"size": Vector2( 219, 85 ),
+"values": [  ]
+},
+"name": "task3",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_moveball",
+"offset": Vector2( -340, 1100 ),
+"params": [  ],
+"size": Vector2( 224, 85 ),
+"values": [  ]
+},
+"name": "task2",
+"type": 1
+} ],
+"data": {
+"count": 3,
+"offset": Vector2( -540, 920 ),
+"size": Vector2( 106, 101.75 )
+},
+"name": "sequence2",
+"type": 2
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"data": {
+"connection": [ {
+"from": "sequence3",
+"from_port": 2,
+"to": "task7",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 1,
+"to": "task6",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 0,
+"to": "inverter",
+"to_port": 0
+}, {
+"from": "inverter",
+"from_port": 0,
+"to": "task5",
+"to_port": 0
+} ],
+"nodes": [ {
+"child": [  ],
+"data": {
+"count": 3,
+"offset": Vector2( -400, 660 ),
+"size": Vector2( 106, 101.75 )
+},
+"name": "sequence3",
+"type": 2
+}, {
+"child": [  ],
+"data": {
+"offset": Vector2( -300, 520 ),
+"size": Vector2( 92, 43 )
+},
+"name": "inverter",
+"type": 14
+}, {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -120, 500 ),
+"params": [  ],
+"size": Vector2( 277, 85 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_startgameplayer",
+"offset": Vector2( -180, 600 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task6",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_passBall",
+"offset": Vector2( -160, 720 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task7",
+"type": 1
+} ],
+"root": {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -120, 500 ),
+"params": [  ],
+"size": Vector2( 277, 85 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+} ],
+"data": {
+"offset": Vector2( -300, 520 ),
+"size": Vector2( 92, 43 )
+},
+"name": "inverter",
+"type": 14
+}, {
+"child": [  ],
+"data": {
+"fn": "task_startgameplayer",
+"offset": Vector2( -180, 600 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task6",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_passBall",
+"offset": Vector2( -160, 720 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task7",
+"type": 1
+} ],
+"data": {
+"count": 3,
+"offset": Vector2( -400, 660 ),
+"size": Vector2( 106, 101.75 )
+},
+"name": "sequence3",
+"type": 2
+}
+},
+"label": "",
+"offset": Vector2( -400, 660 ),
+"size": Vector2( 236, 80 )
+},
+"name": "minim_node",
+"type": 99
+}, {
+"child": [  ],
+"data": {
+"data": {
+"connection": [ {
+"from": "sequence3",
+"from_port": 0,
+"to": "task5",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 1,
+"to": "task4",
+"to_port": 0
+} ],
+"nodes": [ {
+"child": [  ],
+"data": {
+"count": 2,
+"offset": Vector2( -400, 780 ),
+"size": Vector2( 106, 81.75 )
+},
+"name": "sequence3",
+"type": 2
+}, {
+"child": [  ],
+"data": {
+"fn": "task_training",
+"offset": Vector2( -200, 720 ),
+"params": [  ],
+"size": Vector2( 218, 85 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_moveToPosition",
+"offset": Vector2( -200, 860 ),
+"params": [  ],
+"size": Vector2( 255, 85 ),
+"values": [  ]
+},
+"name": "task4",
+"type": 1
+} ],
+"root": {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_training",
+"offset": Vector2( -200, 720 ),
+"params": [  ],
+"size": Vector2( 218, 85 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_moveToPosition",
+"offset": Vector2( -200, 860 ),
+"params": [  ],
+"size": Vector2( 255, 85 ),
+"values": [  ]
+},
+"name": "task4",
+"type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( -400, 780 ),
+"size": Vector2( 106, 81.75 )
+},
+"name": "sequence3",
+"type": 2
+}
+},
+"label": "training ",
+"offset": Vector2( -400, 780 ),
+"size": Vector2( 236, 80 )
+},
+"name": "minim_node2",
+"type": 99
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( -540, 760 ),
+"size": Vector2( 93, 81.75 )
+},
+"name": "selector",
+"type": 3
+}, {
+"child": [  ],
+"data": {
+"data": {
+"connection": [ {
+"from": "sequence3",
+"from_port": 2,
+"to": "task7",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 1,
+"to": "task6",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 0,
+"to": "inverter",
+"to_port": 0
+}, {
+"from": "inverter",
+"from_port": 0,
+"to": "task5",
+"to_port": 0
+} ],
+"nodes": [ {
+"child": [  ],
+"data": {
+"count": 3,
+"offset": Vector2( -400, 660 ),
+"size": Vector2( 106, 101.75 )
+},
+"name": "sequence3",
+"type": 2
+}, {
+"child": [  ],
+"data": {
+"offset": Vector2( -300, 520 ),
+"size": Vector2( 92, 43 )
+},
+"name": "inverter",
+"type": 14
+}, {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -120, 500 ),
+"params": [  ],
+"size": Vector2( 277, 85 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_startgameplayer",
+"offset": Vector2( -180, 600 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task6",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_passBall",
+"offset": Vector2( -160, 720 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task7",
+"type": 1
+} ],
+"root": {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -120, 500 ),
+"params": [  ],
+"size": Vector2( 277, 85 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+} ],
+"data": {
+"offset": Vector2( -300, 520 ),
+"size": Vector2( 92, 43 )
+},
+"name": "inverter",
+"type": 14
+}, {
+"child": [  ],
+"data": {
+"fn": "task_startgameplayer",
+"offset": Vector2( -180, 600 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task6",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_passBall",
+"offset": Vector2( -160, 720 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task7",
+"type": 1
+} ],
+"data": {
+"count": 3,
+"offset": Vector2( -400, 660 ),
+"size": Vector2( 106, 101.75 )
+},
+"name": "sequence3",
+"type": 2
+}
+},
+"label": "",
+"offset": Vector2( -400, 660 ),
+"size": Vector2( 236, 80 )
+},
+"name": "minim_node",
+"type": 99
+}, {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -340, 900 ),
+"params": [  ],
+"size": Vector2( 231, 85 ),
+"values": [  ]
+},
+"name": "task",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_withBall",
+"offset": Vector2( -340, 1000 ),
+"params": [  ],
+"size": Vector2( 219, 85 ),
+"values": [  ]
+},
+"name": "task3",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_moveball",
+"offset": Vector2( -340, 1100 ),
+"params": [  ],
+"size": Vector2( 224, 85 ),
+"values": [  ]
+},
+"name": "task2",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"data": {
+"connection": [ {
+"from": "sequence3",
+"from_port": 0,
+"to": "task5",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 1,
+"to": "task4",
+"to_port": 0
+} ],
+"nodes": [ {
+"child": [  ],
+"data": {
+"count": 2,
+"offset": Vector2( -400, 780 ),
+"size": Vector2( 106, 81.75 )
+},
+"name": "sequence3",
+"type": 2
+}, {
+"child": [  ],
+"data": {
+"fn": "task_training",
+"offset": Vector2( -200, 720 ),
+"params": [  ],
+"size": Vector2( 218, 85 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_moveToPosition",
+"offset": Vector2( -200, 860 ),
+"params": [  ],
+"size": Vector2( 255, 85 ),
+"values": [  ]
+},
+"name": "task4",
+"type": 1
+} ],
+"root": {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_training",
+"offset": Vector2( -200, 720 ),
+"params": [  ],
+"size": Vector2( 218, 85 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_moveToPosition",
+"offset": Vector2( -200, 860 ),
+"params": [  ],
+"size": Vector2( 255, 85 ),
+"values": [  ]
+},
+"name": "task4",
+"type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( -400, 780 ),
+"size": Vector2( 106, 81.75 )
+},
+"name": "sequence3",
+"type": 2
+}
+},
+"label": "training ",
+"offset": Vector2( -400, 780 ),
+"size": Vector2( 236, 80 )
+},
+"name": "minim_node2",
+"type": 99
+} ],
+"root": {
+"child": [ {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"data": {
+"connection": [ {
+"from": "sequence3",
+"from_port": 2,
+"to": "task7",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 1,
+"to": "task6",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 0,
+"to": "inverter",
+"to_port": 0
+}, {
+"from": "inverter",
+"from_port": 0,
+"to": "task5",
+"to_port": 0
+} ],
+"nodes": [ {
+"child": [  ],
+"data": {
+"count": 3,
+"offset": Vector2( -400, 660 ),
+"size": Vector2( 106, 101.75 )
+},
+"name": "sequence3",
+"type": 2
+}, {
+"child": [  ],
+"data": {
+"offset": Vector2( -300, 520 ),
+"size": Vector2( 92, 43 )
+},
+"name": "inverter",
+"type": 14
+}, {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -120, 500 ),
+"params": [  ],
+"size": Vector2( 277, 85 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_startgameplayer",
+"offset": Vector2( -180, 600 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task6",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_passBall",
+"offset": Vector2( -160, 720 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task7",
+"type": 1
+} ],
+"root": {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -120, 500 ),
+"params": [  ],
+"size": Vector2( 277, 85 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+} ],
+"data": {
+"offset": Vector2( -300, 520 ),
+"size": Vector2( 92, 43 )
+},
+"name": "inverter",
+"type": 14
+}, {
+"child": [  ],
+"data": {
+"fn": "task_startgameplayer",
+"offset": Vector2( -180, 600 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task6",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_passBall",
+"offset": Vector2( -160, 720 ),
+"params": [  ],
+"size": Vector2( 258, 85 ),
+"values": [  ]
+},
+"name": "task7",
+"type": 1
+} ],
+"data": {
+"count": 3,
+"offset": Vector2( -400, 660 ),
+"size": Vector2( 106, 101.75 )
+},
+"name": "sequence3",
+"type": 2
+}
+},
+"label": "",
+"offset": Vector2( -400, 660 ),
+"size": Vector2( 236, 80 )
+},
+"name": "minim_node",
+"type": 99
+}, {
+"child": [  ],
+"data": {
+"data": {
+"connection": [ {
+"from": "sequence3",
+"from_port": 0,
+"to": "task5",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 1,
+"to": "task4",
+"to_port": 0
+} ],
+"nodes": [ {
+"child": [  ],
+"data": {
+"count": 2,
+"offset": Vector2( -400, 780 ),
+"size": Vector2( 106, 81.75 )
+},
+"name": "sequence3",
+"type": 2
+}, {
+"child": [  ],
+"data": {
+"fn": "task_training",
+"offset": Vector2( -200, 720 ),
+"params": [  ],
+"size": Vector2( 218, 85 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_moveToPosition",
+"offset": Vector2( -200, 860 ),
+"params": [  ],
+"size": Vector2( 255, 85 ),
+"values": [  ]
+},
+"name": "task4",
+"type": 1
+} ],
+"root": {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_training",
+"offset": Vector2( -200, 720 ),
+"params": [  ],
+"size": Vector2( 218, 85 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_moveToPosition",
+"offset": Vector2( -200, 860 ),
+"params": [  ],
+"size": Vector2( 255, 85 ),
+"values": [  ]
+},
+"name": "task4",
+"type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( -400, 780 ),
+"size": Vector2( 106, 81.75 )
+},
+"name": "sequence3",
+"type": 2
+}
+},
+"label": "training ",
+"offset": Vector2( -400, 780 ),
+"size": Vector2( 236, 80 )
+},
+"name": "minim_node2",
+"type": 99
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( -540, 760 ),
+"size": Vector2( 93, 81.75 )
+},
+"name": "selector",
+"type": 3
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_matchstart",
+"offset": Vector2( -340, 900 ),
+"params": [  ],
+"size": Vector2( 231, 85 ),
+"values": [  ]
+},
+"name": "task",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_withBall",
+"offset": Vector2( -340, 1000 ),
+"params": [  ],
+"size": Vector2( 219, 85 ),
+"values": [  ]
+},
+"name": "task3",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_moveball",
+"offset": Vector2( -340, 1100 ),
+"params": [  ],
+"size": Vector2( 224, 85 ),
+"values": [  ]
+},
+"name": "task2",
+"type": 1
+} ],
+"data": {
+"count": 3,
+"offset": Vector2( -540, 920 ),
+"size": Vector2( 106, 101.75 )
+},
+"name": "sequence2",
+"type": 2
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( -700, 840 ),
+"size": Vector2( 100, 81.75 )
+},
+"name": "sequence",
+"type": 2
+} ],
+"data": {
+"offset": Vector2( -840, 840 ),
+"size": Vector2( 62, 60.0198 )
+},
+"name": "root",
+"type": 0
+}
+}
+_tree_id = "2297892302876157455"

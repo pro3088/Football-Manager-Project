@@ -5,63 +5,54 @@ var Ball
 var Awaygoal = 0
 var Homegoal = 0
 
-var team1 = Team.TeamSide.HomeSide
-var team2 = Team.TeamSide.AwaySide
+var Astar:AstarNode
 
-var HomeTeamArray = Array()
-var AwayTeamArray = Array()
-
-var allPlayerArray:Array
-
-var HomeTeampos = Array()
-var OppositionTeampos = Array()
-
+var ball = preload("res://MatchVariables/Scenes/Ball.tscn").instance()
 
 func _ready():
-	# A position 2d to position the ball at the middle of the field
-	Ball = WorldSpace.ballResource
-	self.add_child(Ball)
-	Ball.global_transform.origin = WorldSpace.centerpos
+	self.add_child(ball)
+	ball.global_position = $"Control/pitch-scene".centerPos
 	
-	WorldSpace.training = false
+	var homeFieldpositions = $"Control/pitch-scene".homepositions()
+	var awayFieldpositions = $"Control/pitch-scene".awaypositions()
+	var squad = Database.getTeam("TOMI")
+	squad = TeamData.createOppData(squad)
+	var homeTeam = Team($HomeTeam, homeFieldpositions, TeamData.squadPlayers, TeamCreator.matchPlace.HOME)
+	var awayTeam = Team($AwayTeam, awayFieldpositions, squad, TeamCreator.matchPlace.AWAY)
 	
-	HomeTeam()
-	AwayTeam()
-	allPlayers()
+	var grid = Grid.new($"Control/pitch-scene".gridPos.get("START"), $"Control/pitch-scene".gridPos.get("END"))
+	grid.createGrid()
+	grid.setAstarGrid()
+	Astar = AstarNode.new(grid.getAstarGrid())
 	
-	Team.HomeTeam = HomeTeamArray
-	Team.AwayTeam = AwayTeamArray
-	Team.ballPos = Ball.global_position
+	var allPlayers:Array
+	allPlayers.append_array(homeTeam)
+	allPlayers.append_array(awayTeam)
+	print(allPlayers.size())
 	
-	Team.HomeTeam = HomeTeamArray
-	Team.AwayTeam = AwayTeamArray
-	Team.allPlayers = allPlayerArray
+	Astar.allPlayers = allPlayers
+	
+	
+	
 
-func _process(_delta):
-	Team.ballPos = Ball.global_position
+func Team(holder:Node2D, fieldpositions, squad, matchplace):
+	var squadPlayers = TeamCreator.new().createTeam(fieldpositions, squad, matchplace)
+	for player in squadPlayers:
+		holder.add_child(player)
+	return squadPlayers
 
-# Create Home players for the match play
-func HomeTeam():
-	Team.team = team1
-	var homeTeam = $HomeTeam
-	Team.CreatePlayers(homeTeam)
-	var child = homeTeam.get_children()
-	HomeTeamArray = child
+func _process(delta):
+	Astar.normalizeNode()
+#	var path = Astar.path(Vector2(71,49), Vector2(692,49))
+#	print(path[3])
 
-# Create Away players for the match play
-func AwayTeam():
-	Team.team = team2
-	var awayTeam  = $AwayTeam
-	Team.CreatePlayers(awayTeam)
-	var child = awayTeam.get_children()
-	AwayTeamArray = child
 
-# putting all players in a single array
-func allPlayers():
-	for a in HomeTeamArray:
-		allPlayerArray.append(a)
-	for b in AwayTeamArray:
-		allPlayerArray.append(b)
-	WorldSpace.allPlayerArray = allPlayerArray
+
+
+
+
+
+
+
 
 
