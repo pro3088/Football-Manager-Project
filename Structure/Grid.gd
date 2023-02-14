@@ -5,6 +5,8 @@ class_name Grid
 var start:Vector2
 var end:Vector2
 
+var playerSize = 12
+
 var colNum:int = 24
 var rowNum:int = 12
 
@@ -21,6 +23,21 @@ func _init(startPos, endPos):
 	var heightDiff = end.y - start.y
 	var widthDiff = end.x - start.x
 	
+	colNum = widthDiff / playerSize
+	rowNum = colNum / 2
+	
+	width = widthDiff / colNum
+	height = heightDiff / rowNum
+	
+	start += Vector2(width/2, height/2)
+	end -= Vector2(width/2, height/2)
+	
+	heightDiff = end.y - start.y
+	widthDiff = end.x - start.x
+	
+	colNum = widthDiff / playerSize
+	rowNum = colNum / 2
+	
 	width = widthDiff / colNum
 	height = heightDiff / rowNum
 	
@@ -34,7 +51,7 @@ func createGrid():
 		tempGrid = []
 		for x in range(0,colNum):
 			if grid.empty() and tempGrid.empty():
-				tempGrid.append(start + Vector2(width/2, height/2))
+				tempGrid.append(start)
 			elif tempGrid.empty():
 				tempGrid.append(grid[y-1][0] + Vector2(0,height))
 			else:
@@ -44,11 +61,16 @@ func createGrid():
 func setAstarGrid():
 	var temparray:Array = []
 	var walkable:bool = true
+	var x:int
+	var y:int
 	for i in grid:
+		x = 0
 		temparray = []
 		for a in i:
-			temparray.append(AstarNode.ArrayNode.new(walkable,a,a.x,a.y))
+			temparray.append(AstarNode.ArrayNode.new(walkable, a, x, y))
+			x += 1
 		astarGrid.append(temparray)
+		y += 1
 
 func getAstarGrid():
 	return astarGrid
