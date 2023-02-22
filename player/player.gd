@@ -7,8 +7,22 @@ var stats:Stats
 var walk:bool
 var sprint:bool
 
+var Astar:AstarNode
 
-var fieldPosition:Vector2
+var fieldPosition:Vector2 #Fixed position
+
+var team:Array
+
+var ball
+
+var kickOffPlayer:bool
+
+func _ready():
+	Astar = AstarNode.new(WorldSpace.grid)
+
+func _process(delta):
+	Astar.allPlayers = WorldSpace.matchPlayers
+	Astar.normalizeNode(self)
 
 
 ##..............................
@@ -93,21 +107,22 @@ var fieldPosition:Vector2
 #	else:
 #		velocity = Vector2.ZERO
 #	pass
-#
-#func withBall():
-#	if $Ballholder.ball:
-#		print("with ball .................")
-#		return true
-#	elif !$Ballholder.ball and Team.playerwithball == self and ballholder:
-#		yield(get_tree().create_timer(0.4), "time_out")
-#		if Team.team == Team.TeamSide.HomeSide:
-#			Team.hometeampossesion = false
-#		elif Team.team == Team.TeamSide.OtherSide:
-#			Team.awayteampossesion = false
-#		return false
-#	elif !ballholder:
-#		return false
-#	return false
+
+func passBall(role):
+	var passTarget
+	for player in WorldSpace.matchPlayers:
+		if player.stats.role == role:
+			passTarget = player
+
+func withBall():
+	if $Ballholder.ball:
+		return true
+	elif !$Ballholder.ball:
+		yield(get_tree().create_timer(0.4), "time_out")
+		if $Ballholder.ball:
+			return
+		return false
+	return false
 #
 #func trapball():
 #	var trapball

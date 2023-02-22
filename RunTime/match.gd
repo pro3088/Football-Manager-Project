@@ -17,23 +17,20 @@ func _ready():
 	var awayFieldpositions = $"Control/pitch-scene".awaypositions()
 	var squad = Database.getTeam("TOMI")
 	squad = TeamData.createOppData(squad)
-	var homeTeam = Team($HomeTeam, homeFieldpositions, TeamData.squadPlayers, TeamCreator.matchPlace.HOME)
-	var awayTeam = Team($AwayTeam, awayFieldpositions, squad, TeamCreator.matchPlace.AWAY)
 	
 	var grid = Grid.new($"Control/pitch-scene".gridPos.get("START"), $"Control/pitch-scene".gridPos.get("END"))
 	grid.createGrid()
 	grid.setAstarGrid()
-	Astar = AstarNode.new(grid.getAstarGrid())
+	WorldSpace.grid = grid.getAstarGrid()
+	
+	var homeTeam = Team($HomeTeam, homeFieldpositions, TeamData.squadPlayers, TeamCreator.matchPlace.HOME)
+	var awayTeam = Team($AwayTeam, awayFieldpositions, squad, TeamCreator.matchPlace.AWAY)
 	
 	var allPlayers:Array
 	allPlayers.append_array(homeTeam)
 	allPlayers.append_array(awayTeam)
-	print(allPlayers.size())
-	
-	Astar.allPlayers = allPlayers
-	
-	
-	
+	WorldSpace.matchPlayers = allPlayers
+	WorldSpace.matchStart = true
 
 func Team(holder:Node2D, fieldpositions, squad, matchplace):
 	var squadPlayers = TeamCreator.new().createTeam(fieldpositions, squad, matchplace)
@@ -41,10 +38,6 @@ func Team(holder:Node2D, fieldpositions, squad, matchplace):
 		holder.add_child(player)
 	return squadPlayers
 
-func _process(delta):
-	Astar.normalizeNode()
-#	var path = Astar.path(Vector2(71,49), Vector2(692,49))
-#	print(path[3])
 
 
 

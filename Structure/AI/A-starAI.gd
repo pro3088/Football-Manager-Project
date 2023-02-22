@@ -39,8 +39,10 @@ func _init(_grid):
 	grid = _grid
 
 #All grid position generated are normalized to walkable and non-walkable nodes
-func normalizeNode():
+func normalizeNode(_player):
 	var notWalkable:Array
+	
+	allPlayers.erase(_player)
 	
 	for player in allPlayers:
 		var gridPosition = positionToGrid(player.global_position)

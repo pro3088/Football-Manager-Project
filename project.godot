@@ -37,7 +37,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "AstarNode",
 "language": "GDScript",
-"path": "res://Structure/AI/A-star Path.gd"
+"path": "res://Structure/AI/A-starAI.gd"
 }, {
 "base": "Node",
 "class": "Formation",
@@ -96,6 +96,7 @@ User="*res://Data/UserData/User.gd"
 Database="*res://Data/Database.gd"
 BTDebugServer="*res://addons/btree/script/bt_debug_server.gd"
 TeamData="*res://Data/TeamData/TeamData.gd"
+WorldSpace="*res://RunTime/worldSpace.gd"
 
 [debug]
 
