@@ -65,6 +65,11 @@ _global_script_classes=[ {
 "path": "res://Structure/Tactics.gd"
 }, {
 "base": "Node",
+"class": "Team",
+"language": "GDScript",
+"path": "res://Structure/Team/Team.gd"
+}, {
+"base": "Node",
 "class": "TeamCreator",
 "language": "GDScript",
 "path": "res://Structure/Create/TeamCreator.gd"
@@ -81,6 +86,7 @@ _global_script_class_icons={
 "LinkedList": "",
 "Stats": "",
 "Tactics": "",
+"Team": "",
 "TeamCreator": ""
 }
 

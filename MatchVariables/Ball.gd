@@ -8,9 +8,9 @@ extends RigidBody2D
 
 
 # One method to move, pass and shoot the ball
-func moveBall(position: Vector2 = self.global_position , force:float = 0.0,  sprint:bool = false, accuracy:float = 0.0, curve:int = 0): 
+func moveBall(position: Vector2, force:float = 0.0, accuracy:float = 0.0, curve:int = 0): 
 	var dir = position - self.global_position
-	set_linear_velocity(dir * force)
+	set_linear_velocity(dir * force * get_physics_process_delta_time())
 
 
 #func _on_Area2D_area_entered(area):

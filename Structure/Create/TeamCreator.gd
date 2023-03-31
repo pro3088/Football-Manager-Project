@@ -55,6 +55,7 @@ func setPosition(positions,player,data,matchplace):
 			print("setting to kick-off player")
 			if player.stats.role == "CF":
 				player.global_position = positions.get("KICKOFF")
+				player.kickOffPlayer = true
 				player.rotation_degrees = 180
 		_:
 			player.rotation_degrees = 0

@@ -1,5 +1,7 @@
 extends Node
 
+class_name Team
+
 func _init(team, side):
 	pass
 
@@ -8,6 +10,8 @@ var matchStarted:bool
 
 var tactics = Tactics.new()
 
+func _ready():
+	pass
 
 func matchPlay():
 	pass

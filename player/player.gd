@@ -9,60 +9,90 @@ var sprint:bool
 
 var Astar:AstarNode
 
-var fieldPosition:Vector2 #Fixed position
+var fieldPosition:Vector2 
 
 var team:Array
+var teamPossession
 
-var ball
+var teamSide
+
+var ball = WorldSpace.ball
 
 var kickOffPlayer:bool
 
+var withBall:bool = true
+
+var tactics = Tactics.new()
+
 func _ready():
+	if team.find(self):
+		team.erase(self)
 	Astar = AstarNode.new(WorldSpace.grid)
 
 func _process(delta):
 	Astar.allPlayers = WorldSpace.matchPlayers
 	Astar.normalizeNode(self)
+#	if withBall:
+#		move(ball.global_position)
+
+func findPlayer(role):
+	var target
+	for player in team:
+		if player.stats.role == role:
+			target = player
+	return target.global_position
+
+func move(position):
+	if position != null:
+		var dir = position - self.global_position
+		velocity = dir * stats.speed * get_physics_process_delta_time()
+	else:
+		velocity = Vector2.ZERO
+
+func getPath(target:Vector2):
+	return Astar.path(self.global_position, target)
+
+func withBall():
+	if $Contact.ball:
+		return true
+	return false
+
+func normalize_pos(pos: Vector2) -> Vector2:
+	var norm_pos = Vector2()
+	norm_pos.x = pos.x / WorldSpace.FIELD_WIDTH * 100.0
+	norm_pos.y = pos.y / WorldSpace.FIELD_HEIGHT * 100.0
+	return norm_pos
+
+func calculate_optimal_position() -> Vector2:
+	var direction: Vector2 = Vector2.ZERO
+	var vertical_offset: float = 0.0
+	
+	var player_pos: Vector2 = self.global_position
+	var ball_pos: Vector2 = ball.global_position
+	
+	var attack_bias: float = tactics.attackBias
+	var pressure_bias: float = tactics.pressureBias
+
+	if teamSide == "home":
+		direction = Vector2(1, 0)
+		vertical_offset = 50.0
+	elif teamSide == "away":
+		direction = Vector2(-1, 0)
+		vertical_offset = -50.0
+
+	var distance_to_ball: float = ball_pos.distance_to(player_pos)
+	var distance_to_home: float = player_pos.distance_to(fieldPosition)
+
+	var x_offset: float = distance_to_home * (1.0 - attack_bias) * direction.x
+	var y_offset: float = vertical_offset + (distance_to_home * (1.0 - pressure_bias)) * direction.y
+
+	if distance_to_ball < distance_to_home and abs(ball_pos.y - player_pos.y) < 25.0:
+		x_offset = (ball_pos.x - player_pos.x) * attack_bias
+		y_offset = ball_pos.y + (distance_to_home * (1.0 - pressure_bias)) * direction.y
+
+	return fieldPosition + Vector2(x_offset, y_offset)
 
 
-##..............................
-##Bias
-#var pressureBias:float = 0.3 # player tendency to move forward from 0 to 1
-#var defenseBias:float = 0.4 #player tendency to track back
-#var linebiasGK:float = 0.6
-#var linebiasCB:float = 0.8
-#var linebiasCDM:float = 0.9
-#var linebiasCMF:float = 0.95
-#var AlinebiasGK:float = 1.5
-#var AlinebiasCB:float = 1.25
-#var AlinebiasCDM:float = 1.2
-#var AlinebiasCMF:float = 1.1
-#var defensivebias:float = 0.5
-#var hCBpos
-#var hCDMpos
-##..................................
-#
-#var homeposition # original starting player position
-#
-#var aCBpos
-#var aCDMpos
-##..................................
-#
-#
-#var team 
-#
-#var leftsideline
-#var rightsideline
-#var forwardsideline
-#
-#var player = self
-#
-#var homeside:bool
-#var awayside:bool
-#
-#var ballpos
-#
-#
 #func _ready():
 #	if Team.team == Team.TeamSide.HomeSide:
 #		$"FOOTBALL_PLAYER SPRITE".modulate = Color(0, 0, 1)
@@ -100,29 +130,15 @@ func _process(delta):
 #	else:
 #		velocity = Vector2.ZERO
 #
-#func move(position):
-#	if position != null:
-#		var dir = position - self.global_position
-#		velocity = dir * stats.speed * get_physics_process_delta_time()
-#	else:
-#		velocity = Vector2.ZERO
-#	pass
 
-func passBall(role):
-	var passTarget
-	for player in WorldSpace.matchPlayers:
-		if player.stats.role == role:
-			passTarget = player
-
-func withBall():
-	if $Ballholder.ball:
-		return true
-	elif !$Ballholder.ball:
-		yield(get_tree().create_timer(0.4), "time_out")
-		if $Ballholder.ball:
-			return
-		return false
-	return false
+#func withBall():
+#	if $Contact.ball:
+#		return true
+#	elif !$Ballholder.ball:
+#		yield(get_tree().create_timer(0.4), "time_out")
+#		if $Ballholder.ball:
+#			return true
+#	return false
 #
 #func trapball():
 #	var trapball

@@ -39,6 +39,7 @@ var gridPos:Dictionary = {
 }
 
 onready var centerPos = $"pitch-positions/centre-line".global_transform.origin
+onready var awayGoal = $Outfieldpositions/Awaygoalpost
 
 func _ready():
 	homepositions()
@@ -84,7 +85,6 @@ func grids():
 	gridPos["START"] = $Outfieldpositions/gridStartPos.global_transform.origin
 	gridPos["END"] = $Outfieldpositions/gridEndPos.global_transform.origin
 	return gridPos
-
 
 
 

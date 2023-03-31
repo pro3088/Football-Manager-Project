@@ -1,6 +1,6 @@
 extends Node
 
-var path = "res://general scripts/User/Save_game.json"
+var path = "user://GameData/Save_game.json"
 
 var passFile="fwegfuywe7r632r7312ghdjfvjhfesedwfcdewqyhfewjf"
 var userName = "ROTIMI"

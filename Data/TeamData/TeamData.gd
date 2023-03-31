@@ -4,6 +4,7 @@ var ratingLinkedList:Dictionary
 var ratingArray:Dictionary
 
 var squadPlayers:Array
+var squadPlayerDic:Dictionary
 
 var teamPlayers = Database.clubTeam
 

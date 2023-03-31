@@ -26,7 +26,7 @@ func _ready():
 func copyPath():
 	print_debug("copying data to user dir")
 	var dir = Directory.new()
-	dir.copy("res://DataStore/fm_db.db", "user://fm_db.db")
+	dir.copy("res://DataStore/fm_db.db", "user://GameData/fm_db.db")
 	print("data copied")
 
 func getAllPlayers():

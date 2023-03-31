@@ -2,7 +2,7 @@ extends Node
 
 class_name Tactics
 
-enum attackstyle{ #style of attacking play
+enum attackStyle{ #style of attacking play
 	counter
 	possession
 }
@@ -12,34 +12,37 @@ enum positioning{ # do players fill the spaces
 	flexible
 }
 
-enum marking{
+enum markingStyle{
 	manToMan
 	conservative
 }
 
-var atk
-var teamPos
-var teamMark
+export(attackStyle) var attack
+export(positioning) var flexibility
+export(markingStyle) var marking
 
-var pitchWidth:float = 0.1 #width of the center line of the pitch #horizontal
-var defenseWidth:float = 0.1 #width of the defense (of each player) between counter 
+var attackBias: float = 0.4
+var pressureBias: float = 0.3
 
-var touchline:float = 0.1
-
-var defenseLine:float = 0.1 #length from the center line of the pitch #vertical
-
-var pressurebias: float = 0.3
-var defensebias: float = 0.1
-
-var supportRange:float = 0.1  #distance between players
-
-var avgTeamAtkBias:float = 0.5
+var supportRange:float = 0.5  
 
 var supportNo:int = 3 #number of players that support
 
 var path = "res://general scripts/User/save_tactics.json"
 
 var passFile="fwegfuywe7r632r7312ghdjfvjhfesedwfcdewqyhfewjf"
+
+
+func prepareTactics():
+	pass
+
+
+
+
+
+
+
+
 
 #var details:Dictionary = {
 #	"username" : userName,
